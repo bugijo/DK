@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Companion - Mesas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="tables.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="player-details">
+            <div class="player-info">
+                <span class="player-name">DarkKnight</span>
+                <span class="player-level">Nível 25</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 65%;"></div>
+                <span class="xp-text">8,750 / 10,000 XP</span>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold-coin.svg" alt="Gold" class="resource-icon">
+                <span class="resource-value">1,250</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gems" class="resource-icon">
+                <span class="resource-value">45</span>
+            </div>
+        </div>
+        <div class="settings">
+            <button class="settings-btn">
+                <img src="assets/icons/settings.svg" alt="Settings" class="settings-icon">
+            </button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <h1>Mesas</h1>
+        <div class="table-actions">
+            <input type="text" placeholder="Buscar mesas..." class="search-bar">
+            <button class="create-table-btn">+ Criar Mesa</button>
+        </div>
+        <div class="tables-grid">
+            <!-- Exemplo de Card de Mesa -->
+            <div class="table-card">
+                <h2>teste</h2>
+                <p>Mestre: gil.jonathan.pereira</p>
+                <p>Sem descrição</p>
+                <p>DBD 5ª Edição • 1 jogadores</p>
+                <div class="card-actions">
+                    <button class="btn-manage">Gerenciar</button>
+                    <button class="btn-details">Ver Detalhes</button>
+                </div>
+            </div>
+            <!-- Outros cards de mesa virão aqui -->
+        </div>
+
+        <!-- Modal de Criação de Mesa -->
+        <div id="createTableModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Criar Nova Mesa</h2>
+                <form id="createTableForm">
+                    <div class="form-group">
+                        <label for="tableName">Nome da Mesa:</label>
+                        <input type="text" id="tableName" name="tableName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tableStory">História:</label>
+                        <select id="tableStory" name="tableStory" required>
+                            <option value="">Selecione uma história</option>
+                            <!-- Opções de histórias virão aqui -->
+                            <option value="historia1">A Lenda do Dragão Adormecido</option>
+                            <option value="historia2">O Mistério da Floresta Sombria</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="playerCount">Quantidade de Jogadores:</label>
+                        <input type="number" id="playerCount" name="playerCount" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duração Estimada (horas):</label>
+                        <input type="number" id="duration" name="duration" min="0.5" step="0.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tableDate">Data:</label>
+                        <input type="date" id="tableDate" name="tableDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tableTime">Hora:</label>
+                        <input type="time" id="tableTime" name="tableTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="synopsis">Sinopse da História:</label>
+                        <textarea id="synopsis" name="synopsis" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-create">Criar Mesa</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="tables.js"></script>
+</body>
+</html>

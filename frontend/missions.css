@@ -1,0 +1,328 @@
+:root {
+    --primary-color: #8a2be2;
+    --secondary-color: #5a4a8a;
+    --background-color: #1a1a2e;
+    --card-background: #2a2a4a;
+    --text-color: #e0e0e0;
+    --light-text-color: #ccc;
+    --highlight-color: #ffcc00;
+}
+
+.missions-container {
+    background-color: var(--card-background);
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.missions-container h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.mission-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    border: 1px solid var(--secondary-color);
+}
+
+.mission-section h2 {
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.mission-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--card-background);
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.mission-description {
+    flex-grow: 1;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.mission-details {
+    display: flex;
+    align-items: center;
+}
+
+.mission-rewards {
+    display: flex;
+    gap: 10px;
+    margin-right: 15px;
+}
+
+.reward-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9em;
+    color: var(--light-text-color);
+}
+
+.reward-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.btn-claim {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-claim:hover {
+    background-color: var(--primary-color);
+}
+
+.mission-tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.tab-button {
+    background-color: #e9ecef; /* Cor de fundo padrão */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tab-button.active {
+    background-color: #ffc107; /* Cor de fundo para aba ativa */
+    border-color: #ffc107;
+    color: #333;
+}
+
+.tab-button:hover:not(.active) {
+    background-color: #dee2e6;
+}
+
+/* Estilos para a barra de progresso */
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden; /* Garante que a barra interna fique dentro dos limites */
+    position: relative; /* Para posicionar o texto */
+    height: 20px; /* Altura da barra */
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #28a745; /* Cor da barra de progresso */
+    text-align: center;
+    line-height: 20px; /* Centraliza o texto verticalmente */
+    color: white;
+    font-size: 0.8em;
+    transition: width 0.5s ease; /* Animação suave */
+    position: absolute; /* Posiciona sobre o container */
+    top: 0;
+    left: 0;
+}
+
+.progress-text {
+    position: absolute; /* Posiciona o texto sobre a barra */
+    width: 100%;
+    text-align: center;
+    line-height: 20px; /* Centraliza o texto verticalmente */
+    color: #333; /* Cor do texto */
+    font-size: 0.8em;
+    z-index: 1; /* Garante que o texto fique acima da barra */
+}
+
+/* Adicionar a barra de progresso aos cards de missão */
+.mission-card .mission-description {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.mission-card .mission-description p {
+    margin: 0 0 5px 0; /* Espaço entre a descrição e a barra de progresso */
+}
+
+.mission-card .progress-bar-container {
+    width: 150px; /* Largura da barra de progresso dentro do card */
+    margin-top: 0;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .missions-container {
+        padding: 15px;
+        margin: 10px;
+        max-width: 100%;
+    }
+    
+    .missions-container h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .mission-section {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .mission-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+    
+    .mission-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .mission-card .mission-description {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .mission-details {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .mission-rewards {
+        justify-content: center;
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .reward-item {
+        font-size: 0.8em;
+    }
+    
+    .reward-icon {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .btn-claim {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .mission-card .progress-bar-container {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .mission-tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .tab-button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .missions-container {
+        padding: 10px;
+        margin: 5px;
+    }
+    
+    .missions-container h1 {
+        font-size: 1.5rem;
+    }
+    
+    .mission-section {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .mission-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .mission-card {
+        padding: 10px;
+    }
+    
+    .mission-rewards {
+        gap: 8px;
+    }
+    
+    .reward-item {
+        font-size: 0.75em;
+    }
+    
+    .reward-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .btn-claim {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+    
+    .progress-text {
+        font-size: 0.7em;
+    }
+    
+    .tab-button {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Melhorias para dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+    .btn-claim {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .tab-button {
+        min-height: 44px;
+    }
+    
+    .mission-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}

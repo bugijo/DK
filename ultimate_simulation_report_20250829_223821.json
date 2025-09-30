@@ -1,0 +1,482 @@
+{
+  "simulation_id": "965e49ea",
+  "duration": "12.80 segundos",
+  "results": {
+    "infrastructure": true,
+    "dnd5e_systems": true,
+    "advanced_features": true,
+    "performance_metrics": true,
+    "user_journeys": [
+      true,
+      true,
+      true
+    ],
+    "bonus_points": 19
+  },
+  "total_users": 3,
+  "bonus_points": 19,
+  "simulation_log": [
+    {
+      "timestamp": "22:38:08",
+      "user_type": "INFRA",
+      "action": "Backend Root",
+      "details": "OK",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:08",
+      "user_type": "INFRA",
+      "action": "Backend Documentation",
+      "details": "OK",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:09",
+      "user_type": "INFRA",
+      "action": "Backend OpenAPI Spec",
+      "details": "OK",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:09",
+      "user_type": "INFRA",
+      "action": "Backend Health Check",
+      "details": "OK",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:09",
+      "user_type": "INFRA",
+      "action": "Backend API Root",
+      "details": "OK",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "INFRA",
+      "action": "Frontend Framework React",
+      "details": "Presente",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "INFRA",
+      "action": "Frontend Root Element",
+      "details": "Presente",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "INFRA",
+      "action": "Frontend JavaScript",
+      "details": "Presente",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "INFRA",
+      "action": "Frontend Stylesheets",
+      "details": "Presente",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "INFRA",
+      "action": "Infraestrutura",
+      "details": "Excelente (10/10)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Importação",
+      "details": "Módulos importados com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Classe fighter",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Classe wizard",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Classe rogue",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Classe cleric",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Raça human",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Raça elf",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Raça dwarf",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Raça halfling",
+      "details": "Implementada",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "D&D5E",
+      "action": "Sistemas D&D 5e",
+      "details": "Excelente (100.0%)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Performance Hooks",
+      "details": "Completo (5733 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "UX Optimizer",
+      "details": "Completo (7212 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "UX Optimizer Styles",
+      "details": "Completo (6001 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Visual Effects",
+      "details": "Completo (7511 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Visual Effects Styles",
+      "details": "Completo (7355 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Audio Manager",
+      "details": "Completo (14511 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Audio Settings",
+      "details": "Completo (9874 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Optimized Tests",
+      "details": "Completo (20212 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Final Tests",
+      "details": "Completo (27024 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Ultimate Tests",
+      "details": "Completo (24198 bytes)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "ADVANCED",
+      "action": "Funcionalidades Avançadas",
+      "details": "Excelente (10/10)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "PERF",
+      "action": "Tempo de Resposta",
+      "details": "Excelente (9.6ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:11",
+      "user_type": "PERF",
+      "action": "Throughput",
+      "details": "Excelente (0.0s para 10 requests)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:12",
+      "user_type": "ULTIMATE 1",
+      "action": "Cadastro",
+      "details": "Usuário ultimate1_965e49ea_1756517891 criado",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:13",
+      "user_type": "ULTIMATE 1",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:13",
+      "user_type": "ULTIMATE 1",
+      "action": "API User Profile",
+      "details": "OK (66ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:13",
+      "user_type": "ULTIMATE 1",
+      "action": "API Characters",
+      "details": "OK (44ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:13",
+      "user_type": "ULTIMATE 1",
+      "action": "API Items",
+      "details": "OK (46ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:14",
+      "user_type": "ULTIMATE 1",
+      "action": "API Monsters",
+      "details": "OK (13ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:14",
+      "user_type": "ULTIMATE 1",
+      "action": "API NPCs",
+      "details": "OK (22ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:14",
+      "user_type": "ULTIMATE 1",
+      "action": "API Stories",
+      "details": "OK (11ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:14",
+      "user_type": "ULTIMATE 1",
+      "action": "API Tables",
+      "details": "OK (57ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:14",
+      "user_type": "ULTIMATE 1",
+      "action": "API Performance",
+      "details": "Excelente (37ms médio)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:14",
+      "user_type": "ULTIMATE 1",
+      "action": "Jornada Completa",
+      "details": "Usuário ultimate testado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:15",
+      "user_type": "ULTIMATE 2",
+      "action": "Cadastro",
+      "details": "Usuário ultimate2_965e49ea_1756517895 criado",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:16",
+      "user_type": "ULTIMATE 2",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:16",
+      "user_type": "ULTIMATE 2",
+      "action": "API User Profile",
+      "details": "OK (25ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:16",
+      "user_type": "ULTIMATE 2",
+      "action": "API Characters",
+      "details": "OK (9ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "API Items",
+      "details": "OK (10ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "API Monsters",
+      "details": "OK (9ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "API NPCs",
+      "details": "OK (10ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "API Stories",
+      "details": "OK (7ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "API Tables",
+      "details": "OK (27ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "API Performance",
+      "details": "Excelente (14ms médio)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:17",
+      "user_type": "ULTIMATE 2",
+      "action": "Jornada Completa",
+      "details": "Usuário ultimate testado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:19",
+      "user_type": "ULTIMATE 3",
+      "action": "Cadastro",
+      "details": "Usuário ultimate3_965e49ea_1756517898 criado",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:19",
+      "user_type": "ULTIMATE 3",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:19",
+      "user_type": "ULTIMATE 3",
+      "action": "API User Profile",
+      "details": "OK (26ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API Characters",
+      "details": "OK (11ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API Items",
+      "details": "OK (7ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API Monsters",
+      "details": "OK (7ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API NPCs",
+      "details": "OK (8ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API Stories",
+      "details": "OK (9ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API Tables",
+      "details": "OK (21ms)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "API Performance",
+      "details": "Excelente (13ms médio)",
+      "success": true
+    },
+    {
+      "timestamp": "22:38:20",
+      "user_type": "ULTIMATE 3",
+      "action": "Jornada Completa",
+      "details": "Usuário ultimate testado com sucesso",
+      "success": true
+    }
+  ]
+}

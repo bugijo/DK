@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Item - D&D Toolkit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create-item.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="user-avatar">
+            <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+        </div>
+        <div class="player-details">
+            <div class="player-info">
+                <span class="player-name">DarkKnight</span>
+                <span class="player-level">Nível 25</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 65%;"></div>
+                <span class="xp-text">8,750 / 10,000 XP</span>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                <span class="resource-value" id="gold">1,250</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                <span class="resource-value" id="gems">12</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                <span class="resource-value" id="diamonds">45</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <div class="item-creator">
+            <div class="creator-header">
+                <h1>CRIAR ITEM</h1>
+                <p class="subtitle">Crie equipamentos e itens mágicos para suas aventuras</p>
+            </div>
+
+            <form id="itemForm" class="item-form">
+                <!-- Tipo de Item -->
+                <div class="form-section">
+                    <h2>Tipo de Item</h2>
+                    <div class="item-type-grid">
+                        <div class="item-type-card" data-type="weapon">
+                            <img src="assets/icons/sword.svg" alt="Arma" class="type-icon">
+                            <h3>Arma</h3>
+                            <p>Espadas, arcos, machados e outras armas</p>
+                        </div>
+                        <div class="item-type-card" data-type="armor">
+                            <img src="assets/icons/shield.svg" alt="Armadura" class="type-icon">
+                            <h3>Armadura</h3>
+                            <p>Armaduras, escudos e proteções</p>
+                        </div>
+                        <div class="item-type-card" data-type="accessory">
+                            <img src="assets/icons/gem.svg" alt="Acessório" class="type-icon">
+                            <h3>Acessório</h3>
+                            <p>Anéis, amuletos e joias mágicas</p>
+                        </div>
+                        <div class="item-type-card" data-type="consumable">
+                            <img src="assets/icons/scroll.svg" alt="Consumível" class="type-icon">
+                            <h3>Consumível</h3>
+                            <p>Poções, pergaminhos e itens de uso único</p>
+                        </div>
+                        <div class="item-type-card" data-type="tool">
+                            <img src="assets/icons/settings.svg" alt="Ferramenta" class="type-icon">
+                            <h3>Ferramenta</h3>
+                            <p>Kits de ferramentas e instrumentos</p>
+                        </div>
+                        <div class="item-type-card" data-type="treasure">
+                            <img src="assets/icons/gold-coin.svg" alt="Tesouro" class="type-icon">
+                            <h3>Tesouro</h3>
+                            <p>Objetos de arte e tesouros valiosos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações Básicas -->
+                <div class="form-section">
+                    <h2>Informações Básicas</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemName">Nome do Item *</label>
+                            <input type="text" id="itemName" name="itemName" required placeholder="Ex: Espada Flamejante">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemRarity">Raridade</label>
+                            <select id="itemRarity" name="itemRarity">
+                                <option value="common">Comum</option>
+                                <option value="uncommon">Incomum</option>
+                                <option value="rare">Raro</option>
+                                <option value="very-rare">Muito Raro</option>
+                                <option value="legendary">Lendário</option>
+                                <option value="artifact">Artefato</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemDescription">Descrição</label>
+                        <textarea id="itemDescription" name="itemDescription" rows="3" placeholder="Descreva o item, sua aparência e características importantes..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Imagem do Item -->
+                <div class="form-section">
+                    <h2>Imagem do Item</h2>
+                    <div class="item-upload-options">
+                        <div class="upload-option active" data-option="file">
+                            <h3>Upload de Arquivo</h3>
+                            <p>Envie uma imagem do seu dispositivo</p>
+                        </div>
+                        <div class="upload-option" data-option="url">
+                            <h3>Link Externo</h3>
+                            <p>Use uma URL de imagem da internet</p>
+                        </div>
+                    </div>
+
+                    <!-- Upload de Arquivo -->
+                    <div class="upload-section" id="fileUpload">
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="upload-placeholder">
+                                <div class="upload-icon">📁</div>
+                                <p>Clique para selecionar ou arraste uma imagem</p>
+                                <small>PNG, JPG, JPEG até 5MB</small>
+                            </div>
+                            <input type="file" id="itemImageFile" accept="image/*" hidden>
+                        </div>
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImage" src="" alt="Preview">
+                            <button type="button" class="remove-image" id="removeImage">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- URL Externa -->
+                    <div class="upload-section" id="urlUpload" style="display: none;">
+                        <div class="form-group">
+                            <label for="itemImageUrl">URL da Imagem</label>
+                            <input type="url" id="itemImageUrl" name="itemImageUrl" placeholder="https://exemplo.com/imagem.jpg">
+                            <button type="button" id="previewUrl" class="btn btn-secondary">Visualizar</button>
+                        </div>
+                        <div class="url-preview" id="urlPreview" style="display: none;">
+                            <img id="urlPreviewImage" src="" alt="Preview">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Propriedades Específicas por Tipo -->
+                <div class="form-section" id="specificProperties" style="display: none;">
+                    <h2>Propriedades Específicas</h2>
+                    
+                    <!-- Propriedades de Arma -->
+                    <div class="type-properties" id="weaponProperties" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="weaponType">Tipo de Arma</label>
+                                <select id="weaponType" name="weaponType">
+                                    <option value="simple-melee">Corpo a Corpo Simples</option>
+                                    <option value="martial-melee">Corpo a Corpo Marcial</option>
+                                    <option value="simple-ranged">À Distância Simples</option>
+                                    <option value="martial-ranged">À Distância Marcial</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="weaponDamage">Dano</label>
+                                <input type="text" id="weaponDamage" name="weaponDamage" placeholder="Ex: 1d8">
+                            </div>
+                            <div class="form-group">
+                                <label for="damageType">Tipo de Dano</label>
+                                <select id="damageType" name="damageType">
+                                    <option value="slashing">Cortante</option>
+                                    <option value="piercing">Perfurante</option>
+                                    <option value="bludgeoning">Contundente</option>
+                                    <option value="fire">Fogo</option>
+                                    <option value="cold">Frio</option>
+                                    <option value="lightning">Elétrico</option>
+                                    <option value="thunder">Trovão</option>
+                                    <option value="acid">Ácido</option>
+                                    <option value="poison">Veneno</option>
+                                    <option value="psychic">Psíquico</option>
+                                    <option value="necrotic">Necrótico</option>
+                                    <option value="radiant">Radiante</option>
+                                    <option value="force">Força</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="weaponProperties">Propriedades da Arma</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="weaponProps" value="finesse"> Acuidade</label>
+                                <label><input type="checkbox" name="weaponProps" value="heavy"> Pesada</label>
+                                <label><input type="checkbox" name="weaponProps" value="light"> Leve</label>
+                                <label><input type="checkbox" name="weaponProps" value="loading"> Carregamento</label>
+                                <label><input type="checkbox" name="weaponProps" value="reach"> Alcance</label>
+                                <label><input type="checkbox" name="weaponProps" value="thrown"> Arremesso</label>
+                                <label><input type="checkbox" name="weaponProps" value="two-handed"> Duas Mãos</label>
+                                <label><input type="checkbox" name="weaponProps" value="versatile"> Versátil</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Propriedades de Armadura -->
+                    <div class="type-properties" id="armorProperties" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="armorType">Tipo de Armadura</label>
+                                <select id="armorType" name="armorType">
+                                    <option value="light">Leve</option>
+                                    <option value="medium">Média</option>
+                                    <option value="heavy">Pesada</option>
+                                    <option value="shield">Escudo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="armorClass">Classe de Armadura</label>
+                                <input type="number" id="armorClass" name="armorClass" min="10" max="20" placeholder="Ex: 16">
+                            </div>
+                            <div class="form-group">
+                                <label for="stealthDisadvantage">Desvantagem em Furtividade</label>
+                                <select id="stealthDisadvantage" name="stealthDisadvantage">
+                                    <option value="no">Não</option>
+                                    <option value="yes">Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Propriedades de Consumível -->
+                    <div class="type-properties" id="consumableProperties" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="consumableType">Tipo de Consumível</label>
+                                <select id="consumableType" name="consumableType">
+                                    <option value="potion">Poção</option>
+                                    <option value="scroll">Pergaminho</option>
+                                    <option value="food">Comida</option>
+                                    <option value="ammunition">Munição</option>
+                                    <option value="other">Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="uses">Número de Usos</label>
+                                <input type="number" id="uses" name="uses" min="1" placeholder="Ex: 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Propriedades Mágicas -->
+                <div class="form-section">
+                    <h2>Propriedades Mágicas</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="isMagical" name="isMagical"> Este item é mágico
+                        </label>
+                    </div>
+                    <div id="magicalProperties" style="display: none;">
+                        <div class="form-group">
+                            <label for="magicalEffect">Efeito Mágico</label>
+                            <textarea id="magicalEffect" name="magicalEffect" rows="3" placeholder="Descreva o efeito mágico do item..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="attunement">Requer Sintonização</label>
+                                <select id="attunement" name="attunement">
+                                    <option value="no">Não</option>
+                                    <option value="yes">Sim</option>
+                                    <option value="class">Sim (Classe Específica)</option>
+                                    <option value="race">Sim (Raça Específica)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="charges">Cargas</label>
+                                <input type="number" id="charges" name="charges" min="0" placeholder="Ex: 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valor e Peso -->
+                <div class="form-section">
+                    <h2>Valor e Peso</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemValue">Valor (em moedas de ouro)</label>
+                            <input type="number" id="itemValue" name="itemValue" min="0" step="0.01" placeholder="Ex: 50">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemWeight">Peso (em libras)</label>
+                            <input type="number" id="itemWeight" name="itemWeight" min="0" step="0.1" placeholder="Ex: 3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ações do Formulário -->
+                <div class="form-actions">
+                    <button type="button" id="previewItem" class="btn btn-secondary">Visualizar</button>
+                    <button type="button" id="saveItem" class="btn btn-primary">Salvar</button>
+                    <button type="submit" id="createItem" class="btn btn-success">Criar Item</button>
+                    <button type="button" id="cancelItem" class="btn btn-danger">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Prévia -->
+    <div id="previewModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Prévia do Item</h2>
+                <span class="close" onclick="closePreviewModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="previewContent">
+                <!-- Conteúdo da prévia será inserido aqui -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closePreviewModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="create-item.js"></script>
+</body>
+</html>

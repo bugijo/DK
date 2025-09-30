@@ -1,0 +1,104 @@
+
+========================================
+🎮 SIMULAÇÃO COMPLETA DE JOGO - DUNGEON KEEPER
+========================================
+
+📈 RESUMO GERAL:
+• Total de Testes: 64
+• Testes Bem-sucedidos: 64
+• Taxa de Sucesso: 100.0%
+• Sessão: fde35887
+
+👥 USUÁRIOS CRIADOS:
+• Mestre: mestre_fde35887
+• Jogadores: 3 criados
+
+🎭 PERSONAGENS CRIADOS:
+• Total: 30 personagens
+• Por Jogador: 10 personagens cada
+
+🎲 MESA DE JOGO:
+• Mesa Criada: ✅ Sim
+• Jogadores na Mesa: 3
+
+🎮 SIMULAÇÃO DE JOGO:
+• Agendamento: ✅ Realizado
+• Sessão de Jogo: ✅ Simulada
+• Eventos de Jogo: 15 eventos simulados
+
+🔍 DETALHES DOS TESTES:
+✅ Criar Mestre: Mestre mestre_fde35887 criado
+✅ Criar Jogador 1: Jogador jogador1_fde35887 criado
+✅ Criar Jogador 2: Jogador jogador2_fde35887 criado
+✅ Criar Jogador 3: Jogador jogador3_fde35887 criado
+✅ Login Mestre: Token obtido com sucesso
+✅ Login player1: Token obtido com sucesso
+✅ Login player2: Token obtido com sucesso
+✅ Login player3: Token obtido com sucesso
+✅ Criar Personagem player1#1: Personagem 'Aragorn P1#1' criado
+✅ Criar Personagem player1#2: Personagem 'Legolas P1#2' criado
+✅ Criar Personagem player1#3: Personagem 'Gimli P1#3' criado
+✅ Criar Personagem player1#4: Personagem 'Gandalf P1#4' criado
+✅ Criar Personagem player1#5: Personagem 'Frodo P1#5' criado
+✅ Criar Personagem player1#6: Personagem 'Boromir P1#6' criado
+✅ Criar Personagem player1#7: Personagem 'Arwen P1#7' criado
+✅ Criar Personagem player1#8: Personagem 'Faramir P1#8' criado
+✅ Criar Personagem player1#9: Personagem 'Éowyn P1#9' criado
+✅ Criar Personagem player1#10: Personagem 'Samwise P1#10' criado
+✅ Criar Personagem player2#1: Personagem 'Aragorn P2#1' criado
+✅ Criar Personagem player2#2: Personagem 'Legolas P2#2' criado
+✅ Criar Personagem player2#3: Personagem 'Gimli P2#3' criado
+✅ Criar Personagem player2#4: Personagem 'Gandalf P2#4' criado
+✅ Criar Personagem player2#5: Personagem 'Frodo P2#5' criado
+✅ Criar Personagem player2#6: Personagem 'Boromir P2#6' criado
+✅ Criar Personagem player2#7: Personagem 'Arwen P2#7' criado
+✅ Criar Personagem player2#8: Personagem 'Faramir P2#8' criado
+✅ Criar Personagem player2#9: Personagem 'Éowyn P2#9' criado
+✅ Criar Personagem player2#10: Personagem 'Samwise P2#10' criado
+✅ Criar Personagem player3#1: Personagem 'Aragorn P3#1' criado
+✅ Criar Personagem player3#2: Personagem 'Legolas P3#2' criado
+✅ Criar Personagem player3#3: Personagem 'Gimli P3#3' criado
+✅ Criar Personagem player3#4: Personagem 'Gandalf P3#4' criado
+✅ Criar Personagem player3#5: Personagem 'Frodo P3#5' criado
+✅ Criar Personagem player3#6: Personagem 'Boromir P3#6' criado
+✅ Criar Personagem player3#7: Personagem 'Arwen P3#7' criado
+✅ Criar Personagem player3#8: Personagem 'Faramir P3#8' criado
+✅ Criar Personagem player3#9: Personagem 'Éowyn P3#9' criado
+✅ Criar Personagem player3#10: Personagem 'Samwise P3#10' criado
+✅ Criar História: História 'A Grande Aventura fde35887' criada
+✅ Criar Mesa: Mesa 'Mesa Épica fde35887' criada
+✅ Jogador player1 Entrar Mesa: Jogador jogador1_fde35887 entrou na mesa
+✅ Jogador player2 Entrar Mesa: Jogador jogador2_fde35887 entrou na mesa
+✅ Jogador player3 Entrar Mesa: Jogador jogador3_fde35887 entrou na mesa
+✅ Agendamento #1: Mestre propõe: 'Que tal sábado às 19h?'
+✅ Agendamento #2: Jogador1 responde: 'Perfeito para mim!'
+✅ Agendamento #3: Jogador2 responde: 'Posso um pouco mais tarde, 19h30?'
+✅ Agendamento #4: Jogador3 responde: 'Sábado é ótimo, 19h30 funciona!'
+✅ Agendamento #5: Mestre confirma: 'Fechado! Sábado 19h30, mesa confirmada!'
+✅ Agendamento #6: Sistema: Agendamento salvo para sábado às 19h30
+✅ Jogo #01: 🎭 Mestre: 'Bem-vindos à taverna O Javali Dourado...'
+✅ Jogo #02: 🎲 Jogador1: 'Meu ranger observa o ambiente' - Rolou Percepção: 15
+✅ Jogo #03: 🗡️ Jogador2: 'Meu guerreiro se aproxima do balcão' - Iniciativa: 12
+✅ Jogo #04: 🏹 Jogador3: 'Minha arqueira fica de guarda na entrada' - Furtividade: 18
+✅ Jogo #05: 👴 Mestre: 'Um ancião misterioso se aproxima da mesa...'
+✅ Jogo #06: 💬 Ancião: 'Heróis, o reino precisa de vocês!'
+✅ Jogo #07: 🎲 Jogador1: 'Pergunto sobre a missão' - Persuasão: 14
+✅ Jogo #08: 📜 Mestre: 'Ele revela um mapa antigo com ruínas marcadas'
+✅ Jogo #09: ⚔️ Combate: Goblins atacam a taverna!
+✅ Jogo #10: 🎲 Iniciativa: Jogador3(18), Jogador1(15), Jogador2(12), Goblins(10)
+✅ Jogo #11: 🏹 Jogador3 ataca com arco: Acertou! 8 de dano
+✅ Jogo #12: 🗡️ Jogador1 ataca com espada: Crítico! 16 de dano
+✅ Jogo #13: 🛡️ Jogador2 usa escudo para proteger civis: +2 CA para todos
+✅ Jogo #14: 💀 Goblins derrotados! Experiência ganha: 150 XP cada
+✅ Jogo #15: 🏆 Mestre: 'Vocês salvaram a taverna! A aventura começa...'
+
+
+🎯 CONCLUSÕES:
+• Sistema de Usuários: ✅ Funcionando
+• Criação de Personagens: ✅ OK
+• Sistema de Mesas: ✅ OK
+• Simulação de Jogo: ✅ Completa
+• Agendamento: ✅ Simulado
+
+⏰ Relatório gerado em: 31/07/2025 00:01:31
+========================================

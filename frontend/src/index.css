@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  /* Tema Escuro (Padrão) */
+  .theme-dark {
+    --color-background: #1a202c;
+    --color-surface: #2d3748;
+    --color-text-base: #e2e8f0;
+    --color-text-muted: #a0aec0;
+    --color-primary: #f6e05e; /* Amarelo/Ouro */
+    --color-secondary: #c05621; /* Laranja/Ferrugem */
+  }
+
+  /* Tema Claro */
+  .theme-light {
+    --color-background: #f7fafc; /* Branco gelo */
+    --color-surface: #ffffff;    /* Branco */
+    --color-text-base: #2d3748;   /* Cinza escuro */
+    --color-text-muted: #718096; /* Cinza médio */
+    --color-primary: #dd6b20;     /* Laranja forte */
+    --color-secondary: #5a67d8;  /* Indigo */
+  }
+
+  :root {
+    /* Fontes Medievais Elegantes */
+    --font-title: 'Cinzel Decorative', 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text-base);
+  }
+}

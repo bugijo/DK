@@ -1,0 +1,330 @@
+{
+  "name": "Dungeon Keeper - Testes Automatizados",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Executar a cada 6 horas",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/token",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "admin"
+            },
+            {
+              "name": "password",
+              "value": "admin123"
+            }
+          ]
+        },
+        "options": {
+          "bodyContentType": "form-urlencoded"
+        }
+      },
+      "id": "login-test",
+      "name": "Teste de Login",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/items/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Teste de Login'].json.access_token }}"
+        }
+      },
+      "id": "items-test",
+      "name": "Teste de Itens",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/monsters/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Teste de Login'].json.access_token }}"
+        }
+      },
+      "id": "monsters-test",
+      "name": "Teste de Monstros",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/npcs/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Teste de Login'].json.access_token }}"
+        }
+      },
+      "id": "npcs-test",
+      "name": "Teste de NPCs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/stories/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Teste de Login'].json.access_token }}"
+        }
+      },
+      "id": "stories-test",
+      "name": "Teste de Histórias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 500]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:3001",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "frontend-test",
+      "name": "Teste Frontend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 600]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar resultados dos testes\nconst loginResult = $node['Teste de Login'].json;\nconst itemsResult = $node['Teste de Itens'].json;\nconst monstersResult = $node['Teste de Monstros'].json;\nconst npcsResult = $node['Teste de NPCs'].json;\nconst storiesResult = $node['Teste de Histórias'].json;\nconst frontendResult = $node['Teste Frontend'].json;\n\n// Verificar se todos os testes passaram\nconst testResults = {\n  timestamp: new Date().toISOString(),\n  login: {\n    status: loginResult.access_token ? 'PASS' : 'FAIL',\n    token_received: !!loginResult.access_token\n  },\n  items: {\n    status: Array.isArray(itemsResult) && itemsResult.length > 0 ? 'PASS' : 'FAIL',\n    count: Array.isArray(itemsResult) ? itemsResult.length : 0\n  },\n  monsters: {\n    status: Array.isArray(monstersResult) && monstersResult.length > 0 ? 'PASS' : 'FAIL',\n    count: Array.isArray(monstersResult) ? monstersResult.length : 0\n  },\n  npcs: {\n    status: Array.isArray(npcsResult) && npcsResult.length > 0 ? 'PASS' : 'FAIL',\n    count: Array.isArray(npcsResult) ? npcsResult.length : 0\n  },\n  stories: {\n    status: Array.isArray(storiesResult) && storiesResult.length > 0 ? 'PASS' : 'FAIL',\n    count: Array.isArray(storiesResult) ? storiesResult.length : 0\n  },\n  frontend: {\n    status: frontendResult && !frontendResult.error ? 'PASS' : 'FAIL'\n  }\n};\n\n// Calcular score geral\nconst totalTests = Object.keys(testResults).length - 1; // -1 para excluir timestamp\nconst passedTests = Object.values(testResults).filter(test => \n  typeof test === 'object' && test.status === 'PASS'\n).length;\n\ntestResults.overall = {\n  score: `${passedTests}/${totalTests}`,\n  percentage: Math.round((passedTests / totalTests) * 100),\n  status: passedTests === totalTests ? 'ALL_PASS' : 'SOME_FAIL'\n};\n\nreturn testResults;"
+      },
+      "id": "process-results",
+      "name": "Processar Resultados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-fail",
+              "leftValue": "={{ $json.overall.status }}",
+              "rightValue": "SOME_FAIL",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-results",
+      "name": "Verificar Falhas",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "content": "🚨 **Falha nos Testes Automatizados - Dungeon Keeper**\n\n**Timestamp:** {{ $node['Processar Resultados'].json.timestamp }}\n\n**Resultados:**\n- Login: {{ $node['Processar Resultados'].json.login.status }}\n- Itens: {{ $node['Processar Resultados'].json.items.status }} ({{ $node['Processar Resultados'].json.items.count }} encontrados)\n- Monstros: {{ $node['Processar Resultados'].json.monsters.status }} ({{ $node['Processar Resultados'].json.monsters.count }} encontrados)\n- NPCs: {{ $node['Processar Resultados'].json.npcs.status }} ({{ $node['Processar Resultados'].json.npcs.count }} encontrados)\n- Histórias: {{ $node['Processar Resultados'].json.stories.status }} ({{ $node['Processar Resultados'].json.stories.count }} encontradas)\n- Frontend: {{ $node['Processar Resultados'].json.frontend.status }}\n\n**Score Geral:** {{ $node['Processar Resultados'].json.overall.score }} ({{ $node['Processar Resultados'].json.overall.percentage }}%)\n\n⚠️ Verifique os serviços e corrija os problemas identificados.",
+        "options": {}
+      },
+      "id": "alert-fail",
+      "name": "Alerta de Falha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "content": "✅ **Testes Automatizados Passaram - Dungeon Keeper**\n\n**Timestamp:** {{ $node['Processar Resultados'].json.timestamp }}\n\n**Todos os testes passaram com sucesso!**\n\n**Score:** {{ $node['Processar Resultados'].json.overall.score }} ({{ $node['Processar Resultados'].json.overall.percentage }}%)\n\n🎉 Sistema funcionando perfeitamente!",
+        "options": {}
+      },
+      "id": "alert-success",
+      "name": "Alerta de Sucesso",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1340, 500]
+    }
+  ],
+  "connections": {
+    "Executar a cada 6 horas": {
+      "main": [
+        [
+          {
+            "node": "Teste de Login",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Teste de Login": {
+      "main": [
+        [
+          {
+            "node": "Teste de Itens",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Teste de Monstros",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Teste de NPCs",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Teste de Histórias",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Teste Frontend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Teste de Itens": {
+      "main": [
+        [
+          {
+            "node": "Processar Resultados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Teste de Monstros": {
+      "main": [
+        [
+          {
+            "node": "Processar Resultados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Teste de NPCs": {
+      "main": [
+        [
+          {
+            "node": "Processar Resultados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Teste de Histórias": {
+      "main": [
+        [
+          {
+            "node": "Processar Resultados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Teste Frontend": {
+      "main": [
+        [
+          {
+            "node": "Processar Resultados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar Resultados": {
+      "main": [
+        [
+          {
+            "node": "Verificar Falhas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar Falhas": {
+      "main": [
+        [
+          {
+            "node": "Alerta de Falha",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Alerta de Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "dungeon-keeper",
+      "name": "Dungeon Keeper"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}

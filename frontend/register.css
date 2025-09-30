@@ -1,0 +1,117 @@
+.login-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #1a1a2e; /* Cor de fundo do container */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #e0b0ff;
+}
+
+.login-container h1 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #ffcc00;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.login-container p {
+    font-family: 'Roboto', sans-serif;
+    color: #e0b0ff;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e0b0ff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="tel"],
+.input-group input[type="date"],
+.input-group select {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #4a2a4a; /* Cor da borda do input */
+    border-radius: 5px;
+    background-color: #2a0a2a; /* Cor de fundo do input */
+    color: #e0b0ff;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus,
+.input-group input[type="tel"]:focus,
+.input-group input[type="date"]:focus,
+.input-group select:focus {
+    border-color: #6a1ac2; /* Cor da borda do input em foco */
+}
+
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-input-wrapper input {
+    width: calc(100% - 50px); /* Adjust width to make space for the eye icon */
+    padding-right: 40px; /* Space for the eye icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #e0b0ff;
+    font-size: 1.2em;
+}
+
+.btn-primary {
+    background-color: #7289da; /* Botão primário roxo */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #9932cc; /* Roxo mais escuro ao passar o mouse */
+}
+
+.social-login-text {
+    margin-top: 30px;
+    color: #e0b0ff;
+}
+
+.social-login-text a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.social-login-text a:hover {
+    text-decoration: underline;
+}

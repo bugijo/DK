@@ -1,0 +1,76 @@
+
+========================================
+🎮 RELATÓRIO DE TESTES - DUNGEON KEEPER
+========================================
+
+📈 RESUMO GERAL:
+• Total de Testes: 49
+• Testes Bem-sucedidos: 1
+• Taxa de Sucesso: 2.0%
+
+📦 ENTIDADES CRIADAS:
+• Itens: 0
+• Monstros: 0
+• NPCs: 0
+• Histórias: 0
+
+🔍 DETALHES DOS TESTES:
+❌ Criar Narrador: Erro: {"detail":"Not Found"}
+❌ Criar Jogador: Erro: {"detail":"Not Found"}
+❌ Login Narrador: Erro: {"detail":"Not Found"}
+❌ Login Jogador: Erro: {"detail":"Not Found"}
+✅ Acesso Frontend: Frontend acessível
+❌ Criar Item 1: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 2: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 3: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 4: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 5: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 6: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 7: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 8: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 9: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Item 10: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 1: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 2: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 3: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 4: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 5: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 6: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 7: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 8: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 9: Erro: {"detail":"Could not validate credentials"}
+❌ Criar Monstro 10: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 1: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 2: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 3: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 4: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 5: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 6: Exceção: ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
+❌ Criar NPC 7: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 8: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 9: Erro: {"detail":"Could not validate credentials"}
+❌ Criar NPC 10: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 1: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 2: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 3: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 4: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 5: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 6: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 7: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 8: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 9: Erro: {"detail":"Could not validate credentials"}
+❌ Criar História 10: Erro: {"detail":"Could not validate credentials"}
+❌ API Listar Itens: Status: 401
+❌ API Listar Monstros: Status: 401
+❌ API Listar NPCs: Status: 401
+❌ API Listar Histórias: Status: 401
+
+
+🎯 CONCLUSÕES:
+• Backend: ❌ Com problemas
+• Frontend: ✅ Acessível
+• Autenticação: ❌ Falha
+• Criação de Dados: ❌ Falha
+
+⏰ Relatório gerado em: 30/07/2025 23:24:09
+========================================

@@ -1,0 +1,393 @@
+{
+  "name": "Human-Like Interface Testing - Dungeon Keeper",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */2 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Every 2 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3001",
+        "options": {
+          "waitUntil": "networkidle",
+          "timeout": 30000
+        }
+      },
+      "id": "open-frontend",
+      "name": "🌐 Open Frontend",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "selector": "input[type='email'], input[name='email'], #email",
+        "action": "type",
+        "text": "teste_ui_{{ $now.format('HHmmss') }}@rpg.com"
+      },
+      "id": "fill-email",
+      "name": "✍️ Fill Email Field",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [680, 200]
+    },
+    {
+      "parameters": {
+        "selector": "input[type='password'], input[name='password'], #password",
+        "action": "type",
+        "text": "senha123"
+      },
+      "id": "fill-password",
+      "name": "🔒 Fill Password Field",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [680, 320]
+    },
+    {
+      "parameters": {
+        "selector": "input[name='username'], #username",
+        "action": "type",
+        "text": "usuario_ui_{{ $now.format('HHmmss') }}"
+      },
+      "id": "fill-username",
+      "name": "👤 Fill Username Field",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [680, 440]
+    },
+    {
+      "parameters": {
+        "selector": "button[type='submit'], .register-btn, #register, .btn-register",
+        "action": "click",
+        "waitForSelector": ".success-message, .dashboard, .home"
+      },
+      "id": "click-register",
+      "name": "🎯 Click Register Button",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "selector": ".character-create, .new-character, #create-character",
+        "action": "click",
+        "waitForSelector": ".character-form, .character-creation"
+      },
+      "id": "navigate-character-creation",
+      "name": "🎭 Navigate to Character Creation",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simula criação de múltiplos personagens como um usuário real\nconst characters = [\n  {\n    name: 'Aragorn_UI_' + new Date().getTime(),\n    race: 'Humano',\n    class: 'Ranger',\n    level: 5\n  },\n  {\n    name: 'Legolas_UI_' + new Date().getTime(),\n    race: 'Elfo',\n    class: 'Arqueiro',\n    level: 4\n  },\n  {\n    name: 'Gimli_UI_' + new Date().getTime(),\n    race: 'Anão',\n    class: 'Guerreiro',\n    level: 6\n  }\n];\n\nconst results = [];\n\nfor (const char of characters) {\n  try {\n    // Simula preenchimento de formulário como usuário\n    await page.waitForSelector('input[name=\"name\"], #character-name');\n    await page.type('input[name=\"name\"], #character-name', char.name);\n    \n    // Simula seleção de raça\n    await page.select('select[name=\"race\"], #race', char.race);\n    \n    // Simula seleção de classe\n    await page.select('select[name=\"class\"], #character-class', char.class);\n    \n    // Simula preenchimento de nível\n    await page.type('input[name=\"level\"], #level', char.level.toString());\n    \n    // Simula clique no botão de criar\n    await page.click('button[type=\"submit\"], .create-character-btn');\n    \n    // Aguarda confirmação visual\n    await page.waitForSelector('.success-message, .character-created', { timeout: 5000 });\n    \n    results.push({\n      character: char.name,\n      status: 'created',\n      timestamp: new Date().toISOString()\n    });\n    \n    // Simula tempo de usuário pensando\n    await page.waitForTimeout(2000);\n    \n  } catch (error) {\n    results.push({\n      character: char.name,\n      status: 'failed',\n      error: error.message,\n      timestamp: new Date().toISOString()\n    });\n  }\n}\n\nreturn results;"
+      },
+      "id": "create-characters-ui",
+      "name": "🎭 Create Characters via UI",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "selector": ".tables, .game-tables, #tables-section",
+        "action": "click",
+        "waitForSelector": ".table-list, .tables-container"
+      },
+      "id": "navigate-tables",
+      "name": "🎲 Navigate to Tables",
+      "type": "n8n-nodes-base.puppeteer",
+      "typeVersion": 1,
+      "position": [1560, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simula criação de mesa como mestre\ntry {\n  // Clica em criar nova mesa\n  await page.click('.create-table, .new-table, #create-table');\n  await page.waitForSelector('.table-form, .table-creation');\n  \n  // Preenche título da mesa\n  const tableTitle = 'Mesa Épica UI ' + new Date().getTime();\n  await page.type('input[name=\"title\"], #table-title', tableTitle);\n  \n  // Preenche descrição\n  const description = 'Mesa criada via automação de interface para testes de usabilidade';\n  await page.type('textarea[name=\"description\"], #table-description', description);\n  \n  // Simula seleção de história (se disponível)\n  const storySelect = await page.$('select[name=\"story\"], #story-select');\n  if (storySelect) {\n    const options = await page.$$eval('select[name=\"story\"] option, #story-select option', opts => \n      opts.map(opt => opt.value).filter(val => val && val !== '')\n    );\n    if (options.length > 0) {\n      await page.select('select[name=\"story\"], #story-select', options[0]);\n    }\n  }\n  \n  // Clica em criar mesa\n  await page.click('button[type=\"submit\"], .create-table-btn');\n  \n  // Aguarda confirmação\n  await page.waitForSelector('.success-message, .table-created', { timeout: 5000 });\n  \n  return {\n    table: tableTitle,\n    status: 'created',\n    timestamp: new Date().toISOString()\n  };\n  \n} catch (error) {\n  return {\n    table: 'Mesa UI Test',\n    status: 'failed',\n    error: error.message,\n    timestamp: new Date().toISOString()\n  };\n}"
+      },
+      "id": "create-table-ui",
+      "name": "🎲 Create Table via UI",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1780, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simula navegação e interação como jogador\nconst interactions = [];\n\ntry {\n  // Simula busca por mesas disponíveis\n  await page.waitForSelector('.table-list, .available-tables');\n  \n  // Conta quantas mesas estão visíveis\n  const tableCount = await page.$$eval('.table-item, .table-card', tables => tables.length);\n  interactions.push({\n    action: 'view_tables',\n    count: tableCount,\n    status: 'success'\n  });\n  \n  // Simula clique na primeira mesa disponível\n  const firstTable = await page.$('.table-item:first-child .join-btn, .table-card:first-child .join-table');\n  if (firstTable) {\n    await firstTable.click();\n    await page.waitForSelector('.table-details, .game-room', { timeout: 5000 });\n    \n    interactions.push({\n      action: 'join_table',\n      status: 'success'\n    });\n    \n    // Simula interação no chat (se disponível)\n    const chatInput = await page.$('.chat-input, #chat-message');\n    if (chatInput) {\n      await chatInput.type('Olá pessoal! Pronto para a aventura! 🎲');\n      await page.click('.send-message, .chat-send');\n      \n      interactions.push({\n        action: 'send_chat_message',\n        status: 'success'\n      });\n    }\n    \n    // Simula rolagem de dados (se disponível)\n    const diceRoll = await page.$('.roll-dice, .dice-roller');\n    if (diceRoll) {\n      await diceRoll.click();\n      await page.waitForTimeout(2000); // Aguarda animação\n      \n      interactions.push({\n        action: 'roll_dice',\n        status: 'success'\n      });\n    }\n  }\n  \n} catch (error) {\n  interactions.push({\n    action: 'player_interaction',\n    status: 'failed',\n    error: error.message\n  });\n}\n\nreturn {\n  player_interactions: interactions,\n  timestamp: new Date().toISOString()\n};"
+      },
+      "id": "simulate-player-interactions",
+      "name": "🎮 Simulate Player Interactions",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2000, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Captura screenshots para validação visual\nconst screenshots = [];\n\ntry {\n  // Screenshot da página principal\n  const mainPage = await page.screenshot({ \n    fullPage: true,\n    type: 'png',\n    encoding: 'base64'\n  });\n  \n  screenshots.push({\n    name: 'main_page',\n    data: mainPage,\n    timestamp: new Date().toISOString()\n  });\n  \n  // Navega para diferentes seções e captura\n  const sections = [\n    { selector: '.inventory, #inventory', name: 'inventory' },\n    { selector: '.characters, #characters', name: 'characters' },\n    { selector: '.tables, #tables', name: 'tables' }\n  ];\n  \n  for (const section of sections) {\n    try {\n      const element = await page.$(section.selector);\n      if (element) {\n        await element.click();\n        await page.waitForTimeout(1000);\n        \n        const screenshot = await page.screenshot({\n          type: 'png',\n          encoding: 'base64'\n        });\n        \n        screenshots.push({\n          name: section.name,\n          data: screenshot,\n          timestamp: new Date().toISOString()\n        });\n      }\n    } catch (sectionError) {\n      screenshots.push({\n        name: section.name,\n        error: sectionError.message,\n        timestamp: new Date().toISOString()\n      });\n    }\n  }\n  \n} catch (error) {\n  screenshots.push({\n    name: 'error_capture',\n    error: error.message,\n    timestamp: new Date().toISOString()\n  });\n}\n\nreturn {\n  visual_validation: screenshots,\n  total_screenshots: screenshots.length\n};"
+      },
+      "id": "visual-validation",
+      "name": "📸 Visual Validation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2220, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Gera relatório completo da simulação de interface\nconst testData = $input.all();\n\nlet report = {\n  test_session: new Date().toISOString(),\n  frontend_url: 'http://localhost:3001',\n  test_type: 'Human-Like Interface Automation',\n  results: {\n    registration: null,\n    character_creation: null,\n    table_creation: null,\n    player_interactions: null,\n    visual_validation: null\n  },\n  summary: {\n    total_tests: 0,\n    successful_tests: 0,\n    failed_tests: 0,\n    success_rate: 0\n  }\n};\n\n// Processa dados de cada etapa\ntestData.forEach(item => {\n  if (item.json) {\n    const data = item.json;\n    \n    // Registra resultados de criação de personagens\n    if (Array.isArray(data) && data[0]?.character) {\n      report.results.character_creation = data;\n      report.summary.total_tests += data.length;\n      report.summary.successful_tests += data.filter(c => c.status === 'created').length;\n    }\n    \n    // Registra resultado de criação de mesa\n    if (data.table) {\n      report.results.table_creation = data;\n      report.summary.total_tests += 1;\n      if (data.status === 'created') report.summary.successful_tests += 1;\n    }\n    \n    // Registra interações do jogador\n    if (data.player_interactions) {\n      report.results.player_interactions = data;\n      const interactions = data.player_interactions;\n      report.summary.total_tests += interactions.length;\n      report.summary.successful_tests += interactions.filter(i => i.status === 'success').length;\n    }\n    \n    // Registra validação visual\n    if (data.visual_validation) {\n      report.results.visual_validation = data;\n      const validations = data.visual_validation;\n      report.summary.total_tests += validations.length;\n      report.summary.successful_tests += validations.filter(v => !v.error).length;\n    }\n  }\n});\n\n// Calcula taxa de sucesso\nreport.summary.failed_tests = report.summary.total_tests - report.summary.successful_tests;\nreport.summary.success_rate = report.summary.total_tests > 0 ? \n  (report.summary.successful_tests / report.summary.total_tests * 100).toFixed(1) : 0;\n\n// Adiciona conclusões\nreport.conclusions = {\n  interface_usability: report.summary.success_rate > 80 ? 'Excelente' : \n                      report.summary.success_rate > 60 ? 'Boa' : 'Precisa melhorar',\n  user_experience: report.results.player_interactions?.player_interactions?.length > 0 ? \n                   'Interativo' : 'Limitado',\n  visual_quality: report.results.visual_validation?.total_screenshots > 0 ? \n                  'Capturado' : 'Não verificado',\n  automation_status: 'Completo - Simulação de usuário real via interface'\n};\n\nreturn report;"
+      },
+      "id": "generate-ui-report",
+      "name": "📊 Generate UI Test Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2440, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "={{ $json.summary.success_rate }}",
+            "operation": "largerEqual",
+            "rightValue": 70
+          }
+        }
+      },
+      "id": "check-success-rate",
+      "name": "✅ Check Success Rate",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [2660, 300]
+    },
+    {
+      "parameters": {
+        "message": "🎉 SUCESSO: Automação de Interface Dungeon Keeper\n\n📊 Relatório: {{ $json.summary.success_rate }}% de sucesso\n🎭 Personagens: {{ $json.results.character_creation?.length || 0 }} criados\n🎲 Mesas: {{ $json.results.table_creation?.status === 'created' ? '1 criada' : '0 criadas' }}\n🎮 Interações: {{ $json.results.player_interactions?.player_interactions?.length || 0 }} realizadas\n📸 Capturas: {{ $json.results.visual_validation?.total_screenshots || 0 }} screenshots\n\n✨ Interface funcionando como esperado!",
+        "title": "✅ Teste de Interface - SUCESSO"
+      },
+      "id": "success-notification",
+      "name": "🎉 Success Notification",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [2880, 200]
+    },
+    {
+      "parameters": {
+        "message": "⚠️ ATENÇÃO: Problemas na Interface Dungeon Keeper\n\n📊 Relatório: {{ $json.summary.success_rate }}% de sucesso\n❌ Falhas: {{ $json.summary.failed_tests }} de {{ $json.summary.total_tests }}\n\n🔍 Verificar:\n- Elementos da interface\n- Responsividade\n- Funcionalidades básicas\n- Navegação entre páginas\n\n🛠️ Ação necessária para melhorar UX!",
+        "title": "⚠️ Teste de Interface - PROBLEMAS"
+      },
+      "id": "failure-notification",
+      "name": "⚠️ Failure Notification",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [2880, 400]
+    }
+  ],
+  "connections": {
+    "schedule-trigger": {
+      "main": [
+        [
+          {
+            "node": "open-frontend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "open-frontend": {
+      "main": [
+        [
+          {
+            "node": "fill-email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "fill-password",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "fill-username",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fill-email": {
+      "main": [
+        [
+          {
+            "node": "click-register",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fill-password": {
+      "main": [
+        [
+          {
+            "node": "click-register",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fill-username": {
+      "main": [
+        [
+          {
+            "node": "click-register",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "click-register": {
+      "main": [
+        [
+          {
+            "node": "navigate-character-creation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "navigate-character-creation": {
+      "main": [
+        [
+          {
+            "node": "create-characters-ui",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create-characters-ui": {
+      "main": [
+        [
+          {
+            "node": "navigate-tables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "navigate-tables": {
+      "main": [
+        [
+          {
+            "node": "create-table-ui",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create-table-ui": {
+      "main": [
+        [
+          {
+            "node": "simulate-player-interactions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "simulate-player-interactions": {
+      "main": [
+        [
+          {
+            "node": "visual-validation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "visual-validation": {
+      "main": [
+        [
+          {
+            "node": "generate-ui-report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate-ui-report": {
+      "main": [
+        [
+          {
+            "node": "check-success-rate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check-success-rate": {
+      "main": [
+        [
+          {
+            "node": "success-notification",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "failure-notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "human-like-interface-testing",
+  "tags": [
+    {
+      "createdAt": "2025-01-31T03:01:00.000Z",
+      "updatedAt": "2025-01-31T03:01:00.000Z",
+      "id": "ui-testing",
+      "name": "UI Testing"
+    },
+    {
+      "createdAt": "2025-01-31T03:01:00.000Z",
+      "updatedAt": "2025-01-31T03:01:00.000Z",
+      "id": "automation",
+      "name": "Automation"
+    }
+  ]
+}

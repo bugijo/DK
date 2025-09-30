@@ -1,0 +1,435 @@
+/* Container principal para efeitos visuais */
+.visual-effects-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Efeito visual base */
+.visual-effect {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  user-select: none;
+  pointer-events: none;
+  transform-origin: center;
+  animation-fill-mode: forwards;
+}
+
+/* Texto do efeito */
+.effect-text {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Animação de fade out */
+.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Efeitos específicos */
+
+/* Efeito de Dano */
+.effect-damage {
+  color: #ff4444;
+  font-size: 1.4rem;
+  animation: damageEffect 1.5s ease-out forwards;
+}
+
+@keyframes damageEffect {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(-10px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.8);
+  }
+}
+
+/* Efeito de Cura */
+.effect-healing {
+  color: #44ff44;
+  font-size: 1.3rem;
+  animation: healingEffect 1.5s ease-out forwards;
+}
+
+@keyframes healingEffect {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(-5px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+}
+
+/* Efeito Crítico */
+.effect-critical {
+  color: #ffaa00;
+  font-size: 1.8rem;
+  animation: criticalEffect 2s ease-out forwards;
+  position: relative;
+}
+
+@keyframes criticalEffect {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) rotate(-5deg);
+  }
+  15% {
+    transform: scale(1.3) rotate(2deg);
+  }
+  30% {
+    transform: scale(1.1) rotate(-1deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+}
+
+/* Burst do crítico */
+.critical-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+  border: 3px solid #ffaa00;
+  border-radius: 50%;
+  animation: criticalBurst 0.6s ease-out;
+}
+
+@keyframes criticalBurst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Efeito de Magia */
+.effect-spell {
+  color: #8844ff;
+  font-size: 1.3rem;
+  animation: spellEffect 2.5s ease-out forwards;
+  position: relative;
+}
+
+@keyframes spellEffect {
+  0% {
+    opacity: 1;
+    transform: scale(0.8) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  50% {
+    transform: scale(1) rotate(-3deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7) rotate(0deg) translateY(-40px);
+  }
+}
+
+/* Partículas de magia */
+.spell-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #8844ff;
+  border-radius: 50%;
+  animation: spellParticles 2s ease-out;
+}
+
+.spell-particles::before,
+.spell-particles::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #8844ff;
+  border-radius: 50%;
+  animation: spellParticles 2s ease-out;
+}
+
+.spell-particles::before {
+  top: -10px;
+  left: -10px;
+  animation-delay: 0.2s;
+}
+
+.spell-particles::after {
+  top: 10px;
+  left: 10px;
+  animation-delay: 0.4s;
+}
+
+@keyframes spellParticles {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translateY(-30px);
+  }
+}
+
+/* Efeito de Level Up */
+.effect-levelup {
+  color: #ffdd00;
+  font-size: 2rem;
+  animation: levelUpEffect 3s ease-out forwards;
+  position: relative;
+}
+
+@keyframes levelUpEffect {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translateY(20px);
+  }
+  20% {
+    transform: scale(1.2) translateY(-10px);
+  }
+  40% {
+    transform: scale(1) translateY(-5px);
+  }
+  60% {
+    transform: scale(1.1) translateY(-8px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-60px);
+  }
+}
+
+/* Brilho do level up */
+.levelup-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  background: radial-gradient(circle, rgba(255, 221, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: levelUpGlow 3s ease-out;
+}
+
+@keyframes levelUpGlow {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Efeito de Dados */
+.effect-dice {
+  color: #4488ff;
+  font-size: 1.5rem;
+  animation: diceEffect 2s ease-out forwards;
+}
+
+@keyframes diceEffect {
+  0% {
+    opacity: 1;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: scale(1) rotate(-2deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(1deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9) rotate(0deg) translateY(-35px);
+  }
+}
+
+/* Efeito de Sucesso */
+.effect-success {
+  color: #00ff88;
+  font-size: 1.2rem;
+  animation: successEffect 1.5s ease-out forwards;
+}
+
+@keyframes successEffect {
+  0% {
+    opacity: 1;
+    transform: scale(0.9) translateY(0);
+  }
+  30% {
+    transform: scale(1.1) translateY(-5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-25px);
+  }
+}
+
+/* Efeito de Falha */
+.effect-failure {
+  color: #ff6666;
+  font-size: 1.2rem;
+  animation: failureEffect 1.5s ease-out forwards;
+}
+
+@keyframes failureEffect {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.1) translateY(-3px) rotate(-2deg);
+  }
+  40% {
+    transform: scale(0.95) translateY(-1px) rotate(1deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px) rotate(0deg);
+  }
+}
+
+/* Efeito de Notificação */
+.effect-notification {
+  color: #88ccff;
+  font-size: 1.1rem;
+  animation: notificationEffect 2s ease-out forwards;
+}
+
+@keyframes notificationEffect {
+  0% {
+    opacity: 1;
+    transform: scale(0.9) translateX(-10px);
+  }
+  20% {
+    transform: scale(1.05) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85) translateY(-30px);
+  }
+}
+
+/* Efeito padrão */
+.effect-default {
+  color: #ffffff;
+  font-size: 1.2rem;
+  animation: defaultEffect 2s ease-out forwards;
+}
+
+@keyframes defaultEffect {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-30px);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .visual-effect {
+    font-size: 1rem;
+  }
+  
+  .effect-critical {
+    font-size: 1.4rem;
+  }
+  
+  .effect-levelup {
+    font-size: 1.6rem;
+  }
+  
+  .effect-dice {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .visual-effect {
+    font-size: 0.9rem;
+  }
+  
+  .effect-critical {
+    font-size: 1.2rem;
+  }
+  
+  .effect-levelup {
+    font-size: 1.4rem;
+  }
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+  .visual-effect {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Redução de movimento para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .visual-effect {
+    animation-duration: 0.5s;
+  }
+  
+  .critical-burst,
+  .spell-particles,
+  .levelup-glow {
+    animation: none;
+  }
+}

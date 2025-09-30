@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Companion - Inventário</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="inventory.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="user-avatar">
+            <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+        </div>
+        <div class="player-details">
+            <div class="player-info">
+                <span class="player-name">DarkKnight</span>
+                <span class="player-level">Nível 25</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 65%;"></div>
+                <span class="xp-text">8,750 / 10,000 XP</span>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                <span class="resource-value" id="gold">1,250</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                <span class="resource-value" id="diamonds">12</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                <span class="resource-value" id="gems">45</span>
+            </div>
+        </div>
+        <div class="settings">
+            <button class="settings-btn">
+                <img src="assets/icons/settings.svg" alt="Settings" class="settings-icon">
+            </button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="inventory-container">
+            <h1>Seu Inventário</h1>
+            <p>Gerencie todas as suas criações e elementos de RPG.</p>
+
+            <div class="inventory-section">
+                <h2>Personagens</h2>
+                <div class="inventory-grid">
+                    <!-- Exemplo de item de inventário -->
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="Personagem 1">
+                        <h3>Herói Destemido</h3>
+                        <p>Um bravo guerreiro em busca de glória.</p>
+                        <a href="view-character.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="Personagem 2">
+                        <h3>Mago Sombrio</h3>
+                        <p>Um conjurador de magias arcanas.</p>
+                        <a href="view-character.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventory-section">
+                <h2>Itens</h2>
+                <div class="inventory-grid">
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="Item 1">
+                        <h3>Espada Flamejante</h3>
+                        <p>Uma espada imbuída com fogo.</p>
+                        <a href="view-item.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventory-section">
+                <h2>Mapas</h2>
+                <div class="inventory-grid">
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="Mapa 1">
+                        <h3>Floresta Sombria</h3>
+                        <p>Um mapa de uma floresta misteriosa.</p>
+                        <a href="view-map.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventory-section">
+                <h2>Histórias</h2>
+                <div class="inventory-grid">
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="História 1">
+                        <h3>A Lenda do Dragão</h3>
+                        <p>Uma história épica sobre um dragão.</p>
+                        <a href="view-story.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventory-section">
+                <h2>Monstros</h2>
+                <div class="inventory-grid">
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="Monstro 1">
+                        <h3>Goblin Maligno</h3>
+                        <p>Um pequeno e astuto goblin.</p>
+                        <a href="view-monster.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventory-section">
+                <h2>NPCs</h2>
+                <div class="inventory-grid">
+                    <div class="inventory-item-card">
+                        <img src="https://via.placeholder.com/150x100" alt="NPC 1">
+                        <h3>Aldeão Amigável</h3>
+                        <p>Um aldeão que oferece ajuda.</p>
+                        <a href="view-npc.html" class="card-button">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

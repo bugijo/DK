@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="gemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6E6FA;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#9370DB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8A2BE2;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#4B0082;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E0054;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sparkleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E6E6FA;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#9370DB;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <!-- Gem body -->
+  <path d="M12 3 L18 9 L12 21 L6 9 Z" fill="url(#gemGradient)" stroke="#2E0054" stroke-width="1"/>
+  <!-- Top facet -->
+  <path d="M8 7 L12 3 L16 7 L12 11 Z" fill="url(#sparkleGradient)" stroke="#4B0082" stroke-width="0.5" opacity="0.8"/>
+  <!-- Side facets -->
+  <path d="M6 9 L8 7 L12 11 L10 15 Z" fill="url(#gemGradient)" stroke="#2E0054" stroke-width="0.5" opacity="0.9"/>
+  <path d="M18 9 L16 7 L12 11 L14 15 Z" fill="url(#gemGradient)" stroke="#2E0054" stroke-width="0.5" opacity="0.9"/>
+  <!-- Highlight sparkle -->
+  <path d="M10 5 L11 6 L10 7 L9 6 Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M14 8 L15 9 L14 10 L13 9 Z" fill="#FFFFFF" opacity="0.7"/>
+  <!-- Small sparkles -->
+  <circle cx="9" cy="8" r="0.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="15" cy="6" r="0.3" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="13" cy="12" r="0.4" fill="#E6E6FA" opacity="0.7"/>
+</svg>

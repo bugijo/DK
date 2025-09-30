@@ -1,0 +1,80 @@
+
+========================================
+🎮 RELATÓRIO DE TESTES - DUNGEON KEEPER
+========================================
+
+📈 RESUMO GERAL:
+• Total de Testes: 51
+• Testes Bem-sucedidos: 51
+• Taxa de Sucesso: 100.0%
+• Sessão: 2bfd8502
+
+📦 ENTIDADES CRIADAS:
+• Itens: 10
+• Monstros: 10
+• NPCs: 10
+• Histórias: 10
+
+🔍 DETALHES DOS TESTES:
+✅ Acesso Frontend: Frontend acessível
+✅ Criar Narrador: Usuário narrador_2bfd8502 criado
+✅ Criar Jogador: Usuário jogador_2bfd8502 criado
+✅ Login Narrador: Token obtido com sucesso
+✅ Login Jogador: Token obtido com sucesso
+✅ Perfil Narrador: Usuário: narrador_2bfd8502
+✅ Perfil Jogador: Usuário: jogador_2bfd8502
+✅ Criar Item 1: Item 'Espada Flamejante 2bfd8502#1' criado
+✅ Criar Item 2: Item 'Poção de Cura 2bfd8502#2' criado
+✅ Criar Item 3: Item 'Armadura de Dragão 2bfd8502#3' criado
+✅ Criar Item 4: Item 'Anel da Invisibilidade 2bfd8502#4' criado
+✅ Criar Item 5: Item 'Grimório Antigo 2bfd8502#5' criado
+✅ Criar Item 6: Item 'Adaga Envenenada 2bfd8502#6' criado
+✅ Criar Item 7: Item 'Elmo do Cavaleiro 2bfd8502#7' criado
+✅ Criar Item 8: Item 'Pergaminho de Teletransporte 2bfd8502#8' criado
+✅ Criar Item 9: Item 'Colar de Proteção 2bfd8502#9' criado
+✅ Criar Item 10: Item 'Machado de Guerra 2bfd8502#10' criado
+✅ Criar Monstro 1: Monstro 'Dragão Vermelho 2bfd8502#1' criado
+✅ Criar Monstro 2: Monstro 'Orc Guerreiro 2bfd8502#2' criado
+✅ Criar Monstro 3: Monstro 'Esqueleto Arqueiro 2bfd8502#3' criado
+✅ Criar Monstro 4: Monstro 'Lobo Sombrio 2bfd8502#4' criado
+✅ Criar Monstro 5: Monstro 'Golem de Pedra 2bfd8502#5' criado
+✅ Criar Monstro 6: Monstro 'Goblin Ladino 2bfd8502#6' criado
+✅ Criar Monstro 7: Monstro 'Espectro 2bfd8502#7' criado
+✅ Criar Monstro 8: Monstro 'Troll Regenerador 2bfd8502#8' criado
+✅ Criar Monstro 9: Monstro 'Elemental de Fogo 2bfd8502#9' criado
+✅ Criar Monstro 10: Monstro 'Basilisco 2bfd8502#10' criado
+✅ Criar NPC 1: NPC 'Mestre Gandor 2bfd8502#1' criado
+✅ Criar NPC 2: NPC 'Capitão Marcus 2bfd8502#2' criado
+✅ Criar NPC 3: NPC 'Elara a Curandeira 2bfd8502#3' criado
+✅ Criar NPC 4: NPC 'Thorin Forjaferro 2bfd8502#4' criado
+✅ Criar NPC 5: NPC 'Lady Morgana 2bfd8502#5' criado
+✅ Criar NPC 6: NPC 'Finn o Ladino 2bfd8502#6' criado
+✅ Criar NPC 7: NPC 'Irmão Benedict 2bfd8502#7' criado
+✅ Criar NPC 8: NPC 'Lyra Cantora 2bfd8502#8' criado
+✅ Criar NPC 9: NPC 'Gareth Caçador 2bfd8502#9' criado
+✅ Criar NPC 10: NPC 'Velha Sage 2bfd8502#10' criado
+✅ Criar História 1: História 'A Lenda do Dragão Perdido 2bfd8502#1' criada
+✅ Criar História 2: História 'O Mistério da Torre Sombria 2bfd8502#2' criada
+✅ Criar História 3: História 'A Busca pelo Tesouro Pirata 2bfd8502#3' criada
+✅ Criar História 4: História 'O Retorno do Rei Lich 2bfd8502#4' criada
+✅ Criar História 5: História 'A Floresta Encantada 2bfd8502#5' criada
+✅ Criar História 6: História 'O Templo dos Deuses Antigos 2bfd8502#6' criada
+✅ Criar História 7: História 'A Revolta dos Goblins 2bfd8502#7' criada
+✅ Criar História 8: História 'O Portal Dimensional 2bfd8502#8' criada
+✅ Criar História 9: História 'A Maldição da Múmia 2bfd8502#9' criada
+✅ Criar História 10: História 'O Torneio dos Campeões 2bfd8502#10' criada
+✅ API Listar Itens: 10 itens encontrados
+✅ API Listar Monstros: 10 itens encontrados
+✅ API Listar NPCs: 10 itens encontrados
+✅ API Listar Histórias: 10 itens encontrados
+
+
+🎯 CONCLUSÕES:
+• Backend: ✅ Funcionando
+• Frontend: ✅ Acessível
+• Autenticação: ✅ OK
+• Criação de Dados: ✅ OK
+• Interação Usuários: ✅ OK
+
+⏰ Relatório gerado em: 30/07/2025 23:37:02
+========================================

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Companion - Criar História</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="create-story.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="user-avatar">
+            <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+        </div>
+        <div class="player-details">
+            <div class="player-info">
+                <span class="player-name">DarkKnight</span>
+                <span class="player-level">Nível 25</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 65%;"></div>
+                <span class="xp-text">8,750 / 10,000 XP</span>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                <span class="resource-value" id="gold">1,250</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                <span class="resource-value" id="diamonds">12</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                <span class="resource-value" id="gems">45</span>
+            </div>
+        </div>
+        <div class="settings">
+            <button class="settings-btn" onclick="window.location.href='settings.html'">
+                <img src="assets/icons/settings.svg" alt="Settings" class="settings-icon">
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="home.html" class="nav-item">
+            <img src="assets/icons/home.svg" alt="Home" class="nav-icon">
+            <span>Home</span>
+        </a>
+        <a href="creations.html" class="nav-item">
+            <img src="assets/icons/create.svg" alt="Criações" class="nav-icon">
+            <span>Criações</span>
+        </a>
+        <a href="tables.html" class="nav-item">
+            <img src="assets/icons/dice.svg" alt="Tabelas" class="nav-icon">
+            <span>Tabelas</span>
+        </a>
+        <a href="missions.html" class="nav-item">
+            <img src="assets/icons/quest.svg" alt="Missões" class="nav-icon">
+            <span>Missões</span>
+        </a>
+        <a href="inventory.html" class="nav-item">
+            <img src="assets/icons/inventory.svg" alt="Inventário" class="nav-icon">
+            <span>Inventário</span>
+        </a>
+        <a href="shop.html" class="nav-item">
+            <img src="assets/icons/shop.svg" alt="Loja" class="nav-icon">
+            <span>Loja</span>
+        </a>
+    </nav>
+
+    <main class="main-content">
+        <div class="story-creator">
+            <h1>CRIAR HISTÓRIA</h1>
+            <p class="subtitle">Desenvolva narrativas épicas para suas campanhas de RPG</p>
+
+            <form id="storyForm" class="story-form">
+                <!-- Informações Básicas -->
+                <section class="form-section">
+                    <h2>Informações Básicas</h2>
+                    
+                    <div class="form-group">
+                        <label for="storyTitle">Título da História *</label>
+                        <input type="text" id="storyTitle" name="storyTitle" required placeholder="Digite o título da história">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="storyGenre">Gênero</label>
+                            <select id="storyGenre" name="storyGenre">
+                                <option value="">Selecione um gênero</option>
+                                <option value="fantasia">Fantasia</option>
+                                <option value="aventura">Aventura</option>
+                                <option value="misterio">Mistério</option>
+                                <option value="horror">Horror</option>
+                                <option value="drama">Drama</option>
+                                <option value="comedia">Comédia</option>
+                                <option value="acao">Ação</option>
+                                <option value="romance">Romance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="storyDifficulty">Dificuldade</label>
+                            <select id="storyDifficulty" name="storyDifficulty">
+                                <option value="">Selecione a dificuldade</option>
+                                <option value="facil">Fácil (Níveis 1-5)</option>
+                                <option value="medio">Médio (Níveis 6-10)</option>
+                                <option value="dificil">Difícil (Níveis 11-15)</option>
+                                <option value="epico">Épico (Níveis 16-20)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyDescription">Descrição</label>
+                        <textarea id="storyDescription" name="storyDescription" rows="3" placeholder="Breve descrição da história"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyImage">Ilustração da História</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="storyImage" name="storyImage" accept="image/*" class="image-input">
+                            <div class="image-preview" id="storyImagePreview">
+                                <div class="upload-placeholder">
+                                    <img src="assets/icons/image-upload.svg" alt="Upload" class="upload-icon">
+                                    <p>Clique para adicionar uma ilustração</p>
+                                    <span class="upload-hint">PNG, JPG ou GIF até 5MB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Estrutura Narrativa -->
+                <section class="form-section">
+                    <h2>Estrutura Narrativa</h2>
+                    
+                    <div class="form-group">
+                        <label for="storyPremise">Premissa *</label>
+                        <textarea id="storyPremise" name="storyPremise" rows="4" required placeholder="Qual é a situação inicial que dará início à aventura?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyObjective">Objetivo Principal *</label>
+                        <textarea id="storyObjective" name="storyObjective" rows="3" required placeholder="O que os personagens precisam alcançar?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyConflict">Conflito Central</label>
+                        <textarea id="storyConflict" name="storyConflict" rows="3" placeholder="Qual é o principal obstáculo ou antagonista?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyResolution">Possíveis Resoluções</label>
+                        <textarea id="storyResolution" name="storyResolution" rows="3" placeholder="Como a história pode ser resolvida?"></textarea>
+                    </div>
+                </section>
+
+                <!-- Personagens e NPCs -->
+                <section class="form-section">
+                    <h2>Personagens e NPCs</h2>
+                    
+                    <div class="form-group">
+                        <label for="storyProtagonists">Protagonistas Sugeridos</label>
+                        <textarea id="storyProtagonists" name="storyProtagonists" rows="3" placeholder="Que tipos de personagens se adequam melhor a esta história?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>NPCs Importantes</label>
+                        <div id="npcList" class="dynamic-list">
+                            <div class="list-item">
+                                <input type="text" name="npcName[]" placeholder="Nome do NPC" class="npc-name">
+                                <input type="text" name="npcRole[]" placeholder="Papel na história" class="npc-role">
+                                <textarea name="npcDescription[]" placeholder="Descrição do NPC" rows="2" class="npc-description"></textarea>
+                                <button type="button" class="btn-remove" onclick="removeNPC(this)">Remover</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-add" onclick="addNPC()">+ Adicionar NPC</button>
+                    </div>
+                </section>
+
+                <!-- Ambientação -->
+                <section class="form-section">
+                    <h2>Ambientação</h2>
+                    
+                    <div class="form-group">
+                        <label for="storySetting">Cenário Principal *</label>
+                        <textarea id="storySetting" name="storySetting" rows="3" required placeholder="Onde a história se passa? Descreva o ambiente principal."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Locais Importantes</label>
+                        <div id="locationList" class="dynamic-list">
+                            <div class="list-item">
+                                <input type="text" name="locationName[]" placeholder="Nome do local" class="location-name">
+                                <textarea name="locationDescription[]" placeholder="Descrição do local" rows="2" class="location-description"></textarea>
+                                <button type="button" class="btn-remove" onclick="removeLocation(this)">Remover</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-add" onclick="addLocation()">+ Adicionar Local</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyAtmosphere">Atmosfera</label>
+                        <textarea id="storyAtmosphere" name="storyAtmosphere" rows="3" placeholder="Que tipo de atmosfera você quer criar? (sombria, épica, misteriosa, etc.)"></textarea>
+                    </div>
+                </section>
+
+                <!-- Elementos de Jogo -->
+                <section class="form-section">
+                    <h2>Elementos de Jogo</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="storyDuration">Duração Estimada</label>
+                            <select id="storyDuration" name="storyDuration">
+                                <option value="">Selecione a duração</option>
+                                <option value="one-shot">One-shot (1 sessão)</option>
+                                <option value="short">Curta (2-4 sessões)</option>
+                                <option value="medium">Média (5-10 sessões)</option>
+                                <option value="long">Longa (11+ sessões)</option>
+                                <option value="campaign">Campanha completa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="storyPlayers">Número de Jogadores</label>
+                            <select id="storyPlayers" name="storyPlayers">
+                                <option value="">Selecione</option>
+                                <option value="2-3">2-3 jogadores</option>
+                                <option value="4-5">4-5 jogadores</option>
+                                <option value="6+">6+ jogadores</option>
+                                <option value="solo">Jogo solo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Encontros e Desafios</label>
+                        <div id="encounterList" class="dynamic-list">
+                            <div class="list-item">
+                                <input type="text" name="encounterType[]" placeholder="Tipo de encontro" class="encounter-type">
+                                <textarea name="encounterDescription[]" placeholder="Descrição do encontro/desafio" rows="2" class="encounter-description"></textarea>
+                                <button type="button" class="btn-remove" onclick="removeEncounter(this)">Remover</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-add" onclick="addEncounter()">+ Adicionar Encontro</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Recompensas</label>
+                        <div id="rewardList" class="dynamic-list">
+                            <div class="list-item">
+                                <input type="text" name="rewardType[]" placeholder="Tipo de recompensa" class="reward-type">
+                                <textarea name="rewardDescription[]" placeholder="Descrição da recompensa" rows="2" class="reward-description"></textarea>
+                                <button type="button" class="btn-remove" onclick="removeReward(this)">Remover</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-add" onclick="addReward()">+ Adicionar Recompensa</button>
+                    </div>
+                </section>
+
+                <!-- Notas Adicionais -->
+                <section class="form-section">
+                    <h2>Notas Adicionais</h2>
+                    
+                    <div class="form-group">
+                        <label for="storyNotes">Notas do Mestre</label>
+                        <textarea id="storyNotes" name="storyNotes" rows="4" placeholder="Anotações importantes, dicas de interpretação, variações possíveis, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyInspiration">Inspirações</label>
+                        <textarea id="storyInspiration" name="storyInspiration" rows="3" placeholder="Livros, filmes, jogos ou outras fontes que inspiraram esta história"></textarea>
+                    </div>
+                </section>
+
+                <!-- Botões de Ação -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="previewStory">Visualizar</button>
+                    <button type="button" class="btn btn-primary" id="saveStory">Salvar</button>
+                    <button type="submit" class="btn btn-success" id="createStory">Criar História</button>
+                    <button type="button" class="btn btn-danger" id="cancelStory">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Modal de Preview -->
+    <div id="storyPreviewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Preview da História</h2>
+                <span class="close" onclick="closeStoryPreview()">&times;</span>
+            </div>
+            <div class="modal-body" id="storyPreviewContent">
+                <!-- Conteúdo do preview será inserido aqui -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeStoryPreview()">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="exportStory()">Exportar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="create-story.js"></script>
+</body>
+</html>

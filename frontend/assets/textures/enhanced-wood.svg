@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <pattern id="enhancedWoodGrain" x="0" y="0" width="300" height="300" patternUnits="userSpaceOnUse">
+      <!-- Base wood layers -->
+      <rect width="300" height="300" fill="#8B4513"/>
+      <rect width="300" height="300" fill="url(#woodBaseGradient)" opacity="0.8"/>
+      
+      <!-- Enhanced wood grain lines -->
+      <path d="M0 30 Q75 25 150 30 T300 30" stroke="#654321" stroke-width="3" fill="none" opacity="0.7"/>
+      <path d="M0 60 Q75 55 150 60 T300 60" stroke="#A0522D" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M0 90 Q75 95 150 90 T300 90" stroke="#654321" stroke-width="3.5" fill="none" opacity="0.8"/>
+      <path d="M0 120 Q75 115 150 120 T300 120" stroke="#5D4037" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M0 150 Q75 155 150 150 T300 150" stroke="#654321" stroke-width="4" fill="none" opacity="0.9"/>
+      <path d="M0 180 Q75 175 150 180 T300 180" stroke="#A0522D" stroke-width="2.5" fill="none" opacity="0.5"/>
+      <path d="M0 210 Q75 215 150 210 T300 210" stroke="#654321" stroke-width="3" fill="none" opacity="0.7"/>
+      <path d="M0 240 Q75 235 150 240 T300 240" stroke="#5D4037" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M0 270 Q75 275 150 270 T300 270" stroke="#654321" stroke-width="3.5" fill="none" opacity="0.8"/>
+      
+      <!-- Large wood knots -->
+      <ellipse cx="90" cy="105" rx="12" ry="18" fill="#5D4037" opacity="0.9"/>
+      <ellipse cx="210" cy="195" rx="10" ry="15" fill="#4A2C2A" opacity="1.0"/>
+      <ellipse cx="45" cy="225" rx="8" ry="12" fill="#5D4037" opacity="0.8"/>
+      <ellipse cx="255" cy="75" rx="11" ry="16" fill="#4A2C2A" opacity="0.9"/>
+      <ellipse cx="150" cy="45" rx="9" ry="13" fill="#5D4037" opacity="0.8"/>
+      
+      <!-- Fine grain details -->
+      <path d="M0 37 Q37 35 75 37 Q112 39 150 37 Q187 35 225 37 Q262 39 300 37" stroke="#4A2C2A" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <path d="M0 97 Q37 99 75 97 Q112 95 150 97 Q187 99 225 97 Q262 95 300 97" stroke="#4A2C2A" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <path d="M0 157 Q37 155 75 157 Q112 159 150 157 Q187 155 225 157 Q262 159 300 157" stroke="#4A2C2A" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <path d="M0 217 Q37 219 75 217 Q112 215 150 217 Q187 219 225 217 Q262 215 300 217" stroke="#4A2C2A" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <path d="M0 277 Q37 275 75 277 Q112 279 150 277 Q187 275 225 277 Q262 279 300 277" stroke="#4A2C2A" stroke-width="1.2" fill="none" opacity="0.7"/>
+      
+      <!-- Wood texture variations -->
+      <rect x="0" y="0" width="300" height="75" fill="#A0522D" opacity="0.1"/>
+      <rect x="0" y="150" width="300" height="75" fill="#8B4513" opacity="0.1"/>
+      <rect x="0" y="225" width="300" height="75" fill="#654321" opacity="0.1"/>
+    </pattern>
+    
+    <linearGradient id="woodBaseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A0522D;stop-opacity:0.3" />
+      <stop offset="25%" style="stop-color:#8B4513;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#654321;stop-opacity:0.4" />
+      <stop offset="75%" style="stop-color:#5D4037;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#4A2C2A;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#enhancedWoodGrain)"/>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <pattern id="stonePattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <!-- Base stone color -->
+      <rect width="200" height="200" fill="#696969"/>
+      
+      <!-- Stone blocks -->
+      <rect x="0" y="0" width="80" height="40" fill="#778899" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="80" y="0" width="60" height="40" fill="#708090" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="140" y="0" width="60" height="40" fill="#696969" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      
+      <rect x="0" y="40" width="50" height="35" fill="#708090" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="50" y="40" width="70" height="35" fill="#778899" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="120" y="40" width="80" height="35" fill="#696969" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      
+      <rect x="0" y="75" width="90" height="45" fill="#696969" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="90" y="75" width="55" height="45" fill="#708090" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="145" y="75" width="55" height="45" fill="#778899" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      
+      <rect x="0" y="120" width="65" height="40" fill="#778899" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="65" y="120" width="75" height="40" fill="#696969" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="140" y="120" width="60" height="40" fill="#708090" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      
+      <rect x="0" y="160" width="85" height="40" fill="#708090" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="85" y="160" width="60" height="40" fill="#778899" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      <rect x="145" y="160" width="55" height="40" fill="#696969" stroke="#2F4F4F" stroke-width="1" opacity="0.8"/>
+      
+      <!-- Stone texture details -->
+      <circle cx="40" cy="20" r="2" fill="#2F4F4F" opacity="0.6"/>
+      <circle cx="110" cy="20" r="1.5" fill="#2F4F4F" opacity="0.5"/>
+      <circle cx="170" cy="20" r="1" fill="#2F4F4F" opacity="0.7"/>
+      
+      <circle cx="25" cy="57" r="1.5" fill="#2F4F4F" opacity="0.6"/>
+      <circle cx="85" cy="57" r="2" fill="#2F4F4F" opacity="0.5"/>
+      <circle cx="160" cy="57" r="1" fill="#2F4F4F" opacity="0.7"/>
+      
+      <circle cx="45" cy="97" r="1" fill="#2F4F4F" opacity="0.6"/>
+      <circle cx="122" cy="97" r="1.5" fill="#2F4F4F" opacity="0.5"/>
+      <circle cx="170" cy="97" r="2" fill="#2F4F4F" opacity="0.7"/>
+      
+      <circle cx="32" cy="140" r="2" fill="#2F4F4F" opacity="0.6"/>
+      <circle cx="102" cy="140" r="1" fill="#2F4F4F" opacity="0.5"/>
+      <circle cx="170" cy="140" r="1.5" fill="#2F4F4F" opacity="0.7"/>
+      
+      <circle cx="42" cy="180" r="1.5" fill="#2F4F4F" opacity="0.6"/>
+      <circle cx="115" cy="180" r="2" fill="#2F4F4F" opacity="0.5"/>
+      <circle cx="170" cy="180" r="1" fill="#2F4F4F" opacity="0.7"/>
+      
+      <!-- Moss and weathering -->
+      <path d="M20 35 Q25 33 30 35 Q35 37 40 35" stroke="#556B2F" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M100 70 Q105 68 110 70 Q115 72 120 70" stroke="#556B2F" stroke-width="1" fill="none" opacity="0.3"/>
+      <path d="M160 115 Q165 113 170 115 Q175 117 180 115" stroke="#556B2F" stroke-width="1" fill="none" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" fill="url(#stonePattern)"/>
+</svg>

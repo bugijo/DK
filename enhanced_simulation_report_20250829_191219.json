@@ -1,0 +1,226 @@
+{
+  "simulation_id": "5261e461",
+  "duration": "16.60 segundos",
+  "backend_available": true,
+  "master_success": false,
+  "players_success": [
+    false,
+    false,
+    false
+  ],
+  "session_success": false,
+  "total_users": 4,
+  "entities_created": {
+    "characters": 0,
+    "items": 0,
+    "monsters": 0,
+    "npcs": 0,
+    "stories": 0,
+    "tables": 0
+  },
+  "simulation_log": [
+    {
+      "timestamp": "19:12:02",
+      "user_type": "SISTEMA",
+      "action": "Teste Backend",
+      "details": "Backend respondendo",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:03",
+      "user_type": "MESTRE",
+      "action": "Cadastro",
+      "details": "Usuário mestre_5261e461_1756505522 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:03",
+      "user_type": "MESTRE",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:04",
+      "user_type": "MESTRE",
+      "action": "Criar Character",
+      "details": "Erro 200: {\"name\":\"NPC do Mestre 5261e461\",\"race\":\"Human\",\"character_class\":\"Commoner\",\"level\":1,\"background\":",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:04",
+      "user_type": "MESTRE",
+      "action": "Criar Item",
+      "details": "Erro 200: {\"name\":\"Espada Mágica 5261e461\",\"description\":\"Uma espada encantada pelo mestre\",\"type\":\"weapon\",\"r",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:05",
+      "user_type": "MESTRE",
+      "action": "Criar Monster",
+      "details": "Erro 200: {\"name\":\"Dragão Vermelho 5261e461\",\"size\":\"huge\",\"type\":\"dragon\",\"armor_class\":19,\"hit_points\":\"256 ",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:06",
+      "user_type": "MESTRE",
+      "action": "Criar Npc",
+      "details": "Erro 200: {\"name\":\"Sábio Aldric 5261e461\",\"race\":\"Elf\",\"character_class\":\"Wizard\",\"level\":8,\"size\":\"Medium\",\"a",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:06",
+      "user_type": "MESTRE",
+      "action": "Criar Story",
+      "details": "Erro 200: {\"title\":\"A Grande Aventura 5261e461\",\"synopsis\":null,\"id\":\"493f9b47-dc5f-42b9-af75-9f437a037734\",\"c",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:07",
+      "user_type": "MESTRE",
+      "action": "Criar Table",
+      "details": "Erro 422: {\"detail\":[{\"type\":\"missing\",\"loc\":[\"body\",\"story_id\"],\"msg\":\"Field required\",\"input\":{\"title\":\"Mesa",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:07",
+      "user_type": "MESTRE",
+      "action": "Fluxo Completo",
+      "details": "Algumas entidades falharam",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:08",
+      "user_type": "JOGADOR 1",
+      "action": "Cadastro",
+      "details": "Usuário jogador1_5261e461_1756505528 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:09",
+      "user_type": "JOGADOR 1",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:09",
+      "user_type": "JOGADOR 1",
+      "action": "Criar Character",
+      "details": "Erro 200: {\"name\":\"Herói 1 5261e461\",\"race\":\"Halfling\",\"character_class\":\"Cleric\",\"level\":5,\"background\":\"Adve",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:10",
+      "user_type": "JOGADOR 1",
+      "action": "Criar Item",
+      "details": "Erro 200: {\"name\":\"Item Pessoal do Jogador 1 5261e461\",\"description\":\"Um item especial pertencente ao jogador ",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:10",
+      "user_type": "JOGADOR 1",
+      "action": "Criar Story",
+      "details": "Erro 200: {\"title\":\"História do Jogador 1 5261e461\",\"synopsis\":null,\"id\":\"52e1ad86-9e11-4e01-bd7a-3385cafb5fa1",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:10",
+      "user_type": "JOGADOR 1",
+      "action": "Fluxo Completo",
+      "details": "Algumas entidades falharam",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:12",
+      "user_type": "JOGADOR 2",
+      "action": "Cadastro",
+      "details": "Usuário jogador2_5261e461_1756505532 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:12",
+      "user_type": "JOGADOR 2",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:13",
+      "user_type": "JOGADOR 2",
+      "action": "Criar Character",
+      "details": "Erro 200: {\"name\":\"Herói 2 5261e461\",\"race\":\"Dwarf\",\"character_class\":\"Fighter\",\"level\":3,\"background\":\"Advent",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:14",
+      "user_type": "JOGADOR 2",
+      "action": "Criar Item",
+      "details": "Erro 200: {\"name\":\"Item Pessoal do Jogador 2 5261e461\",\"description\":\"Um item especial pertencente ao jogador ",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:14",
+      "user_type": "JOGADOR 2",
+      "action": "Criar Story",
+      "details": "Erro 200: {\"title\":\"História do Jogador 2 5261e461\",\"synopsis\":null,\"id\":\"35987a8f-b823-445d-831b-433570baa258",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:14",
+      "user_type": "JOGADOR 2",
+      "action": "Fluxo Completo",
+      "details": "Algumas entidades falharam",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:16",
+      "user_type": "JOGADOR 3",
+      "action": "Cadastro",
+      "details": "Usuário jogador3_5261e461_1756505535 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:16",
+      "user_type": "JOGADOR 3",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:12:17",
+      "user_type": "JOGADOR 3",
+      "action": "Criar Character",
+      "details": "Erro 200: {\"name\":\"Herói 3 5261e461\",\"race\":\"Human\",\"character_class\":\"Fighter\",\"level\":2,\"background\":\"Advent",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:17",
+      "user_type": "JOGADOR 3",
+      "action": "Criar Item",
+      "details": "Erro 200: {\"name\":\"Item Pessoal do Jogador 3 5261e461\",\"description\":\"Um item especial pertencente ao jogador ",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:18",
+      "user_type": "JOGADOR 3",
+      "action": "Criar Story",
+      "details": "Erro 200: {\"title\":\"História do Jogador 3 5261e461\",\"synopsis\":null,\"id\":\"2dd50485-db15-44c1-b3ec-308af00507ce",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:18",
+      "user_type": "JOGADOR 3",
+      "action": "Fluxo Completo",
+      "details": "Algumas entidades falharam",
+      "success": false
+    },
+    {
+      "timestamp": "19:12:19",
+      "user_type": "SESSÃO",
+      "action": "Iniciar Jogo",
+      "details": "Nenhuma mesa disponível",
+      "success": false
+    }
+  ]
+}

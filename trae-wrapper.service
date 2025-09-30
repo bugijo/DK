@@ -1,0 +1,35 @@
+[Unit]
+Description=Trae Wrapper API
+After=network.target
+
+[Service]
+Type=simple
+User=trae
+Group=trae
+WorkingDirectory=C:\Users\WINDOWS 10\Desktop\Projetos\DK
+Environment=PATH=/usr/bin:/usr/local/bin
+EnvironmentFile=C:\Users\WINDOWS 10\Desktop\Projetos\DK/.env.wrapper
+ExecStart=C:\Users\WINDOWS 10\Desktop\Projetos\DK\venv\Scripts\python.exe C:\Users\WINDOWS 10\Desktop\Projetos\DK/trae_wrapper.py
+Restart=always
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=30
+
+# Logs
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=trae-wrapper
+
+# Segurança
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=C:\Users\WINDOWS 10\Desktop\Projetos\DK
+
+# Limites
+LimitNOFILE=65536
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

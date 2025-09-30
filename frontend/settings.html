@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Keeper - Configurações</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="user-avatar">
+            <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+        </div>
+        <div class="player-details">
+            <div class="player-info">
+                <span class="player-name">DarkKnight</span>
+                <span class="player-level">Nível 25</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 65%;"></div>
+                <span class="xp-text">8,750 / 10,000 XP</span>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                <span class="resource-value" id="gold">1,250</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                <span class="resource-value" id="diamonds">12</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                <span class="resource-value" id="gems">45</span>
+            </div>
+        </div>
+        <div class="settings">
+            <button class="settings-btn" onclick="window.location.href='home.html'">
+                <img src="assets/icons/sword.svg" alt="Home" class="settings-icon">
+            </button>
+        </div>
+    </div>
+
+    <main class="settings-main">
+        <div class="settings-header">
+            <h1><img src="/icons/Configuração.png" alt="Configurações" style="width: 24px; height: 24px; display: inline; margin-right: 8px;" />Configurações do Reino</h1>
+            <p>Personalize sua experiência de aventura</p>
+        </div>
+
+        <div class="settings-container">
+            <!-- Seção Perfil -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <img src="assets/icons/user-avatar.svg" alt="Perfil" class="section-icon">
+                    <h2>Perfil do Aventureiro</h2>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label for="username">Nome do Aventureiro:</label>
+                        <input type="text" id="username" value="DarkKnight" class="medieval-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" value="darkknight@dungeon.com" class="medieval-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Biografia:</label>
+                        <textarea id="bio" class="medieval-textarea" rows="3">Um valente cavaleiro das trevas em busca de aventuras épicas...</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Avatar:</label>
+                        <div class="avatar-selection">
+                            <img src="assets/icons/user-avatar.svg" alt="Avatar 1" class="avatar-option selected">
+                            <img src="assets/icons/shield.svg" alt="Avatar 2" class="avatar-option">
+                            <img src="assets/icons/sword.svg" alt="Avatar 3" class="avatar-option">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Gameplay -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <img src="assets/icons/sword.svg" alt="Gameplay" class="section-icon">
+                    <h2>Configurações de Jogo</h2>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label for="difficulty">Dificuldade:</label>
+                        <select id="difficulty" class="medieval-select">
+                            <option value="easy">Aprendiz</option>
+                            <option value="normal" selected>Aventureiro</option>
+                            <option value="hard">Veterano</option>
+                            <option value="expert">Lenda</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autoSave" checked>
+                            <span class="checkmark"></span>
+                            Salvamento Automático
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="tutorials" checked>
+                            <span class="checkmark"></span>
+                            Mostrar Tutoriais
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Idioma:</label>
+                        <select id="language" class="medieval-select">
+                            <option value="pt-BR" selected>Português (Brasil)</option>
+                            <option value="en-US">English (US)</option>
+                            <option value="es-ES">Español</option>
+                            <option value="fr-FR">Français</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Audio/Visual -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <img src="assets/icons/gem.svg" alt="Audio/Visual" class="section-icon">
+                    <h2>Áudio e Visual</h2>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label for="masterVolume">Volume Geral: <span id="masterVolumeValue">75%</span></label>
+                        <input type="range" id="masterVolume" min="0" max="100" value="75" class="medieval-slider">
+                    </div>
+                    <div class="form-group">
+                        <label for="musicVolume">Volume da Música: <span id="musicVolumeValue">60%</span></label>
+                        <input type="range" id="musicVolume" min="0" max="100" value="60" class="medieval-slider">
+                    </div>
+                    <div class="form-group">
+                        <label for="sfxVolume">Volume dos Efeitos: <span id="sfxVolumeValue">80%</span></label>
+                        <input type="range" id="sfxVolume" min="0" max="100" value="80" class="medieval-slider">
+                    </div>
+                    <div class="form-group">
+                        <label for="theme">Tema Visual:</label>
+                        <select id="theme" class="medieval-select">
+                            <option value="medieval" selected>Medieval Clássico</option>
+                            <option value="dark">Masmorras Sombrias</option>
+                            <option value="fantasy">Reino Fantástico</option>
+                            <option value="royal">Corte Real</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="animations" checked>
+                            <span class="checkmark"></span>
+                            Animações Avançadas
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="particles" checked>
+                            <span class="checkmark"></span>
+                            Efeitos de Partículas
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Notificações -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <img src="assets/icons/scroll.svg" alt="Notificações" class="section-icon">
+                    <h2>Notificações</h2>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="emailNotifications" checked>
+                            <span class="checkmark"></span>
+                            Notificações por Email
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="pushNotifications" checked>
+                            <span class="checkmark"></span>
+                            Notificações Push
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="questNotifications" checked>
+                            <span class="checkmark"></span>
+                            Notificações de Missões
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="socialNotifications">
+                            <span class="checkmark"></span>
+                            Notificações Sociais
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Privacidade -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <img src="assets/icons/shield.svg" alt="Privacidade" class="section-icon">
+                    <h2>Privacidade e Segurança</h2>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="profilePublic" checked>
+                            <span class="checkmark"></span>
+                            Perfil Público
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showOnline" checked>
+                            <span class="checkmark"></span>
+                            Mostrar Status Online
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="allowFriendRequests" checked>
+                            <span class="checkmark"></span>
+                            Permitir Solicitações de Amizade
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class="medieval-button danger">Alterar Senha</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="medieval-button danger">Excluir Conta</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Dados -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <img src="assets/icons/book.svg" alt="Dados" class="section-icon">
+                    <h2>Dados e Backup</h2>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <button class="medieval-button">Exportar Dados</button>
+                        <p class="help-text">Baixe uma cópia de todos os seus dados</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="medieval-button">Backup na Nuvem</button>
+                        <p class="help-text">Salve seu progresso na nuvem</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="medieval-button">Restaurar Backup</button>
+                        <p class="help-text">Restaure um backup anterior</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="medieval-button danger">Limpar Dados Locais</button>
+                        <p class="help-text">Remove todos os dados salvos localmente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-actions">
+            <button class="medieval-button primary" onclick="saveSettings()">Salvar Configurações</button>
+            <button class="medieval-button secondary" onclick="resetSettings()">Restaurar Padrões</button>
+            <button class="medieval-button" onclick="window.location.href='home.html'">Voltar ao Jogo</button>
+        </div>
+    </main>
+
+    <script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Keeper - Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Dungeon Keeper</h1>
+        <p>Junte-se à aventura!</p>
+
+        <form class="login-form">
+            <div class="input-group">
+                <label for="full-name">Nome Completo</label>
+                <input type="text" id="full-name" placeholder="Seu nome completo" required>
+            </div>
+            <div class="input-group">
+                <label for="player-name">Nome de Jogador</label>
+                <input type="text" id="player-name" placeholder="Seu nome no jogo" required>
+            </div>
+            <div class="input-group">
+                <label for="phone">Telefone com DDD</label>
+                <input type="tel" id="phone" placeholder="(XX) XXXXX-XXXX" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu.email@reino.com" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" placeholder="Sua senha secreta" required>
+                    <span class="toggle-password" data-target="password"><img src="/icons/Olho.png" alt="Mostrar senha" style="width: 16px; height: 16px;" /></span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirmar Senha</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="confirm-password" placeholder="Confirme sua senha" required>
+                    <span class="toggle-password" data-target="confirm-password"><img src="/icons/Olho.png" alt="Mostrar senha" style="width: 16px; height: 16px;" /></span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="birthdate">Data de Nascimento</label>
+                <input type="date" id="birthdate" required>
+            </div>
+            <div class="input-group">
+                <label for="gender">Gênero</label>
+                <select id="gender">
+                    <option value="">Selecione</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                    <option value="prefer-not-say">Prefiro não dizer</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="country">País</label>
+                <input type="text" id="country" placeholder="Seu país" required>
+            </div>
+            <button type="submit" class="btn-primary">Criar Conta</button>
+        </form>
+
+        <p class="social-login-text">Já tem uma conta? <a href="index.html">Entrar no Reino</a></p>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>

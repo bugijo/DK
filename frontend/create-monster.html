@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Monstro - Dungeon Keeper</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create-monster.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+            <div class="user-avatar">
+                <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+            </div>
+            <div class="player-details">
+                <div class="player-info">
+                    <span class="player-name">DarkKnight</span>
+                    <span class="player-level">Nível 25</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-progress" style="width: 65%;"></div>
+                    <span class="xp-text">8,750 / 10,000 XP</span>
+                </div>
+            </div>
+            <div class="resources">
+                <div class="resource-item">
+                    <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                    <span class="resource-value" id="gold">1,250</span>
+                </div>
+                <div class="resource-item">
+                    <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                    <span class="resource-value" id="diamonds">12</span>
+                </div>
+                <div class="resource-item">
+                    <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                    <span class="resource-value" id="gems">45</span>
+                </div>
+            </div>
+            <div class="settings">
+                <button class="settings-btn" onclick="window.location.href='settings.html'">
+                    <img src="assets/icons/settings.svg" alt="Settings" class="settings-icon">
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="home.html" class="nav-item">
+                <img src="assets/icons/shield.svg" alt="Home" width="20" height="20">
+                <span>HOME</span>
+            </a>
+            <a href="inventory.html" class="nav-item">
+                <img src="assets/icons/sword.svg" alt="Inventário" width="20" height="20">
+                <span>INVENTÁRIO</span>
+            </a>
+            <a href="creations.html" class="nav-item active">
+                <img src="assets/icons/scroll.svg" alt="Criações" width="20" height="20">
+                <span>CRIAÇÕES</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <img src="assets/icons/book.svg" alt="Missões" width="20" height="20">
+                <span>MISSÕES</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <img src="assets/icons/gold-coin.svg" alt="Loja" width="20" height="20">
+                <span>LOJA</span>
+            </a>
+            <a href="tables.html" class="nav-item">
+                <img src="assets/icons/user-avatar.svg" alt="Mesas" width="20" height="20">
+                <span>MESAS</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h2>CRIAR MONSTRO</h2>
+                <p>Crie monstros e criaturas seguindo as regras D&D 5e</p>
+            </div>
+
+            <form class="monster-form" id="monsterForm">
+                <!-- Avatar do Monstro -->
+                <section class="form-section">
+                    <h3>Avatar do Monstro</h3>
+                    <div class="avatar-section">
+                        <div class="avatar-preview">
+                            <div class="avatar-placeholder" id="avatarPreview">
+                                <svg width="120" height="120" viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" fill="#8B0000" stroke="#654321" stroke-width="2"/>
+                                    <circle cx="45" cy="45" r="5" fill="#FF0000"/>
+                                    <circle cx="75" cy="45" r="5" fill="#FF0000"/>
+                                    <path d="M 40 75 Q 60 90 80 75" stroke="#FF0000" stroke-width="3" fill="none"/>
+                                    <polygon points="55,35 60,25 65,35" fill="#8B0000"/>
+                                    <polygon points="55,35 60,25 65,35" fill="#8B0000"/>
+                                    <text x="60" y="100" text-anchor="middle" fill="#F5DEB3" font-size="10">Monstro</text>
+                                </svg>
+                            </div>
+                            <p class="avatar-info">Faça upload de uma imagem para o avatar do monstro</p>
+                        </div>
+                        <div class="avatar-controls">
+                            <button type="button" class="btn btn-secondary" id="uploadAvatar">
+                                <img src="assets/icons/upload.svg" alt="Upload" width="16" height="16">
+                                Fazer Upload
+                            </button>
+                            <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Informações Básicas -->
+                <section class="form-section">
+                    <h3>Informações Básicas</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="monsterName">Nome do Monstro</label>
+                            <input type="text" id="monsterName" name="monsterName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challengeRating">Nível de Desafio (ND)</label>
+                            <select id="challengeRating" name="challengeRating" required>
+                                <option value="0">0 (10 XP)</option>
+                                <option value="1/8">1/8 (25 XP)</option>
+                                <option value="1/4">1/4 (50 XP)</option>
+                                <option value="1/2">1/2 (100 XP)</option>
+                                <option value="1">1 (200 XP)</option>
+                                <option value="2">2 (450 XP)</option>
+                                <option value="3">3 (700 XP)</option>
+                                <option value="4">4 (1.100 XP)</option>
+                                <option value="5">5 (1.800 XP)</option>
+                                <option value="6">6 (2.300 XP)</option>
+                                <option value="7">7 (2.900 XP)</option>
+                                <option value="8">8 (3.900 XP)</option>
+                                <option value="9">9 (5.000 XP)</option>
+                                <option value="10">10 (5.900 XP)</option>
+                                <option value="11">11 (7.200 XP)</option>
+                                <option value="12">12 (8.400 XP)</option>
+                                <option value="13">13 (10.000 XP)</option>
+                                <option value="14">14 (11.500 XP)</option>
+                                <option value="15">15 (13.000 XP)</option>
+                                <option value="16">16 (15.000 XP)</option>
+                                <option value="17">17 (18.000 XP)</option>
+                                <option value="18">18 (20.000 XP)</option>
+                                <option value="19">19 (22.000 XP)</option>
+                                <option value="20">20 (25.000 XP)</option>
+                                <option value="21">21 (33.000 XP)</option>
+                                <option value="22">22 (41.000 XP)</option>
+                                <option value="23">23 (50.000 XP)</option>
+                                <option value="24">24 (62.000 XP)</option>
+                                <option value="25">25 (75.000 XP)</option>
+                                <option value="26">26 (90.000 XP)</option>
+                                <option value="27">27 (105.000 XP)</option>
+                                <option value="28">28 (120.000 XP)</option>
+                                <option value="29">29 (135.000 XP)</option>
+                                <option value="30">30 (155.000 XP)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monsterType">Tipo de Criatura</label>
+                            <select id="monsterType" name="monsterType" required>
+                                <option value="">Selecione um tipo</option>
+                                <option value="aberracao">Aberração</option>
+                                <option value="besta">Besta</option>
+                                <option value="celestial">Celestial</option>
+                                <option value="constructo">Constructo</option>
+                                <option value="dragao">Dragão</option>
+                                <option value="elemental">Elemental</option>
+                                <option value="fada">Fada</option>
+                                <option value="demonio">Demônio</option>
+                                <option value="gigante">Gigante</option>
+                                <option value="humanoide">Humanoide</option>
+                                <option value="monstruosidade">Monstruosidade</option>
+                                <option value="limo">Limo</option>
+                                <option value="planta">Planta</option>
+                                <option value="morto-vivo">Morto-vivo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monsterSize">Tamanho</label>
+                            <select id="monsterSize" name="monsterSize" required>
+                                <option value="">Selecione um tamanho</option>
+                                <option value="minusculo">Minúsculo</option>
+                                <option value="pequeno">Pequeno</option>
+                                <option value="medio">Médio</option>
+                                <option value="grande">Grande</option>
+                                <option value="enorme">Enorme</option>
+                                <option value="gigantesco">Gigantesco</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alignment">Tendência</label>
+                            <select id="alignment" name="alignment">
+                                <option value="">Selecione uma tendência</option>
+                                <option value="leal-bom">Leal e Bom</option>
+                                <option value="neutro-bom">Neutro e Bom</option>
+                                <option value="caotico-bom">Caótico e Bom</option>
+                                <option value="leal-neutro">Leal e Neutro</option>
+                                <option value="neutro">Neutro</option>
+                                <option value="caotico-neutro">Caótico e Neutro</option>
+                                <option value="leal-mal">Leal e Mal</option>
+                                <option value="neutro-mal">Neutro e Mal</option>
+                                <option value="caotico-mal">Caótico e Mal</option>
+                                <option value="sem-tendencia">Sem tendência</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atributos -->
+                <section class="form-section">
+                    <h3>Atributos</h3>
+                    <div class="attributes-section">
+                        <div class="attributes-controls">
+                            <button type="button" class="btn btn-secondary" id="rollAttributes">Rolar 4d6</button>
+                            <button type="button" class="btn btn-secondary" id="standardArray">Array Padrão</button>
+                            <button type="button" class="btn btn-secondary" id="pointBuy">Compra de Pontos</button>
+                        </div>
+                        
+                        <div class="attributes-grid">
+                            <div class="attribute-group">
+                                <label for="strength">Força</label>
+                                <input type="number" id="strength" name="strength" min="1" max="30" value="10">
+                                <span class="modifier" id="strengthMod">+0</span>
+                            </div>
+                            
+                            <div class="attribute-group">
+                                <label for="dexterity">Destreza</label>
+                                <input type="number" id="dexterity" name="dexterity" min="1" max="30" value="10">
+                                <span class="modifier" id="dexterityMod">+0</span>
+                            </div>
+                            
+                            <div class="attribute-group">
+                                <label for="constitution">Constituição</label>
+                                <input type="number" id="constitution" name="constitution" min="1" max="30" value="10">
+                                <span class="modifier" id="constitutionMod">+0</span>
+                            </div>
+                            
+                            <div class="attribute-group">
+                                <label for="intelligence">Inteligência</label>
+                                <input type="number" id="intelligence" name="intelligence" min="1" max="30" value="10">
+                                <span class="modifier" id="intelligenceMod">+0</span>
+                            </div>
+                            
+                            <div class="attribute-group">
+                                <label for="wisdom">Sabedoria</label>
+                                <input type="number" id="wisdom" name="wisdom" min="1" max="30" value="10">
+                                <span class="modifier" id="wisdomMod">+0</span>
+                            </div>
+                            
+                            <div class="attribute-group">
+                                <label for="charisma">Carisma</label>
+                                <input type="number" id="charisma" name="charisma" min="1" max="30" value="10">
+                                <span class="modifier" id="charismaMod">+0</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Estatísticas de Combate -->
+                <section class="form-section">
+                    <h3>Estatísticas de Combate</h3>
+                    <div class="combat-stats">
+                        <div class="stat-group">
+                            <label>Classe de Armadura</label>
+                            <div class="stat-value" id="armorClass">10</div>
+                        </div>
+                        
+                        <div class="stat-group">
+                            <label>Pontos de Vida</label>
+                            <div class="stat-input-group">
+                                <input type="number" id="hitPoints" name="hitPoints" min="1" value="1">
+                                <span class="hit-dice-info" id="hitDiceInfo">(1d8)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-group">
+                            <label>Velocidade</label>
+                            <input type="text" id="speed" name="speed" value="30 pés" placeholder="30 pés">
+                        </div>
+                        
+                        <div class="stat-group">
+                            <label>Bônus de Proficiência</label>
+                            <div class="stat-value" id="proficiencyBonus">+2</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resistências e Imunidades -->
+                <section class="form-section">
+                    <h3>Resistências e Imunidades</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="damageResistances">Resistências a Dano</label>
+                            <textarea id="damageResistances" name="damageResistances" rows="2" placeholder="Ex: fogo, gelo, ácido"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="damageImmunities">Imunidades a Dano</label>
+                            <textarea id="damageImmunities" name="damageImmunities" rows="2" placeholder="Ex: veneno, necrótico"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="conditionImmunities">Imunidades a Condições</label>
+                            <textarea id="conditionImmunities" name="conditionImmunities" rows="2" placeholder="Ex: amedrontado, enfeitiçado"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="damageVulnerabilities">Vulnerabilidades</label>
+                            <textarea id="damageVulnerabilities" name="damageVulnerabilities" rows="2" placeholder="Ex: radiante, trovejante"></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sentidos e Idiomas -->
+                <section class="form-section">
+                    <h3>Sentidos e Idiomas</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="senses">Sentidos</label>
+                            <textarea id="senses" name="senses" rows="2" placeholder="Ex: visão no escuro 60 pés, percepção passiva 12"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="languages">Idiomas</label>
+                            <textarea id="languages" name="languages" rows="2" placeholder="Ex: Comum, Dracônico"></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Habilidades Especiais -->
+                <section class="form-section">
+                    <h3>Habilidades Especiais</h3>
+                    <div class="special-abilities">
+                        <div class="ability-list" id="abilityList">
+                            <!-- Habilidades serão adicionadas dinamicamente -->
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="addAbility">
+                            <img src="assets/icons/plus.svg" alt="Adicionar" width="16" height="16">
+                            Adicionar Habilidade
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Ações -->
+                <section class="form-section">
+                    <h3>Ações</h3>
+                    <div class="actions">
+                        <div class="action-list" id="actionList">
+                            <!-- Ações serão adicionadas dinamicamente -->
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="addAction">
+                            <img src="assets/icons/plus.svg" alt="Adicionar" width="16" height="16">
+                            Adicionar Ação
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Descrição -->
+                <section class="form-section">
+                    <h3>Descrição e Lore</h3>
+                    <div class="form-group">
+                        <label for="description">Descrição</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Descreva a aparência e comportamento do monstro..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lore">História e Lore</label>
+                        <textarea id="lore" name="lore" rows="4" placeholder="Conte a história e origem do monstro..."></textarea>
+                    </div>
+                </section>
+
+                <!-- Botões de Ação -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="previewMonster">
+                        <img src="assets/icons/eye.svg" alt="Visualizar" width="16" height="16">
+                        Visualizar
+                    </button>
+                    
+                    <button type="button" class="btn btn-secondary" id="saveMonster">
+                        <img src="assets/icons/save.svg" alt="Salvar" width="16" height="16">
+                        Salvar
+                    </button>
+                    
+                    <button type="button" class="btn btn-danger" id="cancelMonster">
+                        <img src="assets/icons/x.svg" alt="Cancelar" width="16" height="16">
+                        Cancelar
+                    </button>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <img src="assets/icons/plus.svg" alt="Criar" width="16" height="16">
+                        Criar Monstro
+                    </button>
+                </div>
+            </form>
+        </main>
+
+    <!-- Modal de Preview -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Preview do Monstro</h3>
+                <button class="modal-close" id="closePreview">&times;</button>
+            </div>
+            <div class="modal-body" id="previewContent">
+                <!-- Conteúdo do preview será inserido aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script src="create-monster.js"></script>
+</body>
+</html>

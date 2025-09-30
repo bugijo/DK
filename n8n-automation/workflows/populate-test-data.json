@@ -1,0 +1,246 @@
+{
+  "name": "Dungeon Keeper - Popular Dados de Teste",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Executar Manualmente",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/token",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "admin"
+            },
+            {
+              "name": "password",
+              "value": "admin123"
+            }
+          ]
+        },
+        "options": {
+          "bodyContentType": "form-urlencoded"
+        }
+      },
+      "id": "login",
+      "name": "Login Admin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/items/",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"name\": \"Espada Mágica\",\n  \"type\": \"Arma\",\n  \"rarity\": \"Raro\",\n  \"description\": \"Uma espada encantada com poder mágico\",\n  \"weight\": 3.5,\n  \"value\": 500,\n  \"properties\": [\"Mágico\", \"+1 Ataque\"]\n}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Login Admin'].json.access_token }}"
+        }
+      },
+      "id": "create-item",
+      "name": "Criar Item Teste",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/monsters/",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"name\": \"Dragão de Teste\",\n  \"size\": \"Large\",\n  \"type\": \"Dragon\",\n  \"armor_class\": 18,\n  \"hit_points\": \"200 (16d12+112)\",\n  \"speed\": \"40 ft., fly 80 ft.\",\n  \"strength\": 23,\n  \"dexterity\": 10,\n  \"constitution\": 25,\n  \"intelligence\": 16,\n  \"wisdom\": 13,\n  \"charisma\": 21,\n  \"challenge_rating\": \"13\",\n  \"experience_points\": 10000,\n  \"description\": \"Um poderoso dragão criado para testes\"\n}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Login Admin'].json.access_token }}"
+        }
+      },
+      "id": "create-monster",
+      "name": "Criar Monstro Teste",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/npcs/",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"name\": \"Mestre Gandalf\",\n  \"race\": \"Humano\",\n  \"character_class\": \"Mago\",\n  \"level\": 20,\n  \"alignment\": \"Leal Bom\",\n  \"armor_class\": 15,\n  \"hit_points\": \"165 (22d8+66)\",\n  \"speed\": \"30 ft.\",\n  \"strength\": 10,\n  \"dexterity\": 14,\n  \"constitution\": 16,\n  \"intelligence\": 20,\n  \"wisdom\": 18,\n  \"charisma\": 16,\n  \"personality_traits\": \"Sábio e paciente\",\n  \"ideals\": \"Proteger os inocentes\",\n  \"bonds\": \"Guardião da Terra Média\",\n  \"flaws\": \"Às vezes subestima o perigo\",\n  \"description\": \"Um poderoso mago criado para testes\",\n  \"role\": \"Mentor\",\n  \"challenge_rating\": \"12\"\n}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Login Admin'].json.access_token }}"
+        }
+      },
+      "id": "create-npc",
+      "name": "Criar NPC Teste",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/v1/stories/",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"title\": \"A Aventura de Teste\",\n  \"synopsis\": \"Uma história épica criada automaticamente para testar o sistema\",\n  \"item_ids\": [],\n  \"monster_ids\": [],\n  \"npc_ids\": []\n}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "=Bearer {{ $node['Login Admin'].json.access_token }}"
+        }
+      },
+      "id": "create-story",
+      "name": "Criar História Teste",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar resultados da criação\nconst itemResult = $node['Criar Item Teste'].json;\nconst monsterResult = $node['Criar Monstro Teste'].json;\nconst npcResult = $node['Criar NPC Teste'].json;\nconst storyResult = $node['Criar História Teste'].json;\n\nconst results = {\n  timestamp: new Date().toISOString(),\n  created: {\n    item: {\n      success: !!itemResult.id,\n      name: itemResult.name || 'Falha',\n      id: itemResult.id || null\n    },\n    monster: {\n      success: !!monsterResult.id,\n      name: monsterResult.name || 'Falha',\n      id: monsterResult.id || null\n    },\n    npc: {\n      success: !!npcResult.id,\n      name: npcResult.name || 'Falha',\n      id: npcResult.id || null\n    },\n    story: {\n      success: !!storyResult.id,\n      title: storyResult.title || 'Falha',\n      id: storyResult.id || null\n    }\n  }\n};\n\n// Calcular estatísticas\nconst totalCreated = Object.values(results.created).filter(item => item.success).length;\nconst totalAttempted = Object.keys(results.created).length;\n\nresults.summary = {\n  total_created: totalCreated,\n  total_attempted: totalAttempted,\n  success_rate: Math.round((totalCreated / totalAttempted) * 100),\n  status: totalCreated === totalAttempted ? 'ALL_SUCCESS' : 'PARTIAL_SUCCESS'\n};\n\nreturn results;"
+      },
+      "id": "process-creation",
+      "name": "Processar Criação",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 350]
+    },
+    {
+      "parameters": {
+        "content": "✅ **Dados de Teste Criados com Sucesso!**\n\n**Timestamp:** {{ $json.timestamp }}\n\n**Itens Criados:**\n- Item: {{ $json.created.item.name }} ({{ $json.created.item.success ? 'Sucesso' : 'Falha' }})\n- Monstro: {{ $json.created.monster.name }} ({{ $json.created.monster.success ? 'Sucesso' : 'Falha' }})\n- NPC: {{ $json.created.npc.name }} ({{ $json.created.npc.success ? 'Sucesso' : 'Falha' }})\n- História: {{ $json.created.story.title }} ({{ $json.created.story.success ? 'Sucesso' : 'Falha' }})\n\n**Resumo:**\n- Total Criado: {{ $json.summary.total_created }}/{{ $json.summary.total_attempted }}\n- Taxa de Sucesso: {{ $json.summary.success_rate }}%\n- Status: {{ $json.summary.status }}\n\n🎮 Dados prontos para teste no frontend!",
+        "options": {}
+      },
+      "id": "success-report",
+      "name": "Relatório de Sucesso",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1120, 350]
+    }
+  ],
+  "connections": {
+    "Executar Manualmente": {
+      "main": [
+        [
+          {
+            "node": "Login Admin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Login Admin": {
+      "main": [
+        [
+          {
+            "node": "Criar Item Teste",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Criar Monstro Teste",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Criar NPC Teste",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Criar História Teste",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Item Teste": {
+      "main": [
+        [
+          {
+            "node": "Processar Criação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Monstro Teste": {
+      "main": [
+        [
+          {
+            "node": "Processar Criação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar NPC Teste": {
+      "main": [
+        [
+          {
+            "node": "Processar Criação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar História Teste": {
+      "main": [
+        [
+          {
+            "node": "Processar Criação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar Criação": {
+      "main": [
+        [
+          {
+            "node": "Relatório de Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "dungeon-keeper",
+      "name": "Dungeon Keeper"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}

@@ -1,0 +1,1179 @@
+openapi: 3.0.3
+info:
+  title: Dungeon Keeper API
+  description: |
+    API completa para o sistema Dungeon Keeper - Plataforma modular para RPG de mesa D&D 5e.
+    
+    Esta API fornece endpoints para gerenciamento de usuários, mesas de jogo, personagens,
+    itens, monstros, NPCs, histórias e funcionalidades em tempo real via WebSocket.
+    
+    ## Autenticação
+    
+    A API usa autenticação JWT (JSON Web Tokens). Para acessar endpoints protegidos:
+    
+    1. Faça login via `/api/v1/token` para obter um token de acesso
+    2. Inclua o token no header: `Authorization: Bearer {seu_token}`
+    
+    ## WebSocket
+    
+    Para funcionalidades em tempo real (chat, movimentação de tokens):
+    - Endpoint: `ws://localhost:8000/ws/game/{table_id}/{username}?token={jwt_token}`
+    
+    ## Códigos de Status
+    
+    - `200` - Sucesso
+    - `201` - Criado com sucesso
+    - `400` - Erro de validação
+    - `401` - Não autenticado
+    - `403` - Não autorizado
+    - `404` - Não encontrado
+    - `422` - Erro de validação de dados
+    - `500` - Erro interno do servidor
+    
+  version: 1.0.0
+  contact:
+    name: Dungeon Keeper Team
+    url: https://github.com/seu-usuario/dungeon-keeper
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8000
+    description: Servidor de desenvolvimento
+  - url: http://127.0.0.1:8000
+    description: Servidor local alternativo
+
+paths:
+  # Autenticação
+  /api/v1/token:
+    post:
+      tags:
+        - Autenticação
+      summary: Login do usuário
+      description: Autentica um usuário e retorna um token JWT
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Nome de usuário ou email
+                password:
+                  type: string
+                  description: Senha do usuário
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: Login realizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: Token JWT para autenticação
+                  token_type:
+                    type: string
+                    example: bearer
+        '401':
+          description: Credenciais inválidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Usuários
+  /api/v1/register:
+    post:
+      tags:
+        - Usuários
+      summary: Registrar novo usuário
+      description: Cria uma nova conta de usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Dados inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/users/me:
+    get:
+      tags:
+        - Usuários
+      summary: Obter dados do usuário atual
+      description: Retorna informações do usuário autenticado
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Dados do usuário
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Token inválido ou expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/password-recovery/{email}:
+    post:
+      tags:
+        - Usuários
+      summary: Solicitar recuperação de senha
+      description: Envia email com link para redefinir senha
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
+          description: Email do usuário
+      responses:
+        '200':
+          description: Email de recuperação enviado (sempre retorna 200 por segurança)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Se o email existir, um link de recuperação foi enviado"
+
+  /api/v1/reset-password/:
+    post:
+      tags:
+        - Usuários
+      summary: Redefinir senha
+      description: Redefine a senha usando token de recuperação
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: Token de recuperação recebido por email
+                new_password:
+                  type: string
+                  description: Nova senha
+              required:
+                - token
+                - new_password
+      responses:
+        '200':
+          description: Senha redefinida com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Senha redefinida com sucesso"
+        '400':
+          description: Token inválido ou expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Mesas
+  /api/v1/tables/:
+    get:
+      tags:
+        - Mesas
+      summary: Listar mesas
+      description: Retorna lista de mesas de jogo
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de mesas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Table'
+    post:
+      tags:
+        - Mesas
+      summary: Criar nova mesa
+      description: Cria uma nova mesa de jogo
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableCreate'
+      responses:
+        '201':
+          description: Mesa criada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+
+  /api/v1/tables/{table_id}:
+    get:
+      tags:
+        - Mesas
+      summary: Obter mesa específica
+      description: Retorna dados de uma mesa específica
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: table_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da mesa
+      responses:
+        '200':
+          description: Dados da mesa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '404':
+          description: Mesa não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Personagens
+  /api/v1/characters/:
+    get:
+      tags:
+        - Personagens
+      summary: Listar personagens do usuário
+      description: Retorna todos os personagens criados pelo usuário
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de personagens
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+    post:
+      tags:
+        - Personagens
+      summary: Criar novo personagem
+      description: Cria um novo personagem
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CharacterCreate'
+      responses:
+        '201':
+          description: Personagem criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+
+  /api/v1/characters/{character_id}:
+    get:
+      tags:
+        - Personagens
+      summary: Obter personagem específico
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: character_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Dados do personagem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+    put:
+      tags:
+        - Personagens
+      summary: Atualizar personagem
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: character_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CharacterUpdate'
+      responses:
+        '200':
+          description: Personagem atualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+    delete:
+      tags:
+        - Personagens
+      summary: Deletar personagem
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: character_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Personagem deletado com sucesso
+
+  # Itens
+  /api/v1/items/:
+    get:
+      tags:
+        - Itens
+      summary: Listar itens do usuário
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de itens
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+    post:
+      tags:
+        - Itens
+      summary: Criar novo item
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemCreate'
+      responses:
+        '201':
+          description: Item criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+  # Monstros
+  /api/v1/monsters/:
+    get:
+      tags:
+        - Monstros
+      summary: Listar monstros do usuário
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de monstros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Monster'
+    post:
+      tags:
+        - Monstros
+      summary: Criar novo monstro
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonsterCreate'
+      responses:
+        '201':
+          description: Monstro criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monster'
+
+  # NPCs
+  /api/v1/npcs/:
+    get:
+      tags:
+        - NPCs
+      summary: Listar NPCs do usuário
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de NPCs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NPC'
+    post:
+      tags:
+        - NPCs
+      summary: Criar novo NPC
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NPCCreate'
+      responses:
+        '201':
+          description: NPC criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NPC'
+
+  # Histórias
+  /api/v1/stories/:
+    get:
+      tags:
+        - Histórias
+      summary: Listar histórias do usuário
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de histórias
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Story'
+    post:
+      tags:
+        - Histórias
+      summary: Criar nova história
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoryCreate'
+      responses:
+        '201':
+          description: História criada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Story'
+
+  # Backup
+  /api/v1/backup/export:
+    get:
+      tags:
+        - Backup
+      summary: Exportar dados do usuário
+      description: Exporta todos os dados do usuário (personagens, itens, etc.)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Dados exportados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserBackup'
+
+  /api/v1/backup/import:
+    post:
+      tags:
+        - Backup
+      summary: Importar dados do usuário
+      description: Importa dados previamente exportados
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserBackup'
+      responses:
+        '200':
+          description: Dados importados com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Dados importados com sucesso"
+                  imported_count:
+                    type: object
+                    properties:
+                      characters:
+                        type: integer
+                      items:
+                        type: integer
+                      monsters:
+                        type: integer
+                      npcs:
+                        type: integer
+                      stories:
+                        type: integer
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Token JWT obtido através do endpoint `/api/v1/token`.
+        
+        Exemplo: `Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
+
+  schemas:
+    # Esquemas de Erro
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Descrição do erro
+        error_code:
+          type: string
+          description: Código do erro (opcional)
+      example:
+        detail: "Credenciais inválidas"
+        error_code: "INVALID_CREDENTIALS"
+
+    # Esquemas de Usuário
+    UserCreate:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 50
+          description: Nome de usuário único
+        email:
+          type: string
+          format: email
+          description: Email do usuário
+        password:
+          type: string
+          minLength: 6
+          description: Senha do usuário
+      required:
+        - username
+        - email
+        - password
+      example:
+        username: "jogador123"
+        email: "jogador@email.com"
+        password: "senha123"
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único do usuário
+        username:
+          type: string
+          description: Nome de usuário
+        email:
+          type: string
+          format: email
+          description: Email do usuário
+        created_at:
+          type: string
+          format: date-time
+          description: Data de criação da conta
+        is_active:
+          type: boolean
+          description: Se a conta está ativa
+      example:
+        id: "123e4567-e89b-12d3-a456-426614174000"
+        username: "jogador123"
+        email: "jogador@email.com"
+        created_at: "2024-01-15T10:30:00Z"
+        is_active: true
+
+    # Esquemas de Mesa
+    TableCreate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 100
+          description: Título da mesa
+        description:
+          type: string
+          maxLength: 500
+          description: Descrição da mesa
+        max_players:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Número máximo de jogadores
+        story_id:
+          type: string
+          description: ID da história associada (opcional)
+      required:
+        - title
+        - max_players
+      example:
+        title: "A Mina Perdida de Phandelver"
+        description: "Aventura inicial para personagens de nível 1-5"
+        max_players: 5
+        story_id: "story-123"
+
+    Table:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único da mesa
+        title:
+          type: string
+          description: Título da mesa
+        description:
+          type: string
+          description: Descrição da mesa
+        master_id:
+          type: string
+          description: ID do mestre da mesa
+        max_players:
+          type: integer
+          description: Número máximo de jogadores
+        current_players:
+          type: integer
+          description: Número atual de jogadores
+        story_id:
+          type: string
+          nullable: true
+          description: ID da história associada
+        map_image_url:
+          type: string
+          nullable: true
+          description: URL da imagem do mapa
+        tokens_state:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenState'
+          description: Estado atual dos tokens no mapa
+        created_at:
+          type: string
+          format: date-time
+          description: Data de criação da mesa
+      example:
+        id: "table-456"
+        title: "A Mina Perdida de Phandelver"
+        description: "Aventura inicial para personagens de nível 1-5"
+        master_id: "user-123"
+        max_players: 5
+        current_players: 3
+        story_id: "story-123"
+        map_image_url: "https://example.com/map.jpg"
+        tokens_state: []
+        created_at: "2024-01-15T10:30:00Z"
+
+    TokenState:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único do token
+        imageUrl:
+          type: string
+          description: URL da imagem do token
+        x:
+          type: number
+          description: Posição X no mapa
+        y:
+          type: number
+          description: Posição Y no mapa
+        size:
+          type: number
+          description: Tamanho do token
+        label:
+          type: string
+          description: Rótulo do token
+      example:
+        id: "token-789"
+        imageUrl: "https://example.com/character.png"
+        x: 100
+        y: 150
+        size: 50
+        label: "Aragorn"
+
+    # Esquemas de Personagem
+    CharacterCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          description: Nome do personagem
+        race:
+          type: string
+          description: Raça do personagem
+        character_class:
+          type: string
+          description: Classe do personagem
+        level:
+          type: integer
+          minimum: 1
+          maximum: 20
+          description: Nível do personagem
+        background:
+          type: string
+          description: Antecedente do personagem
+        alignment:
+          type: string
+          description: Tendência do personagem
+        strength:
+          type: integer
+          minimum: 1
+          maximum: 30
+        dexterity:
+          type: integer
+          minimum: 1
+          maximum: 30
+        constitution:
+          type: integer
+          minimum: 1
+          maximum: 30
+        intelligence:
+          type: integer
+          minimum: 1
+          maximum: 30
+        wisdom:
+          type: integer
+          minimum: 1
+          maximum: 30
+        charisma:
+          type: integer
+          minimum: 1
+          maximum: 30
+        hit_points:
+          type: integer
+          minimum: 1
+        armor_class:
+          type: integer
+          minimum: 1
+        speed:
+          type: integer
+          minimum: 0
+      required:
+        - name
+        - race
+        - character_class
+        - level
+        - strength
+        - dexterity
+        - constitution
+        - intelligence
+        - wisdom
+        - charisma
+        - hit_points
+        - armor_class
+        - speed
+      example:
+        name: "Aragorn"
+        race: "Human"
+        character_class: "Ranger"
+        level: 5
+        background: "Folk Hero"
+        alignment: "Chaotic Good"
+        strength: 16
+        dexterity: 14
+        constitution: 15
+        intelligence: 12
+        wisdom: 13
+        charisma: 10
+        hit_points: 45
+        armor_class: 16
+        speed: 30
+
+    Character:
+      allOf:
+        - $ref: '#/components/schemas/CharacterCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              description: ID único do personagem
+            creator_id:
+              type: string
+              description: ID do criador do personagem
+            created_at:
+              type: string
+              format: date-time
+              description: Data de criação
+            updated_at:
+              type: string
+              format: date-time
+              description: Data da última atualização
+
+    CharacterUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        level:
+          type: integer
+          minimum: 1
+          maximum: 20
+        hit_points:
+          type: integer
+          minimum: 1
+        armor_class:
+          type: integer
+          minimum: 1
+        # Outros campos opcionais para atualização
+
+    # Esquemas de Item
+    ItemCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          description: Nome do item
+        description:
+          type: string
+          maxLength: 1000
+          description: Descrição do item
+        type:
+          type: string
+          enum: [weapon, armor, consumable, tool, treasure, misc]
+          description: Tipo do item
+        rarity:
+          type: string
+          enum: [common, uncommon, rare, very_rare, legendary, artifact]
+          description: Raridade do item
+        weight:
+          type: number
+          minimum: 0
+          description: Peso do item em libras
+        value:
+          type: integer
+          minimum: 0
+          description: Valor do item em moedas de cobre
+      required:
+        - name
+        - type
+        - rarity
+      example:
+        name: "Espada Longa +1"
+        description: "Uma espada longa mágica com lâmina afiada"
+        type: "weapon"
+        rarity: "uncommon"
+        weight: 3.0
+        value: 1500
+
+    Item:
+      allOf:
+        - $ref: '#/components/schemas/ItemCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              description: ID único do item
+            creator_id:
+              type: string
+              description: ID do criador do item
+            created_at:
+              type: string
+              format: date-time
+
+    # Esquemas de Monstro
+    MonsterCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        size:
+          type: string
+          enum: [tiny, small, medium, large, huge, gargantuan]
+        type:
+          type: string
+          description: Tipo da criatura (ex: humanoid, beast, undead)
+        alignment:
+          type: string
+        armor_class:
+          type: integer
+          minimum: 1
+        hit_points:
+          type: string
+          description: Pontos de vida (ex: "58 (9d8 + 18)")
+        speed:
+          type: string
+          description: Velocidade (ex: "30 ft., fly 60 ft.")
+        strength:
+          type: integer
+          minimum: 1
+          maximum: 30
+        dexterity:
+          type: integer
+          minimum: 1
+          maximum: 30
+        constitution:
+          type: integer
+          minimum: 1
+          maximum: 30
+        intelligence:
+          type: integer
+          minimum: 1
+          maximum: 30
+        wisdom:
+          type: integer
+          minimum: 1
+          maximum: 30
+        charisma:
+          type: integer
+          minimum: 1
+          maximum: 30
+        challenge_rating:
+          type: string
+          description: Nível de desafio (ex: "1/4", "2", "15")
+      required:
+        - name
+        - size
+        - type
+        - armor_class
+        - hit_points
+        - speed
+        - strength
+        - dexterity
+        - constitution
+        - intelligence
+        - wisdom
+        - charisma
+        - challenge_rating
+
+    Monster:
+      allOf:
+        - $ref: '#/components/schemas/MonsterCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+            creator_id:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+
+    # Esquemas de NPC
+    NPCCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        race:
+          type: string
+        character_class:
+          type: string
+        level:
+          type: integer
+          minimum: 1
+          maximum: 20
+        role:
+          type: string
+          description: Papel do NPC (ex: "Comerciante", "Guarda")
+        location:
+          type: string
+          description: Localização do NPC
+        personality_traits:
+          type: string
+          maxLength: 500
+        ideals:
+          type: string
+          maxLength: 500
+        bonds:
+          type: string
+          maxLength: 500
+        flaws:
+          type: string
+          maxLength: 500
+        description:
+          type: string
+          maxLength: 1000
+      required:
+        - name
+        - race
+        - character_class
+        - level
+
+    NPC:
+      allOf:
+        - $ref: '#/components/schemas/NPCCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+            creator_id:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+
+    # Esquemas de História
+    StoryCreate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 2000
+        content:
+          type: string
+          description: Conteúdo completo da história
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags para categorização
+      required:
+        - title
+        - description
+        - content
+
+    Story:
+      allOf:
+        - $ref: '#/components/schemas/StoryCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+            creator_id:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+
+    # Esquemas de Backup
+    UserBackup:
+      type: object
+      properties:
+        characters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Character'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        monsters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Monster'
+        npcs:
+          type: array
+          items:
+            $ref: '#/components/schemas/NPC'
+        stories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Story'
+        export_date:
+          type: string
+          format: date-time
+          description: Data da exportação
+        version:
+          type: string
+          description: Versão do formato de backup
+      example:
+        characters: []
+        items: []
+        monsters: []
+        npcs: []
+        stories: []
+        export_date: "2024-01-15T10:30:00Z"
+        version: "1.0"
+
+tags:
+  - name: Autenticação
+    description: Endpoints para login e autenticação
+  - name: Usuários
+    description: Gerenciamento de contas de usuário
+  - name: Mesas
+    description: Criação e gerenciamento de mesas de jogo
+  - name: Personagens
+    description: Criação e gerenciamento de personagens
+  - name: Itens
+    description: Criação e gerenciamento de itens
+  - name: Monstros
+    description: Criação e gerenciamento de monstros
+  - name: NPCs
+    description: Criação e gerenciamento de NPCs
+  - name: Histórias
+    description: Criação e gerenciamento de histórias
+  - name: Backup
+    description: Exportação e importação de dados

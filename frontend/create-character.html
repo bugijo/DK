@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Personagem - D&D Toolkit</title>
+    <link rel="stylesheet" href="create-character.css">
+</head>
+<body>
+    <!-- Barra Superior -->
+    <header class="top-bar">
+        <div class="user-section">
+            <div class="user-avatar">
+                <img src="assets/icons/user.svg" alt="Avatar" class="avatar-img">
+            </div>
+            <div class="user-details">
+                <div class="player-name">Mestre</div>
+                <div class="player-level">Nível 20</div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 85%;"></div>
+                    <span class="xp-text">17.500 / 20.000 XP</span>
+                </div>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold.svg" alt="Ouro" class="resource-icon">
+                <span class="resource-amount">2.450</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                <span class="resource-amount">12</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                <span class="resource-amount">3</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>CRIAR PERSONAGEM</h1>
+            <p>Crie seu personagem para suas aventuras de RPG</p>
+        </div>
+
+        <!-- Seleção de Modo -->
+        <div class="mode-selection">
+            <div class="mode-card active" data-mode="guided">
+                <div class="mode-icon">🎯</div>
+                <h3>Modo Guiado</h3>
+                <p>Criação assistida passo a passo, ideal para iniciantes</p>
+            </div>
+            <div class="mode-card" data-mode="expert">
+                <div class="mode-icon">📋</div>
+                <h3>Modo Expert</h3>
+                <p>Ficha oficial completa para jogadores experientes</p>
+            </div>
+        </div>
+
+        <!-- Modo Guiado -->
+        <div id="guided-mode" class="creation-mode active">
+            <div class="guided-steps">
+                <div class="step-indicator">
+                    <div class="step active" data-step="1">1</div>
+                    <div class="step" data-step="2">2</div>
+                    <div class="step" data-step="3">3</div>
+                    <div class="step" data-step="4">4</div>
+                    <div class="step" data-step="5">5</div>
+                    <div class="step" data-step="6">6</div>
+                </div>
+
+                <!-- Passo 1: Raça -->
+                <div class="step-content active" data-step="1">
+                    <h2>Escolha sua Raça</h2>
+                    <div class="race-grid">
+                        <div class="race-card" data-race="human">
+                            <div class="race-icon">👤</div>
+                            <h3>Humano</h3>
+                            <p>+1 em todos os atributos</p>
+                            <div class="race-traits">
+                                <span class="trait">Versátil</span>
+                                <span class="trait">Talento Extra</span>
+                            </div>
+                        </div>
+                        <div class="race-card" data-race="elf">
+                            <div class="race-icon">🧝</div>
+                            <h3>Elfo</h3>
+                            <p>+2 Destreza</p>
+                            <div class="race-traits">
+                                <span class="trait">Visão no Escuro</span>
+                                <span class="trait">Percepção Aguçada</span>
+                            </div>
+                        </div>
+                        <div class="race-card" data-race="dwarf">
+                            <div class="race-icon">🧔</div>
+                            <h3>Anão</h3>
+                            <p>+2 Constituição</p>
+                            <div class="race-traits">
+                                <span class="trait">Resistência</span>
+                                <span class="trait">Proficiência com Machados</span>
+                            </div>
+                        </div>
+                        <div class="race-card" data-race="halfling">
+                            <div class="race-icon">🍀</div>
+                            <h3>Halfling</h3>
+                            <p>+2 Destreza</p>
+                            <div class="race-traits">
+                                <span class="trait">Sortudo</span>
+                                <span class="trait">Corajoso</span>
+                            </div>
+                        </div>
+                        <div class="race-card" data-race="dragonborn">
+                            <div class="race-icon">🐲</div>
+                            <h3>Draconato</h3>
+                            <p>+2 Força, +1 Carisma</p>
+                            <div class="race-traits">
+                                <span class="trait">Sopro Dracônico</span>
+                                <span class="trait">Resistência Dracônica</span>
+                            </div>
+                        </div>
+                        <div class="race-card" data-race="tiefling">
+                            <div class="race-icon">😈</div>
+                            <h3>Tiefling</h3>
+                            <p>+2 Carisma, +1 Inteligência</p>
+                            <div class="race-traits">
+                                <span class="trait">Resistência ao Fogo</span>
+                                <span class="trait">Magia Infernal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 2: Classe -->
+                <div class="step-content" data-step="2">
+                    <h2>Escolha sua Classe</h2>
+                    <div class="class-grid">
+                        <div class="class-card" data-class="fighter">
+                            <div class="class-icon"><img src="/icons/Equipamentos.png" alt="Guerreiro" style="width: 24px; height: 24px;" /></div>
+                            <h3>Guerreiro</h3>
+                            <p>DV: d10 | Atributo Principal: For ou Des</p>
+                            <div class="class-features">
+                                <span class="feature">Estilo de Luta</span>
+                                <span class="feature">Ação Extra</span>
+                            </div>
+                        </div>
+                        <div class="class-card" data-class="wizard">
+                            <div class="class-icon">🧙</div>
+                            <h3>Mago</h3>
+                            <p>DV: d6 | Atributo Principal: Inteligência</p>
+                            <div class="class-features">
+                                <span class="feature">Grimório</span>
+                                <span class="feature">Recuperação Arcana</span>
+                            </div>
+                        </div>
+                        <div class="class-card" data-class="rogue">
+                            <div class="class-icon"><img src="/icons/Equipamentos.png" alt="Ladino" style="width: 24px; height: 24px;" /></div>
+                            <h3>Ladino</h3>
+                            <p>DV: d8 | Atributo Principal: Destreza</p>
+                            <div class="class-features">
+                                <span class="feature">Ataque Furtivo</span>
+                                <span class="feature">Especialização</span>
+                            </div>
+                        </div>
+                        <div class="class-card" data-class="cleric">
+                            <div class="class-icon">⛪</div>
+                            <h3>Clérigo</h3>
+                            <p>DV: d8 | Atributo Principal: Sabedoria</p>
+                            <div class="class-features">
+                                <span class="feature">Canalizar Divindade</span>
+                                <span class="feature">Domínio Divino</span>
+                            </div>
+                        </div>
+                        <div class="class-card" data-class="barbarian">
+                            <div class="class-icon">🪓</div>
+                            <h3>Bárbaro</h3>
+                            <p>DV: d12 | Atributo Principal: Força</p>
+                            <div class="class-features">
+                                <span class="feature">Fúria</span>
+                                <span class="feature">Defesa sem Armadura</span>
+                            </div>
+                        </div>
+                        <div class="class-card" data-class="ranger">
+                            <div class="class-icon"><img src="/icons/Arco e Flecha.png" alt="Patrulheiro" style="width: 24px; height: 24px;" /></div>
+                            <h3>Patrulheiro</h3>
+                            <p>DV: d10 | Atributo Principal: Des e Sab</p>
+                            <div class="class-features">
+                                <span class="feature">Inimigo Favorito</span>
+                                <span class="feature">Terreno Favorito</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 3: Atributos -->
+                <div class="step-content" data-step="3">
+                    <h2>Distribua seus Atributos</h2>
+                    <div class="attribute-method">
+                        <label>
+                            <input type="radio" name="attr-method" value="standard" checked>
+                            Array Padrão (15, 14, 13, 12, 10, 8)
+                        </label>
+                        <label>
+                            <input type="radio" name="attr-method" value="point-buy">
+                            Compra de Pontos (27 pontos)
+                        </label>
+                        <label>
+                            <input type="radio" name="attr-method" value="roll">
+                            Rolar 4d6 (descartar menor)
+                        </label>
+                        <label>
+                            <input type="radio" name="attr-method" value="custom">
+                            Valores Customizados
+                        </label>
+                    </div>
+                    
+                    <!-- Sistema de Array Padrão -->
+                    <div id="standard-array" class="attribute-system active">
+                        <div class="attributes-grid">
+                            <div class="attribute-item">
+                                <label>Força</label>
+                                <select class="attr-select" data-attr="strength">
+                                    <option value="15">15 (+2)</option>
+                                    <option value="14">14 (+2)</option>
+                                    <option value="13">13 (+1)</option>
+                                    <option value="12">12 (+1)</option>
+                                    <option value="10">10 (+0)</option>
+                                    <option value="8">8 (-1)</option>
+                                </select>
+                            </div>
+                            <div class="attribute-item">
+                                <label>Destreza</label>
+                                <select class="attr-select" data-attr="dexterity">
+                                    <option value="15">15 (+2)</option>
+                                    <option value="14" selected>14 (+2)</option>
+                                    <option value="13">13 (+1)</option>
+                                    <option value="12">12 (+1)</option>
+                                    <option value="10">10 (+0)</option>
+                                    <option value="8">8 (-1)</option>
+                                </select>
+                            </div>
+                            <div class="attribute-item">
+                                <label>Constituição</label>
+                                <select class="attr-select" data-attr="constitution">
+                                    <option value="15">15 (+2)</option>
+                                    <option value="14">14 (+2)</option>
+                                    <option value="13" selected>13 (+1)</option>
+                                    <option value="12">12 (+1)</option>
+                                    <option value="10">10 (+0)</option>
+                                    <option value="8">8 (-1)</option>
+                                </select>
+                            </div>
+                            <div class="attribute-item">
+                                <label>Inteligência</label>
+                                <select class="attr-select" data-attr="intelligence">
+                                    <option value="15">15 (+2)</option>
+                                    <option value="14">14 (+2)</option>
+                                    <option value="13">13 (+1)</option>
+                                    <option value="12" selected>12 (+1)</option>
+                                    <option value="10">10 (+0)</option>
+                                    <option value="8">8 (-1)</option>
+                                </select>
+                            </div>
+                            <div class="attribute-item">
+                                <label>Sabedoria</label>
+                                <select class="attr-select" data-attr="wisdom">
+                                    <option value="15">15 (+2)</option>
+                                    <option value="14">14 (+2)</option>
+                                    <option value="13">13 (+1)</option>
+                                    <option value="12">12 (+1)</option>
+                                    <option value="10" selected>10 (+0)</option>
+                                    <option value="8">8 (-1)</option>
+                                </select>
+                            </div>
+                            <div class="attribute-item">
+                                <label>Carisma</label>
+                                <select class="attr-select" data-attr="charisma">
+                                    <option value="15">15 (+2)</option>
+                                    <option value="14">14 (+2)</option>
+                                    <option value="13">13 (+1)</option>
+                                    <option value="12">12 (+1)</option>
+                                    <option value="10">10 (+0)</option>
+                                    <option value="8" selected>8 (-1)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="attribute-summary">
+                            <p>Valores disponíveis: <span id="available-values">Nenhum</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Sistema de Compra de Pontos -->
+                    <div id="point-buy" class="attribute-system">
+                        <div class="point-buy-info">
+                            <h3>Sistema de Compra de Pontos</h3>
+                            <p>Pontos restantes: <span id="points-remaining">27</span></p>
+                            <p>Todos os atributos começam em 8. Use seus pontos para aumentá-los.</p>
+                            <div class="point-cost-table">
+                                <strong>Custo por ponto:</strong>
+                                <span>9-13: 1 ponto cada</span>
+                                <span>14: 2 pontos</span>
+                                <span>15: 2 pontos</span>
+                            </div>
+                        </div>
+                        <div class="attributes-grid point-buy-grid">
+                            <div class="attribute-item point-buy-item">
+                                <label>Força</label>
+                                <div class="point-buy-controls">
+                                    <button type="button" class="point-btn decrease" data-attr="strength">-</button>
+                                    <span class="point-value" data-attr="strength">8</span>
+                                    <button type="button" class="point-btn increase" data-attr="strength">+</button>
+                                </div>
+                                <span class="modifier" data-attr="strength">(-1)</span>
+                            </div>
+                            <div class="attribute-item point-buy-item">
+                                <label>Destreza</label>
+                                <div class="point-buy-controls">
+                                    <button type="button" class="point-btn decrease" data-attr="dexterity">-</button>
+                                    <span class="point-value" data-attr="dexterity">8</span>
+                                    <button type="button" class="point-btn increase" data-attr="dexterity">+</button>
+                                </div>
+                                <span class="modifier" data-attr="dexterity">(-1)</span>
+                            </div>
+                            <div class="attribute-item point-buy-item">
+                                <label>Constituição</label>
+                                <div class="point-buy-controls">
+                                    <button type="button" class="point-btn decrease" data-attr="constitution">-</button>
+                                    <span class="point-value" data-attr="constitution">8</span>
+                                    <button type="button" class="point-btn increase" data-attr="constitution">+</button>
+                                </div>
+                                <span class="modifier" data-attr="constitution">(-1)</span>
+                            </div>
+                            <div class="attribute-item point-buy-item">
+                                <label>Inteligência</label>
+                                <div class="point-buy-controls">
+                                    <button type="button" class="point-btn decrease" data-attr="intelligence">-</button>
+                                    <span class="point-value" data-attr="intelligence">8</span>
+                                    <button type="button" class="point-btn increase" data-attr="intelligence">+</button>
+                                </div>
+                                <span class="modifier" data-attr="intelligence">(-1)</span>
+                            </div>
+                            <div class="attribute-item point-buy-item">
+                                <label>Sabedoria</label>
+                                <div class="point-buy-controls">
+                                    <button type="button" class="point-btn decrease" data-attr="wisdom">-</button>
+                                    <span class="point-value" data-attr="wisdom">8</span>
+                                    <button type="button" class="point-btn increase" data-attr="wisdom">+</button>
+                                </div>
+                                <span class="modifier" data-attr="wisdom">(-1)</span>
+                            </div>
+                            <div class="attribute-item point-buy-item">
+                                <label>Carisma</label>
+                                <div class="point-buy-controls">
+                                    <button type="button" class="point-btn decrease" data-attr="charisma">-</button>
+                                    <span class="point-value" data-attr="charisma">8</span>
+                                    <button type="button" class="point-btn increase" data-attr="charisma">+</button>
+                                </div>
+                                <span class="modifier" data-attr="charisma">(-1)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sistema de Rolagem -->
+                    <div id="roll-system" class="attribute-system">
+                        <div class="roll-info">
+                            <h3>Rolar Atributos</h3>
+                            <p>Role 4d6 para cada atributo, descartando o menor dado.</p>
+                            <button type="button" id="roll-all-btn" class="btn-primary"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 16px; height: 16px; display: inline; margin-right: 6px;" />Rolar Todos os Atributos</button>
+                            <button type="button" id="roll-gold-btn" class="btn-secondary"><img src="/icons/Moedas.png" alt="Moedas" style="width: 16px; height: 16px; display: inline; margin-right: 6px;" />Rolar Ouro Inicial</button>
+                        </div>
+                        <div class="attributes-grid roll-grid">
+                            <div class="attribute-item roll-item">
+                                <label>Força</label>
+                                <div class="roll-result">
+                                    <span class="roll-value" data-attr="strength">10</span>
+                                    <span class="modifier" data-attr="strength">(+0)</span>
+                                    <button type="button" class="roll-single" data-attr="strength"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 14px; height: 14px;" /></button>
+                                </div>
+                                <div class="roll-details" data-attr="strength"></div>
+                            </div>
+                            <div class="attribute-item roll-item">
+                                <label>Destreza</label>
+                                <div class="roll-result">
+                                    <span class="roll-value" data-attr="dexterity">10</span>
+                                    <span class="modifier" data-attr="dexterity">(+0)</span>
+                                    <button type="button" class="roll-single" data-attr="dexterity"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 14px; height: 14px;" /></button>
+                                </div>
+                                <div class="roll-details" data-attr="dexterity"></div>
+                            </div>
+                            <div class="attribute-item roll-item">
+                                <label>Constituição</label>
+                                <div class="roll-result">
+                                    <span class="roll-value" data-attr="constitution">10</span>
+                                    <span class="modifier" data-attr="constitution">(+0)</span>
+                                    <button type="button" class="roll-single" data-attr="constitution"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 14px; height: 14px;" /></button>
+                                </div>
+                                <div class="roll-details" data-attr="constitution"></div>
+                            </div>
+                            <div class="attribute-item roll-item">
+                                <label>Inteligência</label>
+                                <div class="roll-result">
+                                    <span class="roll-value" data-attr="intelligence">10</span>
+                                    <span class="modifier" data-attr="intelligence">(+0)</span>
+                                    <button type="button" class="roll-single" data-attr="intelligence"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 14px; height: 14px;" /></button>
+                                </div>
+                                <div class="roll-details" data-attr="intelligence"></div>
+                            </div>
+                            <div class="attribute-item roll-item">
+                                <label>Sabedoria</label>
+                                <div class="roll-result">
+                                    <span class="roll-value" data-attr="wisdom">10</span>
+                                    <span class="modifier" data-attr="wisdom">(+0)</span>
+                                    <button type="button" class="roll-single" data-attr="wisdom"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 14px; height: 14px;" /></button>
+                                </div>
+                                <div class="roll-details" data-attr="wisdom"></div>
+                            </div>
+                            <div class="attribute-item roll-item">
+                                <label>Carisma</label>
+                                <div class="roll-result">
+                                    <span class="roll-value" data-attr="charisma">10</span>
+                                    <span class="modifier" data-attr="charisma">(+0)</span>
+                                    <button type="button" class="roll-single" data-attr="charisma"><img src="/icons/Sistema de Dados.png" alt="Dados" style="width: 14px; height: 14px;" /></button>
+                                </div>
+                                <div class="roll-details" data-attr="charisma"></div>
+                            </div>
+                        </div>
+                        <div id="gold-result" class="gold-result"></div>
+                    </div>
+                    
+                    <!-- Sistema Customizado -->
+                    <div id="custom-system" class="attribute-system">
+                        <div class="custom-info">
+                            <h3>Valores Customizados</h3>
+                            <p>Digite valores entre 3 e 18 para cada atributo.</p>
+                        </div>
+                        <div class="attributes-grid custom-grid">
+                            <div class="attribute-item custom-item">
+                                <label>Força</label>
+                                <input type="number" class="custom-input" data-attr="strength" min="3" max="18" value="10">
+                                <span class="modifier" data-attr="strength">(+0)</span>
+                            </div>
+                            <div class="attribute-item custom-item">
+                                <label>Destreza</label>
+                                <input type="number" class="custom-input" data-attr="dexterity" min="3" max="18" value="10">
+                                <span class="modifier" data-attr="dexterity">(+0)</span>
+                            </div>
+                            <div class="attribute-item custom-item">
+                                <label>Constituição</label>
+                                <input type="number" class="custom-input" data-attr="constitution" min="3" max="18" value="10">
+                                <span class="modifier" data-attr="constitution">(+0)</span>
+                            </div>
+                            <div class="attribute-item custom-item">
+                                <label>Inteligência</label>
+                                <input type="number" class="custom-input" data-attr="intelligence" min="3" max="18" value="10">
+                                <span class="modifier" data-attr="intelligence">(+0)</span>
+                            </div>
+                            <div class="attribute-item custom-item">
+                                <label>Sabedoria</label>
+                                <input type="number" class="custom-input" data-attr="wisdom" min="3" max="18" value="10">
+                                <span class="modifier" data-attr="wisdom">(+0)</span>
+                            </div>
+                            <div class="attribute-item custom-item">
+                                <label>Carisma</label>
+                                <input type="number" class="custom-input" data-attr="charisma" min="3" max="18" value="10">
+                                <span class="modifier" data-attr="charisma">(+0)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Resumo Final dos Atributos -->
+                    <div class="final-attributes">
+                        <h3>Atributos Finais (com bônus raciais)</h3>
+                        <div class="final-attributes-grid">
+                            <div class="final-attr">
+                                <span class="attr-name">Força:</span>
+                                <span class="base-value" id="final-strength-base">10</span>
+                                <span class="racial-bonus" id="final-strength-racial">+0</span>
+                                <span class="equals">=</span>
+                                <span class="final-value" id="final-strength">10</span>
+                                <span class="final-modifier" id="final-strength-mod">(+0)</span>
+                            </div>
+                            <div class="final-attr">
+                                <span class="attr-name">Destreza:</span>
+                                <span class="base-value" id="final-dexterity-base">10</span>
+                                <span class="racial-bonus" id="final-dexterity-racial">+0</span>
+                                <span class="equals">=</span>
+                                <span class="final-value" id="final-dexterity">10</span>
+                                <span class="final-modifier" id="final-dexterity-mod">(+0)</span>
+                            </div>
+                            <div class="final-attr">
+                                <span class="attr-name">Constituição:</span>
+                                <span class="base-value" id="final-constitution-base">10</span>
+                                <span class="racial-bonus" id="final-constitution-racial">+0</span>
+                                <span class="equals">=</span>
+                                <span class="final-value" id="final-constitution">10</span>
+                                <span class="final-modifier" id="final-constitution-mod">(+0)</span>
+                            </div>
+                            <div class="final-attr">
+                                <span class="attr-name">Inteligência:</span>
+                                <span class="base-value" id="final-intelligence-base">10</span>
+                                <span class="racial-bonus" id="final-intelligence-racial">+0</span>
+                                <span class="equals">=</span>
+                                <span class="final-value" id="final-intelligence">10</span>
+                                <span class="final-modifier" id="final-intelligence-mod">(+0)</span>
+                            </div>
+                            <div class="final-attr">
+                                <span class="attr-name">Sabedoria:</span>
+                                <span class="base-value" id="final-wisdom-base">10</span>
+                                <span class="racial-bonus" id="final-wisdom-racial">+0</span>
+                                <span class="equals">=</span>
+                                <span class="final-value" id="final-wisdom">10</span>
+                                <span class="final-modifier" id="final-wisdom-mod">(+0)</span>
+                            </div>
+                            <div class="final-attr">
+                                <span class="attr-name">Carisma:</span>
+                                <span class="base-value" id="final-charisma-base">10</span>
+                                <span class="racial-bonus" id="final-charisma-racial">+0</span>
+                                <span class="equals">=</span>
+                                <span class="final-value" id="final-charisma">10</span>
+                                <span class="final-modifier" id="final-charisma-mod">(+0)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 4: Antecedente -->
+                <div class="step-content" data-step="4">
+                    <h2>Escolha seu Antecedente</h2>
+                    <div class="background-grid">
+                        <div class="background-card" data-background="acolyte">
+                            <h3>Acólito</h3>
+                            <p>Perícias: Intuição, Religião</p>
+                            <div class="background-features">
+                                <span class="feature">Idiomas: 2 à escolha</span>
+                                <span class="feature">Abrigo dos Fiéis</span>
+                            </div>
+                        </div>
+                        <div class="background-card" data-background="criminal">
+                            <h3>Criminoso</h3>
+                            <p>Perícias: Enganação, Furtividade</p>
+                            <div class="background-features">
+                                <span class="feature">Ferramentas: Ladrão, Jogo</span>
+                                <span class="feature">Contato Criminal</span>
+                            </div>
+                        </div>
+                        <div class="background-card" data-background="folk-hero">
+                            <h3>Herói do Povo</h3>
+                            <p>Perícias: Adestrar Animais, Sobrevivência</p>
+                            <div class="background-features">
+                                <span class="feature">Ferramentas: Artesão, Veículos</span>
+                                <span class="feature">Hospitalidade Rústica</span>
+                            </div>
+                        </div>
+                        <div class="background-card" data-background="noble">
+                            <h3>Nobre</h3>
+                            <p>Perícias: História, Persuasão</p>
+                            <div class="background-features">
+                                <span class="feature">Ferramentas: Jogo</span>
+                                <span class="feature">Posição de Privilégio</span>
+                            </div>
+                        </div>
+                        <div class="background-card" data-background="sage">
+                            <h3>Erudito</h3>
+                            <p>Perícias: Arcanismo, História</p>
+                            <div class="background-features">
+                                <span class="feature">Idiomas: 2 à escolha</span>
+                                <span class="feature">Pesquisador</span>
+                            </div>
+                        </div>
+                        <div class="background-card" data-background="soldier">
+                            <h3>Soldado</h3>
+                            <p>Perícias: Atletismo, Intimidação</p>
+                            <div class="background-features">
+                                <span class="feature">Ferramentas: Jogo, Veículos</span>
+                                <span class="feature">Posto Militar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 5: Detalhes -->
+                <div class="step-content" data-step="5">
+                    <h2>Detalhes do Personagem</h2>
+                    <div class="character-details">
+                        <div class="detail-group">
+                            <label for="char-name">Nome do Personagem</label>
+                            <input type="text" id="char-name" placeholder="Digite o nome">
+                        </div>
+                        <div class="detail-group">
+                            <label for="char-age">Idade</label>
+                            <input type="number" id="char-age" min="1" max="1000">
+                        </div>
+                        <div class="detail-group">
+                            <label for="char-height">Altura</label>
+                            <input type="text" id="char-height" placeholder="Ex: 1,75m">
+                        </div>
+                        <div class="detail-group">
+                            <label for="char-weight">Peso</label>
+                            <input type="text" id="char-weight" placeholder="Ex: 70kg">
+                        </div>
+                        <div class="detail-group">
+                            <label for="char-eyes">Cor dos Olhos</label>
+                            <input type="text" id="char-eyes" placeholder="Ex: Azuis">
+                        </div>
+                        <div class="detail-group">
+                            <label for="char-hair">Cor do Cabelo</label>
+                            <input type="text" id="char-hair" placeholder="Ex: Castanho">
+                        </div>
+                        <div class="detail-group full-width">
+                            <label for="char-backstory">História Pessoal</label>
+                            <textarea id="char-backstory" rows="4" placeholder="Descreva a história do seu personagem..."></textarea>
+                        </div>
+                        <div class="detail-group full-width">
+                            <label for="char-personality">Traços de Personalidade</label>
+                            <textarea id="char-personality" rows="3" placeholder="Como seu personagem se comporta?"></textarea>
+                        </div>
+                        <div class="detail-group full-width">
+                            <label for="char-ideals">Ideais</label>
+                            <textarea id="char-ideals" rows="2" placeholder="No que seu personagem acredita?"></textarea>
+                        </div>
+                        <div class="detail-group full-width">
+                            <label for="char-bonds">Vínculos</label>
+                            <textarea id="char-bonds" rows="2" placeholder="O que é importante para seu personagem?"></textarea>
+                        </div>
+                        <div class="detail-group full-width">
+                            <label for="char-flaws">Defeitos</label>
+                            <textarea id="char-flaws" rows="2" placeholder="Quais são as fraquezas do seu personagem?"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 6: Resumo -->
+                <div class="step-content" data-step="6">
+                    <h2>Resumo do Personagem</h2>
+                    <div class="character-summary">
+                        <div class="summary-card">
+                            <h3 id="summary-name">Nome do Personagem</h3>
+                            <p id="summary-race-class">Raça Classe</p>
+                            <div class="summary-attributes">
+                                <div class="attr-summary">
+                                    <span class="attr-name">FOR</span>
+                                    <span class="attr-value" id="summary-str">10</span>
+                                    <span class="attr-mod">(+0)</span>
+                                </div>
+                                <div class="attr-summary">
+                                    <span class="attr-name">DES</span>
+                                    <span class="attr-value" id="summary-dex">10</span>
+                                    <span class="attr-mod">(+0)</span>
+                                </div>
+                                <div class="attr-summary">
+                                    <span class="attr-name">CON</span>
+                                    <span class="attr-value" id="summary-con">10</span>
+                                    <span class="attr-mod">(+0)</span>
+                                </div>
+                                <div class="attr-summary">
+                                    <span class="attr-name">INT</span>
+                                    <span class="attr-value" id="summary-int">10</span>
+                                    <span class="attr-mod">(+0)</span>
+                                </div>
+                                <div class="attr-summary">
+                                    <span class="attr-name">SAB</span>
+                                    <span class="attr-value" id="summary-wis">10</span>
+                                    <span class="attr-mod">(+0)</span>
+                                </div>
+                                <div class="attr-summary">
+                                    <span class="attr-name">CAR</span>
+                                    <span class="attr-value" id="summary-cha">10</span>
+                                    <span class="attr-mod">(+0)</span>
+                                </div>
+                            </div>
+                            <div class="summary-stats">
+                                <p><strong>Pontos de Vida:</strong> <span id="summary-hp">8</span></p>
+                                <p><strong>Classe de Armadura:</strong> <span id="summary-ac">10</span></p>
+                                <p><strong>Bônus de Proficiência:</strong> +2</p>
+                                <p><strong>Antecedente:</strong> <span id="summary-background">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navegação dos Passos -->
+                <div class="step-navigation">
+                    <button id="prev-step" class="nav-btn" disabled>Anterior</button>
+                    <button id="next-step" class="nav-btn">Próximo</button>
+                    <button id="finish-character" class="nav-btn primary" style="display: none;">Finalizar Personagem</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modo Expert -->
+        <div id="expert-mode" class="creation-mode">
+            <div class="character-sheet">
+                <div class="sheet-header">
+                    <div class="character-info">
+                        <input type="text" placeholder="Nome do Personagem" class="char-name-input">
+                        <div class="char-details-row">
+                            <div class="detail-item">
+                                <label>Classe & Nível</label>
+                                <input type="text" placeholder="Ex: Guerreiro 1">
+                            </div>
+                            <div class="detail-item">
+                                <label>Antecedente</label>
+                                <input type="text" placeholder="Ex: Soldado">
+                            </div>
+                            <div class="detail-item">
+                                <label>Nome do Jogador</label>
+                                <input type="text" placeholder="Seu nome">
+                            </div>
+                        </div>
+                        <div class="char-details-row">
+                            <div class="detail-item">
+                                <label>Raça</label>
+                                <input type="text" placeholder="Ex: Humano">
+                            </div>
+                            <div class="detail-item">
+                                <label>Tendência</label>
+                                <select>
+                                    <option>Leal e Bom</option>
+                                    <option>Neutro e Bom</option>
+                                    <option>Caótico e Bom</option>
+                                    <option>Leal e Neutro</option>
+                                    <option>Neutro</option>
+                                    <option>Caótico e Neutro</option>
+                                    <option>Leal e Mau</option>
+                                    <option>Neutro e Mau</option>
+                                    <option>Caótico e Mau</option>
+                                </select>
+                            </div>
+                            <div class="detail-item">
+                                <label>Experiência</label>
+                                <input type="number" placeholder="0" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sheet-main">
+                    <!-- Atributos -->
+                    <div class="attributes-section">
+                        <div class="attribute-block">
+                            <label>FORÇA</label>
+                            <input type="number" class="attr-score" min="1" max="20" value="10">
+                            <div class="attr-modifier">+0</div>
+                        </div>
+                        <div class="attribute-block">
+                            <label>DESTREZA</label>
+                            <input type="number" class="attr-score" min="1" max="20" value="10">
+                            <div class="attr-modifier">+0</div>
+                        </div>
+                        <div class="attribute-block">
+                            <label>CONSTITUIÇÃO</label>
+                            <input type="number" class="attr-score" min="1" max="20" value="10">
+                            <div class="attr-modifier">+0</div>
+                        </div>
+                        <div class="attribute-block">
+                            <label>INTELIGÊNCIA</label>
+                            <input type="number" class="attr-score" min="1" max="20" value="10">
+                            <div class="attr-modifier">+0</div>
+                        </div>
+                        <div class="attribute-block">
+                            <label>SABEDORIA</label>
+                            <input type="number" class="attr-score" min="1" max="20" value="10">
+                            <div class="attr-modifier">+0</div>
+                        </div>
+                        <div class="attribute-block">
+                            <label>CARISMA</label>
+                            <input type="number" class="attr-score" min="1" max="20" value="10">
+                            <div class="attr-modifier">+0</div>
+                        </div>
+                    </div>
+
+                    <!-- Inspiração e Proficiência -->
+                    <div class="inspiration-section">
+                        <div class="inspiration-block">
+                            <label>INSPIRAÇÃO</label>
+                            <input type="checkbox">
+                        </div>
+                        <div class="proficiency-block">
+                            <label>BÔNUS DE PROFICIÊNCIA</label>
+                            <input type="text" value="+2" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Testes de Resistência -->
+                    <div class="saves-section">
+                        <h3>TESTES DE RESISTÊNCIA</h3>
+                        <div class="save-item">
+                            <input type="checkbox">
+                            <span class="save-mod">+0</span>
+                            <label>Força</label>
+                        </div>
+                        <div class="save-item">
+                            <input type="checkbox">
+                            <span class="save-mod">+0</span>
+                            <label>Destreza</label>
+                        </div>
+                        <div class="save-item">
+                            <input type="checkbox">
+                            <span class="save-mod">+0</span>
+                            <label>Constituição</label>
+                        </div>
+                        <div class="save-item">
+                            <input type="checkbox">
+                            <span class="save-mod">+0</span>
+                            <label>Inteligência</label>
+                        </div>
+                        <div class="save-item">
+                            <input type="checkbox">
+                            <span class="save-mod">+0</span>
+                            <label>Sabedoria</label>
+                        </div>
+                        <div class="save-item">
+                            <input type="checkbox">
+                            <span class="save-mod">+0</span>
+                            <label>Carisma</label>
+                        </div>
+                    </div>
+
+                    <!-- Perícias -->
+                    <div class="skills-section">
+                        <h3>PERÍCIAS</h3>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Acrobacia (Des)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Adestrar Animais (Sab)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Arcanismo (Int)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Atletismo (For)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Atuação (Car)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Enganação (Car)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Furtividade (Des)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>História (Int)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Intimidação (Car)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Intuição (Sab)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Investigação (Int)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Medicina (Sab)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Natureza (Int)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Percepção (Sab)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Persuasão (Car)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Prestidigitação (Des)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Religião (Int)</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox">
+                            <span class="skill-mod">+0</span>
+                            <label>Sobrevivência (Sab)</label>
+                        </div>
+                    </div>
+
+                    <!-- Percepção Passiva -->
+                    <div class="passive-perception">
+                        <label>PERCEPÇÃO PASSIVA</label>
+                        <input type="number" value="10" readonly>
+                    </div>
+
+                    <!-- Outras Proficiências -->
+                    <div class="other-proficiencies">
+                        <label>OUTRAS PROFICIÊNCIAS E IDIOMAS</label>
+                        <textarea rows="6" placeholder="Liste suas proficiências com ferramentas, idiomas, etc."></textarea>
+                    </div>
+                </div>
+
+                <!-- Combate -->
+                <div class="combat-section">
+                    <div class="combat-stats">
+                        <div class="stat-block">
+                            <label>CLASSE DE ARMADURA</label>
+                            <input type="number" value="10">
+                        </div>
+                        <div class="stat-block">
+                            <label>INICIATIVA</label>
+                            <input type="text" value="+0" readonly>
+                        </div>
+                        <div class="stat-block">
+                            <label>DESLOCAMENTO</label>
+                            <input type="text" value="9m">
+                        </div>
+                    </div>
+
+                    <div class="hp-section">
+                        <div class="hp-block">
+                            <label>PONTOS DE VIDA MÁXIMOS</label>
+                            <input type="number" value="8">
+                        </div>
+                        <div class="hp-block">
+                            <label>PONTOS DE VIDA ATUAIS</label>
+                            <input type="number" value="8">
+                        </div>
+                        <div class="hp-block">
+                            <label>PONTOS DE VIDA TEMPORÁRIOS</label>
+                            <input type="number" value="0">
+                        </div>
+                    </div>
+
+                    <div class="hit-dice">
+                        <label>DADOS DE VIDA</label>
+                        <input type="text" placeholder="1d8">
+                        <label>SUCESSOS</label>
+                        <div class="death-saves">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <label>FALHAS</label>
+                        <div class="death-saves">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+
+                    <!-- Ataques -->
+                    <div class="attacks-section">
+                        <h3>ATAQUES E MAGIAS</h3>
+                        <div class="attack-header">
+                            <span>NOME</span>
+                            <span>BÔNUS ATQ</span>
+                            <span>DANO/TIPO</span>
+                        </div>
+                        <div class="attack-row">
+                            <input type="text" placeholder="Espada Longa">
+                            <input type="text" placeholder="+3">
+                            <input type="text" placeholder="1d8+1 cortante">
+                        </div>
+                        <div class="attack-row">
+                            <input type="text" placeholder="">
+                            <input type="text" placeholder="">
+                            <input type="text" placeholder="">
+                        </div>
+                        <div class="attack-row">
+                            <input type="text" placeholder="">
+                            <input type="text" placeholder="">
+                            <input type="text" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipamentos -->
+                <div class="equipment-section">
+                    <div class="equipment-block">
+                        <h3>EQUIPAMENTOS</h3>
+                        <textarea rows="10" placeholder="Liste seus equipamentos, armas, armaduras, itens mágicos, etc."></textarea>
+                    </div>
+                    <div class="money-block">
+                        <h3>DINHEIRO</h3>
+                        <div class="money-row">
+                            <label>PO</label>
+                            <input type="number" value="0">
+                        </div>
+                        <div class="money-row">
+                            <label>PP</label>
+                            <input type="number" value="0">
+                        </div>
+                        <div class="money-row">
+                            <label>PE</label>
+                            <input type="number" value="0">
+                        </div>
+                        <div class="money-row">
+                            <label>PC</label>
+                            <input type="number" value="0">
+                        </div>
+                        <div class="money-row">
+                            <label>PL</label>
+                            <input type="number" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Características -->
+                <div class="features-section">
+                    <div class="personality-block">
+                        <h3>TRAÇOS DE PERSONALIDADE</h3>
+                        <textarea rows="3" placeholder="Descreva como seu personagem se comporta..."></textarea>
+                    </div>
+                    <div class="ideals-block">
+                        <h3>IDEAIS</h3>
+                        <textarea rows="3" placeholder="No que seu personagem acredita..."></textarea>
+                    </div>
+                    <div class="bonds-block">
+                        <h3>VÍNCULOS</h3>
+                        <textarea rows="3" placeholder="O que é importante para seu personagem..."></textarea>
+                    </div>
+                    <div class="flaws-block">
+                        <h3>DEFEITOS</h3>
+                        <textarea rows="3" placeholder="Quais são as fraquezas do seu personagem..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Características e Traços -->
+                <div class="traits-section">
+                    <h3>CARACTERÍSTICAS E TRAÇOS</h3>
+                    <textarea rows="8" placeholder="Liste as características raciais, de classe e de antecedente do seu personagem..."></textarea>
+                </div>
+            </div>
+
+            <!-- Botões do Modo Expert -->
+            <div class="expert-actions">
+                <button class="action-btn secondary" id="clear-sheet">Limpar Ficha</button>
+                <button class="action-btn secondary" id="import-character">Importar Personagem</button>
+                <button class="action-btn primary" id="save-expert-character">Salvar Personagem</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <h3>Personagem Criado!</h3>
+            <p>Seu personagem foi criado com sucesso.</p>
+            <div class="modal-actions">
+                <button class="action-btn secondary" id="create-another">Criar Outro</button>
+                <button class="action-btn primary" id="view-character">Ver Personagem</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificações -->
+    <div id="notification" class="notification"></div>
+
+    <script src="create-character.js"></script>
+</body>
+</html>

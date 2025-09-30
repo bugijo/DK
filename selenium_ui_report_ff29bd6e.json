@@ -1,0 +1,55 @@
+{
+  "session_id": "ff29bd6e",
+  "timestamp": "2025-07-31T07:38:04.837085",
+  "automation_type": "Selenium UI Automation",
+  "frontend_url": "http://localhost:3001",
+  "summary": {
+    "total_tests": 6,
+    "successful_tests": 4,
+    "failed_tests": 2,
+    "success_rate": 66.7
+  },
+  "test_details": [
+    {
+      "timestamp": "2025-07-31T07:33:15.147817",
+      "test": "Setup WebDriver",
+      "success": true,
+      "details": "Chrome WebDriver configurado com sucesso"
+    },
+    {
+      "timestamp": "2025-07-31T07:33:19.690668",
+      "test": "Screenshot frontend_loaded",
+      "success": true,
+      "details": "Captura salva: screenshot_frontend_loaded_ff29bd6e.png"
+    },
+    {
+      "timestamp": "2025-07-31T07:33:19.691533",
+      "test": "Abrir Frontend",
+      "success": true,
+      "details": "Frontend carregado: http://localhost:3001"
+    },
+    {
+      "timestamp": "2025-07-31T07:36:04.046282",
+      "test": "Screenshot user_registered",
+      "success": true,
+      "details": "Captura salva: screenshot_user_registered_ff29bd6e.png"
+    },
+    {
+      "timestamp": "2025-07-31T07:36:04.053920",
+      "test": "Registrar Usuário",
+      "success": false,
+      "details": "Erro: 'username'"
+    },
+    {
+      "timestamp": "2025-07-31T07:36:34.253111",
+      "test": "Criar Personagens",
+      "success": false,
+      "details": "Erro geral: Message: invalid selector: An invalid or illegal selector was specified\n  (Session info: chrome=138.0.7204.169); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a8999a6a]\n\t(No symbol) [0x0x7ff7a89a1419]\n\t(No symbol) [0x0x7ff7a89a44cc]\n\t(No symbol) [0x0x7ff7a89a459f]\n\t(No symbol) [0x0x7ff7a89efcb7]\n\t(No symbol) [0x0x7ff7a89f06bc]\n\t(No symbol) [0x0x7ff7a8a43ac7]\n\t(No symbol) [0x0x7ff7a8a1864f]\n\t(No symbol) [0x0x7ff7a8a4087f]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    }
+  ],
+  "conclusions": {
+    "interface_status": "Com problemas",
+    "user_experience": "Precisa melhorar",
+    "automation_status": "Completo"
+  }
+}

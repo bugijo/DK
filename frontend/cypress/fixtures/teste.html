@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Dungeon Keeper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #A0522D;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Dungeon Keeper - Teste</h1>
+    <p>Bem-vindo ao mundo das masmorras!</p>
+    
+    <div>
+        <button id="botao-jogar">Jogar</button>
+        <button id="botao-opcoes">Opções</button>
+        <button id="botao-sair">Sair</button>
+    </div>
+    
+    <form id="formulario">
+        <h3>Configurações do Jogador</h3>
+        <input type="text" id="nome" placeholder="Digite seu nome" required />
+        <input type="email" id="email" placeholder="Digite seu email" />
+        <br>
+        <input type="submit" value="Salvar" />
+    </form>
+    
+    <script>
+        document.getElementById('botao-jogar').addEventListener('click', function() {
+            alert('Iniciando o jogo!');
+        });
+        
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            if (nome) {
+                alert('Configurações salvas para: ' + nome);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessão de Jogo - Dungeon Keeper</title>
+    <link rel="stylesheet" href="game-session.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header com controles principais -->
+    <header class="game-header">
+        <div class="header-left">
+            <h1><i class="fas fa-dice-d20"></i> Dungeon Keeper</h1>
+            <div class="session-info">
+                <span class="campaign-name">Campanha: <strong id="campaign-title">A Mina Perdida de Phandelver</strong></span>
+                <span class="session-time">Tempo: <strong id="session-timer">00:00:00</strong></span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-role">
+                <select id="user-role" onchange="switchRole()" data-tooltip="Alternar entre Jogador e Mestre">
+                    <option value="player">Jogador</option>
+                    <option value="master">Mestre</option>
+                </select>
+            </div>
+            <div class="header-controls">
+                <button class="btn-help" onclick="gameSession.toggleHelpPanel()" data-tooltip="Ajuda e atalhos (F1)">❓</button>
+                <button class="btn-settings" onclick="openSettings()" data-tooltip="Configurações do jogo"><i class="fas fa-cog"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interface do Jogador -->
+    <div id="player-interface" class="interface-container">
+        <!-- Painel lateral esquerdo - Informações do personagem -->
+        <aside class="left-panel">
+            <div class="character-card">
+                <div class="character-avatar" data-tooltip="Clique para alterar avatar">
+                    <img id="player-avatar" src="assets/icons/default-avatar.png" alt="Avatar do Personagem">
+                    <div class="status-indicator status-online" data-tooltip="Online"></div>
+                    <div class="character-status">
+                        <div class="hp-bar">
+                            <div class="hp-current" style="width: 75%"></div>
+                            <span class="hp-text">18/24 PV</span>
+                        </div>
+                        <div class="status-icons">
+                            <span class="status-icon blessed" title="Abençoado"><i class="fas fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-info">
+                    <h3 id="character-name">Thorin Pedraverde</h3>
+                    <p class="character-details">
+                        <span class="class-level">Guerreiro Nível 3</span><br>
+                        <span class="race">Anão da Montanha</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Atributos principais -->
+            <div class="attributes-panel">
+                <h4>Atributos</h4>
+                <div class="attributes-grid">
+                    <div class="attribute">
+                        <span class="attr-name">FOR</span>
+                        <span class="attr-value">16</span>
+                        <span class="attr-mod">+3</span>
+                    </div>
+                    <div class="attribute">
+                        <span class="attr-name">DES</span>
+                        <span class="attr-value">12</span>
+                        <span class="attr-mod">+1</span>
+                    </div>
+                    <div class="attribute">
+                        <span class="attr-name">CON</span>
+                        <span class="attr-value">15</span>
+                        <span class="attr-mod">+2</span>
+                    </div>
+                    <div class="attribute">
+                        <span class="attr-name">INT</span>
+                        <span class="attr-value">10</span>
+                        <span class="attr-mod">+0</span>
+                    </div>
+                    <div class="attribute">
+                        <span class="attr-name">SAB</span>
+                        <span class="attr-value">13</span>
+                        <span class="attr-mod">+1</span>
+                    </div>
+                    <div class="attribute">
+                        <span class="attr-name">CAR</span>
+                        <span class="attr-value">8</span>
+                        <span class="attr-mod">-1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ações rápidas -->
+            <div class="quick-actions">
+                <h4>Ações Rápidas</h4>
+                <button class="action-btn" onclick="rollInitiative()" data-tooltip="Rolar iniciativa (Ctrl+1)"><i class="fas fa-bolt"></i> Iniciativa</button>
+                <button class="action-btn" onclick="openInventory()" data-tooltip="Abrir inventário (Ctrl+2)"><i class="fas fa-backpack"></i> Inventário</button>
+                <button class="action-btn" onclick="openSpells()" data-tooltip="Lançar uma magia (Ctrl+3)"><i class="fas fa-magic"></i> Magias</button>
+                <button class="action-btn" onclick="rollDice()" data-tooltip="Rolar dados"><i class="fas fa-dice"></i> Rolar Dados</button>
+            </div>
+        </aside>
+
+        <!-- Área central - Tela principal do jogo -->
+        <main class="game-area">
+            <!-- Modo Exploração -->
+            <div id="exploration-mode" class="game-mode active">
+                <div class="narrative-panel">
+                    <h3>Narrativa Atual</h3>
+                    <div class="narrative-content">
+                        <p>Vocês se encontram na entrada de uma caverna escura. O ar está úmido e um cheiro estranho vem do interior. Thorin sente que há algo familiar neste lugar...</p>
+                    </div>
+                </div>
+                <div class="exploration-actions">
+                    <button class="explore-btn" onclick="investigateArea()">Investigar Área</button>
+                    <button class="explore-btn" onclick="listenCarefully()">Escutar Atentamente</button>
+                    <button class="explore-btn" onclick="searchForTraps()">Procurar Armadilhas</button>
+                </div>
+            </div>
+
+            <!-- Modo Combate -->
+            <div id="combat-mode" class="game-mode">
+                <div class="combat-grid">
+                    <canvas id="combat-canvas" width="600" height="400"></canvas>
+                    <div class="grid-controls">
+                        <button onclick="zoomIn()"><i class="fas fa-search-plus"></i></button>
+                        <button onclick="zoomOut()"><i class="fas fa-search-minus"></i></button>
+                        <button onclick="centerView()"><i class="fas fa-crosshairs"></i></button>
+                    </div>
+                </div>
+                <div class="combat-info">
+                    <div class="initiative-tracker">
+                        <h4>Ordem de Iniciativa</h4>
+                        <div class="initiative-list">
+                            <div class="initiative-item active">
+                                <span class="init-order">1</span>
+                                <span class="init-name">Thorin</span>
+                                <span class="init-value">18</span>
+                            </div>
+                            <div class="initiative-item">
+                                <span class="init-order">2</span>
+                                <span class="init-name">Goblin 1</span>
+                                <span class="init-value">15</span>
+                            </div>
+                            <div class="initiative-item">
+                                <span class="init-order">3</span>
+                                <span class="init-name">Elara</span>
+                                <span class="init-value">12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Painel direito - Chat e outros jogadores -->
+        <aside class="right-panel">
+            <!-- Chat da mesa -->
+            <div class="chat-panel">
+                <h4>Chat da Mesa</h4>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message system">
+                        <span class="timestamp">20:15</span>
+                        <span class="content">Sessão iniciada!</span>
+                    </div>
+                    <div class="message player">
+                        <span class="timestamp">20:16</span>
+                        <span class="sender">Thorin:</span>
+                        <span class="content">Vou investigar a entrada da caverna</span>
+                    </div>
+                    <div class="message master">
+                        <span class="timestamp">20:16</span>
+                        <span class="sender">Mestre:</span>
+                        <span class="content">Role um teste de Investigação</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Digite sua mensagem... (Ctrl+Enter para focar)" data-tooltip="Digite uma mensagem para o grupo">
+                    <button onclick="sendMessage()" data-tooltip="Enviar mensagem"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <!-- Outros jogadores -->
+            <div class="party-panel">
+                <h4>Grupo</h4>
+                <div class="party-members">
+                    <div class="party-member" onclick="viewCharacter('elara')" data-tooltip="Clique para ver detalhes do personagem">
+                        <img src="assets/icons/elf-avatar.png" alt="Elara">
+                        <div class="status-indicator status-online"></div>
+                        <div class="member-info">
+                            <span class="member-name">Elara</span>
+                            <span class="member-class">Ranger Élfica</span>
+                            <div class="member-hp">
+                                <div class="hp-bar small">
+                                    <div class="hp-current" style="width: 90%"></div>
+                                </div>
+                                <span class="hp-text">22/25</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="party-member" onclick="viewCharacter('finn')" data-tooltip="Clique para ver detalhes do personagem">
+                        <img src="assets/icons/halfling-avatar.png" alt="Finn">
+                        <div class="status-indicator status-busy"></div>
+                        <div class="member-info">
+                            <span class="member-name">Finn</span>
+                            <span class="member-class">Ladino Halfling</span>
+                            <div class="member-hp">
+                                <div class="hp-bar small">
+                                    <div class="hp-current" style="width: 60%"></div>
+                                </div>
+                                <span class="hp-text">12/20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Interface do Mestre -->
+    <div id="master-interface" class="interface-container hidden">
+        <!-- Painel de controle do mestre -->
+        <aside class="master-control-panel">
+            <div class="master-tools">
+                <h3>Controles do Mestre</h3>
+                
+                <!-- Controle de Cena -->
+                <div class="tool-section">
+                    <h4>Cena Atual</h4>
+                    <select id="current-scene">
+                        <option value="exploration">Exploração</option>
+                        <option value="combat">Combate</option>
+                        <option value="social">Interação Social</option>
+                        <option value="rest">Descanso</option>
+                    </select>
+                    <button class="btn-primary" onclick="changeScene()">Alterar Cena</button>
+                </div>
+
+                <!-- Controle de Música/Ambiente -->
+                <div class="tool-section">
+                    <h4>Ambiente</h4>
+                    <select id="background-music">
+                        <option value="none">Sem música</option>
+                        <option value="exploration">Exploração</option>
+                        <option value="combat">Combate</option>
+                        <option value="tavern">Taverna</option>
+                        <option value="dungeon">Masmorra</option>
+                    </select>
+                    <div class="volume-control">
+                        <i class="fas fa-volume-down"></i>
+                        <input type="range" id="volume-slider" min="0" max="100" value="50">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                </div>
+
+                <!-- Controle de Imagens -->
+                <div class="tool-section">
+                    <h4>Imagens</h4>
+                    <div class="image-gallery">
+                        <div class="image-thumb" onclick="showImage('cave-entrance')">
+                            <img src="assets/textures/cave-entrance.jpg" alt="Entrada da Caverna">
+                            <span>Entrada da Caverna</span>
+                        </div>
+                        <div class="image-thumb" onclick="showImage('goblin-lair')">
+                            <img src="assets/textures/goblin-lair.jpg" alt="Covil dos Goblins">
+                            <span>Covil dos Goblins</span>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="uploadImage()">Adicionar Imagem</button>
+                </div>
+
+                <!-- Controle de NPCs -->
+                <div class="tool-section">
+                    <h4>NPCs Ativos</h4>
+                    <div class="npc-list">
+                        <div class="npc-item">
+                            <span class="npc-name">Goblin Guerreiro</span>
+                            <div class="npc-controls">
+                                <button onclick="rollNPCInitiative('goblin1')"><i class="fas fa-dice"></i></button>
+                                <button onclick="editNPC('goblin1')"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="addNPC()">Adicionar NPC</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Área principal do mestre -->
+        <main class="master-main">
+            <!-- História e Notas -->
+            <div class="story-panel">
+                <h3>História: A Mina Perdida de Phandelver</h3>
+                <div class="story-content">
+                    <div class="story-section active">
+                        <h4>Capítulo 1: Emboscada Goblin</h4>
+                        <p>Os personagens estão escoltando uma caravana quando são atacados por goblins. Após derrotar os atacantes, eles descobrem pistas que levam ao covil dos goblins.</p>
+                        <div class="story-notes">
+                            <h5>Notas do Mestre:</h5>
+                            <ul>
+                                <li>Gundren Rockseeker foi capturado</li>
+                                <li>Os goblins levaram a carroça para o covil</li>
+                                <li>Há rastros claros levando à floresta</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa do Mestre -->
+            <div class="master-map">
+                <canvas id="master-canvas" width="800" height="500"></canvas>
+                <div class="map-tools">
+                    <button class="tool-btn active" data-tool="select"><i class="fas fa-mouse-pointer"></i></button>
+                    <button class="tool-btn" data-tool="move"><i class="fas fa-arrows-alt"></i></button>
+                    <button class="tool-btn" data-tool="measure"><i class="fas fa-ruler"></i></button>
+                    <button class="tool-btn" data-tool="fog"><i class="fas fa-cloud"></i></button>
+                    <button class="tool-btn" data-tool="reveal"><i class="fas fa-eye"></i></button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Painel de jogadores (visão do mestre) -->
+        <aside class="players-panel">
+            <h3>Jogadores</h3>
+            <div class="players-list">
+                <div class="player-card">
+                    <div class="player-header">
+                        <img src="assets/icons/default-avatar.png" alt="Thorin">
+                        <div class="player-info">
+                            <span class="player-name">João - Thorin</span>
+                            <span class="player-status online">Online</span>
+                        </div>
+                    </div>
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-label">PV:</span>
+                            <span class="stat-value">18/24</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">CA:</span>
+                            <span class="stat-value">16</span>
+                        </div>
+                    </div>
+                    <div class="player-actions">
+                        <button onclick="whisperPlayer('thorin')"><i class="fas fa-comment"></i></button>
+                        <button onclick="viewPlayerSheet('thorin')"><i class="fas fa-scroll"></i></button>
+                    </div>
+                </div>
+                
+                <div class="player-card">
+                    <div class="player-header">
+                        <img src="assets/icons/elf-avatar.png" alt="Elara">
+                        <div class="player-info">
+                            <span class="player-name">Maria - Elara</span>
+                            <span class="player-status online">Online</span>
+                        </div>
+                    </div>
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-label">PV:</span>
+                            <span class="stat-value">22/25</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">CA:</span>
+                            <span class="stat-value">14</span>
+                        </div>
+                    </div>
+                    <div class="player-actions">
+                        <button onclick="whisperPlayer('elara')"><i class="fas fa-comment"></i></button>
+                        <button onclick="viewPlayerSheet('elara')"><i class="fas fa-scroll"></i></button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modais -->
+    <!-- Modal de Personagem -->
+    <div id="character-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('character-modal')">&times;</span>
+            <h2 id="modal-character-name">Elara Folha-Verde</h2>
+            <div class="character-details-full">
+                <!-- Conteúdo detalhado do personagem será carregado aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Inventário -->
+    <div id="inventory-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('inventory-modal')">&times;</span>
+            <h2>Inventário</h2>
+            <div class="inventory-grid">
+                <!-- Itens do inventário serão carregados aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Dados -->
+    <div id="dice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('dice-modal')">&times;</span>
+            <h2>Rolar Dados</h2>
+            <div class="dice-roller">
+                <div class="dice-selection">
+                    <button class="dice-btn" onclick="rollDiceType(4)">d4</button>
+                    <button class="dice-btn" onclick="rollDiceType(6)">d6</button>
+                    <button class="dice-btn" onclick="rollDiceType(8)">d8</button>
+                    <button class="dice-btn" onclick="rollDiceType(10)">d10</button>
+                    <button class="dice-btn" onclick="rollDiceType(12)">d12</button>
+                    <button class="dice-btn" onclick="rollDiceType(20)">d20</button>
+                </div>
+                <div class="dice-result" id="dice-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Panel -->
+    <div id="help-panel" class="help-panel" style="display: none;">
+        <div class="help-content">
+            <div class="help-header">
+                <h3>🎮 Guia de Atalhos</h3>
+                <button class="btn-close" onclick="gameSession.toggleHelpPanel()">✕</button>
+            </div>
+            <div class="help-sections">
+                <div class="help-section">
+                    <h4><img src="/icons/Teclado.png" alt="Teclado" style="width: 18px; height: 18px; display: inline; margin-right: 6px;" />Atalhos Gerais</h4>
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + Enter</span>
+                            <span class="shortcut-desc">Focar no chat</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Esc</span>
+                            <span class="shortcut-desc">Fechar modais</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">F1</span>
+                            <span class="shortcut-desc">Ajuda</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h4>🎯 Ações Rápidas</h4>
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + 1</span>
+                            <span class="shortcut-desc">Atacar</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + 2</span>
+                            <span class="shortcut-desc">Defender</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + 3</span>
+                            <span class="shortcut-desc">Usar Magia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h4>🎮 Modos de Jogo</h4>
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">F1</span>
+                            <span class="shortcut-desc">Exploração</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">F2</span>
+                            <span class="shortcut-desc">Combate</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">F3</span>
+                            <span class="shortcut-desc">Social</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h4>💡 Dicas</h4>
+                    <div class="tip-list">
+                        <div class="tip-item">• Passe o mouse sobre elementos para ver tooltips</div>
+                        <div class="tip-item">• Use Tab para navegar entre elementos</div>
+                        <div class="tip-item">• Clique nos avatars para ver detalhes</div>
+                        <div class="tip-item">• O status online aparece como indicador verde</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <script src="game-session.js"></script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+{
+  "simulation_id": "131b8d6e",
+  "duration": "17.93 segundos",
+  "results": {
+    "backend_health": true,
+    "frontend_health": true,
+    "dnd5e_systems": false,
+    "file_systems": true,
+    "user_journeys": [
+      true,
+      true,
+      true
+    ],
+    "game_experience": true
+  },
+  "total_users": 3,
+  "simulation_log": [
+    {
+      "timestamp": "19:19:50",
+      "user_type": "SISTEMA",
+      "action": "Backend Health",
+      "details": "Backend respondendo",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Frontend Health",
+      "details": "Frontend respondendo",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "D&D 5e Systems",
+      "details": "Erro de importação: No module named 'src'",
+      "success": false
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Sistema de Áudio: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Configurações de Áudio: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Efeitos Visuais: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "CSS Efeitos Visuais: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Guia do Mestre: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Livro do Jogador: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Documentação API: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:52",
+      "user_type": "SISTEMA",
+      "action": "Arquivo",
+      "details": "Testes de Magia: ✅ Existe",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:53",
+      "user_type": "USUÁRIO 1",
+      "action": "Cadastro",
+      "details": "Usuário usuario1_131b8d6e_1756505992 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:53",
+      "user_type": "USUÁRIO 1",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:54",
+      "user_type": "USUÁRIO 1",
+      "action": "API User Profile",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:54",
+      "user_type": "USUÁRIO 1",
+      "action": "API Characters List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:54",
+      "user_type": "USUÁRIO 1",
+      "action": "API Items List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "API Monsters List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "API NPCs List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "API Stories List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "API Tables List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "Navegação",
+      "details": "Acessando página inicial",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "Navegação",
+      "details": "Visualizando lista de personagens",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "Navegação",
+      "details": "Explorando funcionalidades",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:55",
+      "user_type": "USUÁRIO 1",
+      "action": "Jornada Completa",
+      "details": "Usuário navegou com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:57",
+      "user_type": "USUÁRIO 2",
+      "action": "Cadastro",
+      "details": "Usuário usuario2_131b8d6e_1756505996 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:58",
+      "user_type": "USUÁRIO 2",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:58",
+      "user_type": "USUÁRIO 2",
+      "action": "API User Profile",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:58",
+      "user_type": "USUÁRIO 2",
+      "action": "API Characters List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:58",
+      "user_type": "USUÁRIO 2",
+      "action": "API Items List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:59",
+      "user_type": "USUÁRIO 2",
+      "action": "API Monsters List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:59",
+      "user_type": "USUÁRIO 2",
+      "action": "API NPCs List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:59",
+      "user_type": "USUÁRIO 2",
+      "action": "API Stories List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:19:59",
+      "user_type": "USUÁRIO 2",
+      "action": "API Tables List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:00",
+      "user_type": "USUÁRIO 2",
+      "action": "Navegação",
+      "details": "Acessando página inicial",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:00",
+      "user_type": "USUÁRIO 2",
+      "action": "Navegação",
+      "details": "Visualizando lista de personagens",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:00",
+      "user_type": "USUÁRIO 2",
+      "action": "Navegação",
+      "details": "Explorando funcionalidades",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:00",
+      "user_type": "USUÁRIO 2",
+      "action": "Jornada Completa",
+      "details": "Usuário navegou com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:01",
+      "user_type": "USUÁRIO 3",
+      "action": "Cadastro",
+      "details": "Usuário usuario3_131b8d6e_1756506001 criado",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:01",
+      "user_type": "USUÁRIO 3",
+      "action": "Login",
+      "details": "Login realizado com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:02",
+      "user_type": "USUÁRIO 3",
+      "action": "API User Profile",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:02",
+      "user_type": "USUÁRIO 3",
+      "action": "API Characters List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:02",
+      "user_type": "USUÁRIO 3",
+      "action": "API Items List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:02",
+      "user_type": "USUÁRIO 3",
+      "action": "API Monsters List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "API NPCs List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "API Stories List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "API Tables List",
+      "details": "Endpoint funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "Navegação",
+      "details": "Acessando página inicial",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "Navegação",
+      "details": "Visualizando lista de personagens",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "Navegação",
+      "details": "Explorando funcionalidades",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:03",
+      "user_type": "USUÁRIO 3",
+      "action": "Jornada Completa",
+      "details": "Usuário navegou com sucesso",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:04",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Sistema de áudio carregado",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:05",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Efeitos visuais inicializados",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:05",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Mapa tático renderizado",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:05",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Chat em tempo real ativo",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:06",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "WebSocket conectado",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:06",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Personagens carregados",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:06",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Inventário sincronizado",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:07",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Sistema D&D 5e ativo",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:07",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Dados virtuais funcionando",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:07",
+      "user_type": "JOGO",
+      "action": "Experiência",
+      "details": "Sessão de jogo simulada",
+      "success": true
+    },
+    {
+      "timestamp": "19:20:08",
+      "user_type": "JOGO",
+      "action": "Experiência Completa",
+      "details": "Simulação de jogo concluída",
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+
+========================================
+🎮 RELATÓRIO DE TESTES - DUNGEON KEEPER
+========================================
+
+📈 RESUMO GERAL:
+• Total de Testes: 51
+• Testes Bem-sucedidos: 41
+• Taxa de Sucesso: 80.4%
+• Sessão: 19cc2435
+
+📦 ENTIDADES CRIADAS:
+• Itens: 10
+• Monstros: 0
+• NPCs: 10
+• Histórias: 10
+
+🔍 DETALHES DOS TESTES:
+✅ Acesso Frontend: Frontend acessível
+✅ Criar Narrador: Usuário narrador_19cc2435 criado
+✅ Criar Jogador: Usuário jogador_19cc2435 criado
+✅ Login Narrador: Token obtido com sucesso
+✅ Login Jogador: Token obtido com sucesso
+✅ Perfil Narrador: Usuário: narrador_19cc2435
+✅ Perfil Jogador: Usuário: jogador_19cc2435
+✅ Criar Item 1: Item 'Espada Flamejante 19cc2435#1' criado
+✅ Criar Item 2: Item 'Poção de Cura 19cc2435#2' criado
+✅ Criar Item 3: Item 'Armadura de Dragão 19cc2435#3' criado
+✅ Criar Item 4: Item 'Anel da Invisibilidade 19cc2435#4' criado
+✅ Criar Item 5: Item 'Grimório Antigo 19cc2435#5' criado
+✅ Criar Item 6: Item 'Adaga Envenenada 19cc2435#6' criado
+✅ Criar Item 7: Item 'Elmo do Cavaleiro 19cc2435#7' criado
+✅ Criar Item 8: Item 'Pergaminho de Teletransporte 19cc2435#8' criado
+✅ Criar Item 9: Item 'Colar de Proteção 19cc2435#9' criado
+✅ Criar Item 10: Item 'Machado de Guerra 19cc2435#10' criado
+❌ Criar Monstro 1: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Dragão Vermelho 19cc2435#1","description":"Dragão ancestral de fogo","type":"dragon","level":20,"hp":500}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Dragão Vermelho 19cc2435#1","description":"Dragão ancestral de fogo","type":"dragon","level":20,"hp":500}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Dragão Vermelho 19cc2435#1","description":"Dragão ancestral de fogo","type":"dragon","level":20,"hp":500}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Dragão Vermelho 19cc2435#1","description":"Dragão ancestral de fogo","type":"dragon","level":20,"hp":500}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Dragão Vermelho 19cc2435#1","description":"Dragão ancestral de fogo","type":"dragon","level":20,"hp":500}}]}
+❌ Criar Monstro 2: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Orc Guerreiro 19cc2435#2","description":"Orc brutal com machado","type":"humanoid","level":5,"hp":80}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Orc Guerreiro 19cc2435#2","description":"Orc brutal com machado","type":"humanoid","level":5,"hp":80}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Orc Guerreiro 19cc2435#2","description":"Orc brutal com machado","type":"humanoid","level":5,"hp":80}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Orc Guerreiro 19cc2435#2","description":"Orc brutal com machado","type":"humanoid","level":5,"hp":80}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Orc Guerreiro 19cc2435#2","description":"Orc brutal com machado","type":"humanoid","level":5,"hp":80}}]}
+❌ Criar Monstro 3: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Esqueleto Arqueiro 19cc2435#3","description":"Morto-vivo com arco","type":"undead","level":3,"hp":45}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Esqueleto Arqueiro 19cc2435#3","description":"Morto-vivo com arco","type":"undead","level":3,"hp":45}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Esqueleto Arqueiro 19cc2435#3","description":"Morto-vivo com arco","type":"undead","level":3,"hp":45}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Esqueleto Arqueiro 19cc2435#3","description":"Morto-vivo com arco","type":"undead","level":3,"hp":45}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Esqueleto Arqueiro 19cc2435#3","description":"Morto-vivo com arco","type":"undead","level":3,"hp":45}}]}
+❌ Criar Monstro 4: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Lobo Sombrio 19cc2435#4","description":"Lobo das trevas","type":"beast","level":4,"hp":60}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Lobo Sombrio 19cc2435#4","description":"Lobo das trevas","type":"beast","level":4,"hp":60}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Lobo Sombrio 19cc2435#4","description":"Lobo das trevas","type":"beast","level":4,"hp":60}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Lobo Sombrio 19cc2435#4","description":"Lobo das trevas","type":"beast","level":4,"hp":60}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Lobo Sombrio 19cc2435#4","description":"Lobo das trevas","type":"beast","level":4,"hp":60}}]}
+❌ Criar Monstro 5: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Golem de Pedra 19cc2435#5","description":"Construto de pedra animada","type":"construct","level":8,"hp":120}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Golem de Pedra 19cc2435#5","description":"Construto de pedra animada","type":"construct","level":8,"hp":120}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Golem de Pedra 19cc2435#5","description":"Construto de pedra animada","type":"construct","level":8,"hp":120}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Golem de Pedra 19cc2435#5","description":"Construto de pedra animada","type":"construct","level":8,"hp":120}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Golem de Pedra 19cc2435#5","description":"Construto de pedra animada","type":"construct","level":8,"hp":120}}]}
+❌ Criar Monstro 6: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Goblin Ladino 19cc2435#6","description":"Pequeno mas perigoso","type":"humanoid","level":2,"hp":25}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Goblin Ladino 19cc2435#6","description":"Pequeno mas perigoso","type":"humanoid","level":2,"hp":25}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Goblin Ladino 19cc2435#6","description":"Pequeno mas perigoso","type":"humanoid","level":2,"hp":25}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Goblin Ladino 19cc2435#6","description":"Pequeno mas perigoso","type":"humanoid","level":2,"hp":25}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Goblin Ladino 19cc2435#6","description":"Pequeno mas perigoso","type":"humanoid","level":2,"hp":25}}]}
+❌ Criar Monstro 7: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Espectro 19cc2435#7","description":"Alma penada vingativa","type":"undead","level":6,"hp":70}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Espectro 19cc2435#7","description":"Alma penada vingativa","type":"undead","level":6,"hp":70}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Espectro 19cc2435#7","description":"Alma penada vingativa","type":"undead","level":6,"hp":70}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Espectro 19cc2435#7","description":"Alma penada vingativa","type":"undead","level":6,"hp":70}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Espectro 19cc2435#7","description":"Alma penada vingativa","type":"undead","level":6,"hp":70}}]}
+❌ Criar Monstro 8: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Troll Regenerador 19cc2435#8","description":"Troll com regeneração","type":"giant","level":10,"hp":150}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Troll Regenerador 19cc2435#8","description":"Troll com regeneração","type":"giant","level":10,"hp":150}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Troll Regenerador 19cc2435#8","description":"Troll com regeneração","type":"giant","level":10,"hp":150}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Troll Regenerador 19cc2435#8","description":"Troll com regeneração","type":"giant","level":10,"hp":150}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Troll Regenerador 19cc2435#8","description":"Troll com regeneração","type":"giant","level":10,"hp":150}}]}
+❌ Criar Monstro 9: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Elemental de Fogo 19cc2435#9","description":"Ser puro de chamas","type":"elemental","level":7,"hp":90}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Elemental de Fogo 19cc2435#9","description":"Ser puro de chamas","type":"elemental","level":7,"hp":90}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Elemental de Fogo 19cc2435#9","description":"Ser puro de chamas","type":"elemental","level":7,"hp":90}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Elemental de Fogo 19cc2435#9","description":"Ser puro de chamas","type":"elemental","level":7,"hp":90}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Elemental de Fogo 19cc2435#9","description":"Ser puro de chamas","type":"elemental","level":7,"hp":90}}]}
+❌ Criar Monstro 10: Status 422: {"detail":[{"type":"missing","loc":["body","size"],"msg":"Field required","input":{"name":"Basilisco 19cc2435#10","description":"Serpente petrificante","type":"monstrosity","level":9,"hp":110}},{"type":"missing","loc":["body","armor_class"],"msg":"Field required","input":{"name":"Basilisco 19cc2435#10","description":"Serpente petrificante","type":"monstrosity","level":9,"hp":110}},{"type":"missing","loc":["body","hit_points"],"msg":"Field required","input":{"name":"Basilisco 19cc2435#10","description":"Serpente petrificante","type":"monstrosity","level":9,"hp":110}},{"type":"missing","loc":["body","speed"],"msg":"Field required","input":{"name":"Basilisco 19cc2435#10","description":"Serpente petrificante","type":"monstrosity","level":9,"hp":110}},{"type":"missing","loc":["body","challenge_rating"],"msg":"Field required","input":{"name":"Basilisco 19cc2435#10","description":"Serpente petrificante","type":"monstrosity","level":9,"hp":110}}]}
+✅ Criar NPC 1: NPC 'Mestre Gandor 19cc2435#1' criado
+✅ Criar NPC 2: NPC 'Capitão Marcus 19cc2435#2' criado
+✅ Criar NPC 3: NPC 'Elara a Curandeira 19cc2435#3' criado
+✅ Criar NPC 4: NPC 'Thorin Forjaferro 19cc2435#4' criado
+✅ Criar NPC 5: NPC 'Lady Morgana 19cc2435#5' criado
+✅ Criar NPC 6: NPC 'Finn o Ladino 19cc2435#6' criado
+✅ Criar NPC 7: NPC 'Irmão Benedict 19cc2435#7' criado
+✅ Criar NPC 8: NPC 'Lyra Cantora 19cc2435#8' criado
+✅ Criar NPC 9: NPC 'Gareth Caçador 19cc2435#9' criado
+✅ Criar NPC 10: NPC 'Velha Sage 19cc2435#10' criado
+✅ Criar História 1: História 'A Lenda do Dragão Perdido 19cc2435#1' criada
+✅ Criar História 2: História 'O Mistério da Torre Sombria 19cc2435#2' criada
+✅ Criar História 3: História 'A Busca pelo Tesouro Pirata 19cc2435#3' criada
+✅ Criar História 4: História 'O Retorno do Rei Lich 19cc2435#4' criada
+✅ Criar História 5: História 'A Floresta Encantada 19cc2435#5' criada
+✅ Criar História 6: História 'O Templo dos Deuses Antigos 19cc2435#6' criada
+✅ Criar História 7: História 'A Revolta dos Goblins 19cc2435#7' criada
+✅ Criar História 8: História 'O Portal Dimensional 19cc2435#8' criada
+✅ Criar História 9: História 'A Maldição da Múmia 19cc2435#9' criada
+✅ Criar História 10: História 'O Torneio dos Campeões 19cc2435#10' criada
+✅ API Listar Itens: 10 itens encontrados
+✅ API Listar Monstros: 0 itens encontrados
+✅ API Listar NPCs: 10 itens encontrados
+✅ API Listar Histórias: 10 itens encontrados
+
+
+🎯 CONCLUSÕES:
+• Backend: ✅ Funcionando
+• Frontend: ✅ Acessível
+• Autenticação: ✅ OK
+• Criação de Dados: ✅ OK
+• Interação Usuários: ✅ OK
+
+⏰ Relatório gerado em: 30/07/2025 23:33:21
+========================================

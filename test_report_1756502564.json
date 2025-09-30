@@ -1,0 +1,107 @@
+{
+  "report": {
+    "total_tests": 11,
+    "passed_tests": 7,
+    "failed_tests": 4,
+    "success_rate": 63.63636363636363,
+    "categories": {
+      "Backend": {
+        "passed": 0,
+        "failed": 1
+      },
+      "Frontend": {
+        "passed": 0,
+        "failed": 1
+      },
+      "D&D": {
+        "passed": 0,
+        "failed": 1
+      },
+      "Magic": {
+        "passed": 0,
+        "failed": 1
+      },
+      "Audio": {
+        "passed": 2,
+        "failed": 0
+      },
+      "Visual": {
+        "passed": 2,
+        "failed": 0
+      },
+      "Documentation": {
+        "passed": 3,
+        "failed": 0
+      }
+    },
+    "ready_for_production": false
+  },
+  "detailed_results": [
+    {
+      "test": "Backend Health",
+      "success": false,
+      "message": "Erro: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B2EC7A42F0>: Failed to establish a new connection: [WinError 10061] Nenhuma conex\u00e3o p\u00f4de ser feita porque a m\u00e1quina de destino as recusou ativamente'))",
+      "timestamp": 1756502543.1007547
+    },
+    {
+      "test": "Frontend Health",
+      "success": false,
+      "message": "Erro: HTTPConnectionPool(host='localhost', port=3001): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B2EC78E490>: Failed to establish a new connection: [WinError 10061] Nenhuma conex\u00e3o p\u00f4de ser feita porque a m\u00e1quina de destino as recusou ativamente'))",
+      "timestamp": 1756502548.0688272
+    },
+    {
+      "test": "D&D 5e Systems",
+      "success": false,
+      "message": "Erro de importa\u00e7\u00e3o: No module named 'src'",
+      "timestamp": 1756502548.1292806
+    },
+    {
+      "test": "Magic System Tests",
+      "success": false,
+      "message": "Testes falharam: ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --cov=src --cov-report=term-missing\n  inifile: C:\\Users\\WINDOWS 10\\Desktop\\Projetos\\DK\\pytest.ini\n  rootdir: C:\\Users\\WINDOWS 10\\Desktop\\Projetos\\DK\n\n",
+      "timestamp": 1756502559.8125694
+    },
+    {
+      "test": "Audio File frontend/src/services/audioManager.ts",
+      "success": true,
+      "message": "Arquivo existe",
+      "timestamp": 1756502560.1485238
+    },
+    {
+      "test": "Audio File frontend/src/components/AudioSettings.tsx",
+      "success": true,
+      "message": "Arquivo existe",
+      "timestamp": 1756502560.2160487
+    },
+    {
+      "test": "Visual Effects File frontend/src/components/VisualEffects.tsx",
+      "success": true,
+      "message": "Arquivo existe",
+      "timestamp": 1756502560.3357842
+    },
+    {
+      "test": "Visual Effects File frontend/src/components/VisualEffects.css",
+      "success": true,
+      "message": "Arquivo existe",
+      "timestamp": 1756502560.4986422
+    },
+    {
+      "test": "Documentation docs/reference/guia-mestre-dnd5e.md",
+      "success": true,
+      "message": "Documenta\u00e7\u00e3o existe",
+      "timestamp": 1756502560.710125
+    },
+    {
+      "test": "Documentation docs/reference/livro-jogador-dnd5e.md",
+      "success": true,
+      "message": "Documenta\u00e7\u00e3o existe",
+      "timestamp": 1756502560.883389
+    },
+    {
+      "test": "Documentation docs/api/openapi-spec.yaml",
+      "success": true,
+      "message": "Documenta\u00e7\u00e3o existe",
+      "timestamp": 1756502560.9748185
+    }
+  ]
+}

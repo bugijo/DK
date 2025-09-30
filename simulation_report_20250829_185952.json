@@ -1,0 +1,56 @@
+{
+  "duration": "4.91 segundos",
+  "master_success": false,
+  "players_success": [
+    false,
+    false,
+    false
+  ],
+  "session_success": false,
+  "total_users": 0,
+  "entities_created": {
+    "characters": 0,
+    "items": 0,
+    "monsters": 0,
+    "npcs": 0,
+    "stories": 0,
+    "tables": 0
+  },
+  "simulation_log": [
+    {
+      "timestamp": "18:59:48",
+      "user_type": "MESTRE",
+      "action": "Cadastro",
+      "details": "Erro: 200",
+      "success": false
+    },
+    {
+      "timestamp": "18:59:48",
+      "user_type": "JOGADOR 1",
+      "action": "Cadastro",
+      "details": "Erro: 200",
+      "success": false
+    },
+    {
+      "timestamp": "18:59:50",
+      "user_type": "JOGADOR 2",
+      "action": "Cadastro",
+      "details": "Erro: 200",
+      "success": false
+    },
+    {
+      "timestamp": "18:59:51",
+      "user_type": "JOGADOR 3",
+      "action": "Cadastro",
+      "details": "Erro: 200",
+      "success": false
+    },
+    {
+      "timestamp": "18:59:52",
+      "user_type": "SESSÃO",
+      "action": "Iniciar Jogo",
+      "details": "Nenhuma mesa disponível",
+      "success": false
+    }
+  ]
+}

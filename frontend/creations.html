@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Companion - Criações</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="creations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="user-avatar">
+            <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+        </div>
+        <div class="player-details">
+            <div class="player-info">
+                <span class="player-name">DarkKnight</span>
+                <span class="player-level">Nível 25</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 65%;"></div>
+                <span class="xp-text">8,750 / 10,000 XP</span>
+            </div>
+        </div>
+        <div class="resources">
+            <div class="resource-item">
+                <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                <span class="resource-value" id="gold">1,250</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                <span class="resource-value" id="diamonds">12</span>
+            </div>
+            <div class="resource-item">
+                <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                <span class="resource-value" id="gems">45</span>
+            </div>
+        </div>
+        <div class="settings">
+            <button class="settings-btn">
+                <img src="assets/icons/settings.svg" alt="Settings" class="settings-icon">
+            </button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="creations-container">
+            <h1>Ferramentas de Criação</h1>
+            <p>Use estas ferramentas para criar novos elementos para sua campanha de RPG. Cada ferramenta é especializada para ajudá-lo a dar vida ao seu mundo.</p>
+
+            <div class="creation-grid">
+                <div class="creation-card">
+                    <img src="https://via.placeholder.com/200x150" alt="Criar Personagem">
+                    <h3>Criar Personagem</h3>
+                    <p>Crie heróis e personagens para suas aventuras.</p>
+                    <a href="create-character.html" class="card-button">Criar Personagem</a>
+                </div>
+
+                <div class="creation-card">
+                    <img src="https://via.placeholder.com/200x150" alt="Criar Item">
+                    <h3>Criar Item</h3>
+                    <p>Forje armas mágicas e itens lendários.</p>
+                    <a href="create-item.html" class="card-button">Criar Item</a>
+                </div>
+
+                <div class="creation-card">
+                    <div class="card-icon"><img src="/icons/Mapas.png" alt="Mapa" style="width: 32px; height: 32px;" /></div>
+                    <h3>CRIAR MAPA</h3>
+                    <p>Desenhe mapas detalhados para suas aventuras</p>
+                    <button class="card-button" onclick="window.location.href='create-map.html'">CRIAR MAPA</button>
+                </div>
+
+                <div class="creation-card">
+                    <div class="card-icon">
+                        <img src="assets/icons/scroll.svg" alt="História" class="card-icon-img">
+                    </div>
+                    <h3>CRIAR HISTÓRIA</h3>
+                    <p>CRIE AVENTURAS ÉPICAS E NARRATIVAS ENVOLVENTES PARA SUAS CAMPANHAS</p>
+                    <button class="card-button" onclick="window.location.href='create-story.html'">CRIAR HISTÓRIA</button>
+                </div>
+
+                <div class="creation-card">
+                    <img src="https://via.placeholder.com/200x150" alt="Criar Monstro">
+                    <h3>Criar Monstro</h3>
+                    <p>Crie criaturas temíveis para desafiar heróis.</p>
+                    <a href="create-monster.html" class="card-button">Criar Monstro</a>
+                </div>
+
+                <div class="creation-card">
+                    <img src="https://via.placeholder.com/200x150" alt="Criar NPC">
+                    <h3>Criar NPC</h3>
+                    <p>Desenvolva personagens não jogáveis memoráveis.</p>
+                    <a href="create-npc.html" class="card-button">Criar NPC</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

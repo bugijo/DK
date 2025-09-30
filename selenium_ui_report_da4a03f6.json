@@ -1,0 +1,85 @@
+{
+  "session_id": "da4a03f6",
+  "timestamp": "2025-07-31T19:39:54.703218",
+  "automation_type": "Selenium UI Automation",
+  "frontend_url": "http://localhost:8080",
+  "summary": {
+    "total_tests": 11,
+    "successful_tests": 3,
+    "failed_tests": 8,
+    "success_rate": 27.3
+  },
+  "test_details": [
+    {
+      "timestamp": "2025-07-31T19:38:23.378174",
+      "test": "Setup WebDriver",
+      "success": true,
+      "details": "Chrome WebDriver configurado com sucesso"
+    },
+    {
+      "timestamp": "2025-07-31T19:38:27.178724",
+      "test": "Screenshot frontend_loaded",
+      "success": true,
+      "details": "Captura salva: screenshot_frontend_loaded_da4a03f6.png"
+    },
+    {
+      "timestamp": "2025-07-31T19:38:27.182674",
+      "test": "Abrir Frontend",
+      "success": true,
+      "details": "Frontend carregado: http://localhost:8080"
+    },
+    {
+      "timestamp": "2025-07-31T19:38:57.399179",
+      "test": "Registrar Usuário",
+      "success": false,
+      "details": "Erro: Message: invalid selector: An invalid or illegal selector was specified\n  (Session info: chrome=138.0.7204.169); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidselectorexception\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a8999a6a]\n\t(No symbol) [0x0x7ff7a89a1419]\n\t(No symbol) [0x0x7ff7a89a44cc]\n\t(No symbol) [0x0x7ff7a89a459f]\n\t(No symbol) [0x0x7ff7a89efcb7]\n\t(No symbol) [0x0x7ff7a89f06bc]\n\t(No symbol) [0x0x7ff7a8a43ac7]\n\t(No symbol) [0x0x7ff7a8a1864f]\n\t(No symbol) [0x0x7ff7a8a4087f]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.662257",
+      "test": "Criar Personagem 1",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aaa80]\n\t(No symbol) [0x0x7ff7a8a40a79]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.668484",
+      "test": "Criar Personagem 2",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aa2b1]\n\t(No symbol) [0x0x7ff7a89b141a]\n\t(No symbol) [0x0x7ff7a8985e6d]\n\t(No symbol) [0x0x7ff7a89a99b3]\n\t(No symbol) [0x0x7ff7a8a40759]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.674886",
+      "test": "Criar Personagem 3",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aa2b1]\n\t(No symbol) [0x0x7ff7a89b141a]\n\t(No symbol) [0x0x7ff7a8985e6d]\n\t(No symbol) [0x0x7ff7a89a99b3]\n\t(No symbol) [0x0x7ff7a8a40759]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.681099",
+      "test": "Screenshot characters_created",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aa2b1]\n\t(No symbol) [0x0x7ff7a89b141a]\n\t(No symbol) [0x0x7ff7a8985e6d]\n\t(No symbol) [0x0x7ff7a89a99b3]\n\t(No symbol) [0x0x7ff7a8a40759]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.685998",
+      "test": "Navegar Inventário",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aa2b1]\n\t(No symbol) [0x0x7ff7a89b141a]\n\t(No symbol) [0x0x7ff7a8985e6d]\n\t(No symbol) [0x0x7ff7a89a99b3]\n\t(No symbol) [0x0x7ff7a8a40759]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.691102",
+      "test": "Navegar Mesas",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aa2b1]\n\t(No symbol) [0x0x7ff7a89b141a]\n\t(No symbol) [0x0x7ff7a8985e6d]\n\t(No symbol) [0x0x7ff7a89a99b3]\n\t(No symbol) [0x0x7ff7a8a40759]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    },
+    {
+      "timestamp": "2025-07-31T19:39:54.697447",
+      "test": "Navegar Histórias",
+      "success": false,
+      "details": "Erro: Message: tab crashed\n  (Session info: chrome=138.0.7204.169)\nStacktrace:\n\tGetHandleVerifier [0x0x7ff7a8bce415+77285]\n\tGetHandleVerifier [0x0x7ff7a8bce470+77376]\n\t(No symbol) [0x0x7ff7a899989c]\n\t(No symbol) [0x0x7ff7a898703b]\n\t(No symbol) [0x0x7ff7a8984c68]\n\t(No symbol) [0x0x7ff7a89856cf]\n\t(No symbol) [0x0x7ff7a89942ee]\n\t(No symbol) [0x0x7ff7a89aa2b1]\n\t(No symbol) [0x0x7ff7a89b141a]\n\t(No symbol) [0x0x7ff7a8985e6d]\n\t(No symbol) [0x0x7ff7a89a99b3]\n\t(No symbol) [0x0x7ff7a8a40759]\n\t(No symbol) [0x0x7ff7a8a183e3]\n\t(No symbol) [0x0x7ff7a89e1521]\n\t(No symbol) [0x0x7ff7a89e22b3]\n\tGetHandleVerifier [0x0x7ff7a8eb1efd+3107021]\n\tGetHandleVerifier [0x0x7ff7a8eac29d+3083373]\n\tGetHandleVerifier [0x0x7ff7a8ecbedd+3213485]\n\tGetHandleVerifier [0x0x7ff7a8be884e+184862]\n\tGetHandleVerifier [0x0x7ff7a8bf055f+216879]\n\tGetHandleVerifier [0x0x7ff7a8bd7084+113236]\n\tGetHandleVerifier [0x0x7ff7a8bd7239+113673]\n\tGetHandleVerifier [0x0x7ff7a8bbe298+11368]\n\tBaseThreadInitThunk [0x0x7ff99b3e7374+20]\n\tRtlUserThreadStart [0x0x7ff99bb3cc91+33]\n"
+    }
+  ],
+  "conclusions": {
+    "interface_status": "Com problemas",
+    "user_experience": "Precisa melhorar",
+    "automation_status": "Completo"
+  }
+}

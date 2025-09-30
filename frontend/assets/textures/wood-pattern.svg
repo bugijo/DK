@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <pattern id="woodGrain" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <!-- Base wood color -->
+      <rect width="200" height="200" fill="#8B4513"/>
+      
+      <!-- Wood grain lines -->
+      <path d="M0 20 Q50 15 100 20 T200 20" stroke="#654321" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M0 40 Q50 35 100 40 T200 40" stroke="#A0522D" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M0 60 Q50 65 100 60 T200 60" stroke="#654321" stroke-width="2" fill="none" opacity="0.7"/>
+      <path d="M0 80 Q50 75 100 80 T200 80" stroke="#5D4037" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M0 100 Q50 105 100 100 T200 100" stroke="#654321" stroke-width="2.5" fill="none" opacity="0.8"/>
+      <path d="M0 120 Q50 115 100 120 T200 120" stroke="#A0522D" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M0 140 Q50 145 100 140 T200 140" stroke="#654321" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M0 160 Q50 155 100 160 T200 160" stroke="#5D4037" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M0 180 Q50 185 100 180 T200 180" stroke="#654321" stroke-width="2" fill="none" opacity="0.7"/>
+      
+      <!-- Wood knots -->
+      <ellipse cx="60" cy="70" rx="8" ry="12" fill="#5D4037" opacity="0.8"/>
+      <ellipse cx="140" cy="130" rx="6" ry="10" fill="#4A2C2A" opacity="0.9"/>
+      <ellipse cx="30" cy="150" rx="5" ry="8" fill="#5D4037" opacity="0.7"/>
+      <ellipse cx="170" cy="50" rx="7" ry="11" fill="#4A2C2A" opacity="0.8"/>
+      
+      <!-- Darker grain details -->
+      <path d="M0 25 Q25 23 50 25 Q75 27 100 25 Q125 23 150 25 Q175 27 200 25" stroke="#4A2C2A" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <path d="M0 65 Q25 67 50 65 Q75 63 100 65 Q125 67 150 65 Q175 63 200 65" stroke="#4A2C2A" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <path d="M0 105 Q25 103 50 105 Q75 107 100 105 Q125 103 150 105 Q175 107 200 105" stroke="#4A2C2A" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <path d="M0 145 Q25 147 50 145 Q75 143 100 145 Q125 147 150 145 Q175 143 200 145" stroke="#4A2C2A" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <path d="M0 185 Q25 183 50 185 Q75 187 100 185 Q125 183 150 185 Q175 187 200 185" stroke="#4A2C2A" stroke-width="0.8" fill="none" opacity="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" fill="url(#woodGrain)"/>
+</svg>

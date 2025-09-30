@@ -1,0 +1,350 @@
+/* UX Optimizer Styles */
+.ux-optimizer-container {
+  position: relative;
+}
+
+.ux-optimizer-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ux-optimizer-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ux-optimizer-toggle:active {
+  transform: scale(0.95);
+}
+
+.ux-optimizer-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  max-height: 70vh;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ux-optimizer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.ux-optimizer-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.performance-metrics,
+.optimization-controls,
+.accessibility-preferences,
+.performance-preferences,
+.ux-tips {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.performance-metrics h4,
+.optimization-controls h4,
+.accessibility-preferences h4,
+.performance-preferences h4,
+.ux-tips h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.metric span:first-child {
+  color: #666;
+}
+
+.metric span:last-child {
+  font-weight: 600;
+}
+
+.optimize-button {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.optimize-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.optimize-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.preference-item input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  accent-color: #667eea;
+}
+
+.preference-item span {
+  color: #333;
+}
+
+.ux-tips ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12px;
+  color: #666;
+}
+
+.ux-tips li {
+  margin-bottom: 4px;
+}
+
+.performance-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  z-index: 998;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.performance-indicator:hover {
+  opacity: 1;
+}
+
+/* Tema escuro */
+@media (prefers-color-scheme: dark) {
+  .ux-optimizer-panel {
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+
+  .ux-optimizer-header {
+    border-bottom-color: #404040;
+  }
+
+  .performance-metrics,
+  .optimization-controls,
+  .accessibility-preferences,
+  .performance-preferences,
+  .ux-tips {
+    border-bottom-color: #404040;
+  }
+
+  .performance-metrics h4,
+  .optimization-controls h4,
+  .accessibility-preferences h4,
+  .performance-preferences h4,
+  .ux-tips h4 {
+    color: #e0e0e0;
+  }
+
+  .metric span:first-child {
+    color: #b0b0b0;
+  }
+
+  .preference-item span {
+    color: #e0e0e0;
+  }
+
+  .ux-tips ul {
+    color: #b0b0b0;
+  }
+}
+
+/* Alto contraste */
+.high-contrast .ux-optimizer-panel {
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.high-contrast .ux-optimizer-toggle {
+  background: #000;
+  border: 2px solid #fff;
+}
+
+.high-contrast .optimize-button {
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+
+/* Animações reduzidas */
+@media (prefers-reduced-motion: reduce) {
+  .ux-optimizer-toggle,
+  .optimize-button,
+  .close-button,
+  .performance-indicator {
+    transition: none;
+  }
+
+  .ux-optimizer-panel {
+    animation: none;
+  }
+
+  .ux-optimizer-toggle:hover {
+    transform: none;
+  }
+
+  .optimize-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .ux-optimizer-panel {
+    width: calc(100vw - 40px);
+    right: 20px;
+    left: 20px;
+    max-height: 60vh;
+  }
+
+  .ux-optimizer-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .performance-indicator {
+    top: 15px;
+    right: 15px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ux-optimizer-panel {
+    width: calc(100vw - 20px);
+    right: 10px;
+    left: 10px;
+    bottom: 70px;
+  }
+
+  .ux-optimizer-toggle {
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .performance-indicator {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* Variáveis CSS customizáveis */
+:root {
+  --animation-duration: 0.3s;
+  --transition-duration: 0.2s;
+}
+
+/* Aplicar durações customizáveis */
+.ux-optimizer-toggle {
+  transition-duration: var(--transition-duration);
+}
+
+.ux-optimizer-panel {
+  animation-duration: var(--animation-duration);
+}
+
+.optimize-button,
+.close-button,
+.performance-indicator {
+  transition-duration: var(--transition-duration);
+}

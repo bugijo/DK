@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar NPC - Dungeon Keeper</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create-npc.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="user-avatar">
+                <img src="assets/icons/user-avatar.svg" alt="User Avatar" class="avatar-icon">
+            </div>
+            <div class="player-details">
+                <div class="player-info">
+                    <span class="player-name">DarkKnight</span>
+                    <span class="player-level">Nível 25</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-progress" style="width: 65%;"></div>
+                    <span class="xp-text">8,750 / 10,000 XP</span>
+                </div>
+            </div>
+            <div class="resources">
+                <div class="resource-item">
+                    <img src="assets/icons/gold-coin.svg" alt="Ouro" class="resource-icon">
+                    <span class="resource-value" id="gold">1,250</span>
+                </div>
+                <div class="resource-item">
+                    <img src="assets/icons/diamond.svg" alt="Diamantes" class="resource-icon">
+                    <span class="resource-value" id="diamonds">12</span>
+                </div>
+                <div class="resource-item">
+                    <img src="assets/icons/gem.svg" alt="Gemas" class="resource-icon">
+                    <span class="resource-value" id="gems">45</span>
+                </div>
+            </div>
+            <div class="settings">
+                <button class="settings-btn" onclick="window.location.href='settings.html'">
+                    <img src="assets/icons/settings.svg" alt="Settings" class="settings-icon">
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="home.html" class="nav-item">
+                <img src="assets/icons/shield.svg" alt="Home" width="20" height="20">
+                <span>HOME</span>
+            </a>
+            <a href="inventory.html" class="nav-item">
+                <img src="assets/icons/sword.svg" alt="Inventário" width="20" height="20">
+                <span>INVENTÁRIO</span>
+            </a>
+            <a href="creations.html" class="nav-item active">
+                <img src="assets/icons/scroll.svg" alt="Criações" width="20" height="20">
+                <span>CRIAÇÕES</span>
+            </a>
+            <a href="missions.html" class="nav-item">
+                <img src="assets/icons/book.svg" alt="Missões" width="20" height="20">
+                <span>MISSÕES</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <img src="assets/icons/gold-coin.svg" alt="Loja" width="20" height="20">
+                <span>LOJA</span>
+            </a>
+            <a href="tables.html" class="nav-item">
+                <img src="assets/icons/user-avatar.svg" alt="Mesas" width="20" height="20">
+                <span>MESAS</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h2>CRIAR NPC</h2>
+                <p>Crie personagens não-jogáveis seguindo as regras D&D 5e</p>
+            </div>
+
+            <form class="npc-form" id="npcForm">
+                <!-- Avatar do NPC -->
+                <section class="form-section">
+                    <h3>Avatar do NPC</h3>
+                    <div class="avatar-section">
+                        <div class="avatar-preview">
+                            <div class="avatar-placeholder" id="avatarPreview">
+                                <svg width="120" height="120" viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                    <circle cx="45" cy="45" r="5" fill="#FFD700"/>
+                                    <circle cx="75" cy="45" r="5" fill="#FFD700"/>
+                                    <path d="M 45 75 Q 60 85 75 75" stroke="#FFD700" stroke-width="2" fill="none"/>
+                                    <text x="60" y="100" text-anchor="middle" fill="#F5DEB3" font-size="10">Avatar</text>
+                                </svg>
+                            </div>
+                            <p class="avatar-info">Faça upload de uma imagem para o avatar do NPC</p>
+                        </div>
+                        <div class="avatar-controls">
+                            <button type="button" class="avatar-btn" id="uploadAvatar">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                                </svg>
+                                Fazer Upload da Imagem
+                            </button>
+                            <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                            <p class="avatar-tip">💡 Dica: Use imagens estilo anime, arte digital ou desenhos para melhores resultados</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Informações Básicas -->
+                <section class="form-section">
+                    <h3>Informações Básicas</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="npcName">Nome do NPC</label>
+                            <input type="text" id="npcName" name="npcName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="npcLevel">Nível</label>
+                            <select id="npcLevel" name="npcLevel">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="npcRace">Raça</label>
+                            <select id="npcRace" name="npcRace" required>
+                                <option value="">Selecione uma raça</option>
+                                <option value="humano">Humano</option>
+                                <option value="elfo">Elfo</option>
+                                <option value="anao">Anão</option>
+                                <option value="halfling">Halfling</option>
+                                <option value="draconato">Draconato</option>
+                                <option value="gnomo">Gnomo</option>
+                                <option value="meio-elfo">Meio-elfo</option>
+                                <option value="meio-orc">Meio-orc</option>
+                                <option value="tiefling">Tiefling</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="npcClass">Classe</label>
+                            <select id="npcClass" name="npcClass" required>
+                                <option value="">Selecione uma classe</option>
+                                <option value="barbaro">Bárbaro</option>
+                                <option value="bardo">Bardo</option>
+                                <option value="clerigo">Clérigo</option>
+                                <option value="druida">Druida</option>
+                                <option value="guerreiro">Guerreiro</option>
+                                <option value="mago">Mago</option>
+                                <option value="monge">Monge</option>
+                                <option value="paladino">Paladino</option>
+                                <option value="patrulheiro">Patrulheiro</option>
+                                <option value="ladino">Ladino</option>
+                                <option value="feiticeiro">Feiticeiro</option>
+                                <option value="bruxo">Bruxo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="npcBackground">Antecedente</label>
+                            <select id="npcBackground" name="npcBackground">
+                                <option value="">Selecione um antecedente</option>
+                                <option value="acólito">Acólito</option>
+                                <option value="artesao">Artesão</option>
+                                <option value="artista">Artista</option>
+                                <option value="charlatao">Charlatão</option>
+                                <option value="criminoso">Criminoso</option>
+                                <option value="eremita">Eremita</option>
+                                <option value="heroi-popular">Herói Popular</option>
+                                <option value="nobre">Nobre</option>
+                                <option value="forasteiro">Forasteiro</option>
+                                <option value="sabio">Sábio</option>
+                                <option value="marinheiro">Marinheiro</option>
+                                <option value="soldado">Soldado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="npcAlignment">Tendência</label>
+                            <select id="npcAlignment" name="npcAlignment">
+                                <option value="">Selecione uma tendência</option>
+                                <option value="leal-bom">Leal e Bom</option>
+                                <option value="neutro-bom">Neutro e Bom</option>
+                                <option value="caotico-bom">Caótico e Bom</option>
+                                <option value="leal-neutro">Leal e Neutro</option>
+                                <option value="neutro">Neutro</option>
+                                <option value="caotico-neutro">Caótico e Neutro</option>
+                                <option value="leal-mal">Leal e Mal</option>
+                                <option value="neutro-mal">Neutro e Mal</option>
+                                <option value="caotico-mal">Caótico e Mal</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atributos -->
+                <section class="form-section">
+                    <h3>Atributos</h3>
+                    <div class="attributes-grid">
+                        <div class="attribute-group">
+                            <label for="strength">Força</label>
+                            <input type="number" id="strength" name="strength" min="3" max="20" value="10">
+                            <span class="modifier" id="strengthMod">+0</span>
+                        </div>
+                        <div class="attribute-group">
+                            <label for="dexterity">Destreza</label>
+                            <input type="number" id="dexterity" name="dexterity" min="3" max="20" value="10">
+                            <span class="modifier" id="dexterityMod">+0</span>
+                        </div>
+                        <div class="attribute-group">
+                            <label for="constitution">Constituição</label>
+                            <input type="number" id="constitution" name="constitution" min="3" max="20" value="10">
+                            <span class="modifier" id="constitutionMod">+0</span>
+                        </div>
+                        <div class="attribute-group">
+                            <label for="intelligence">Inteligência</label>
+                            <input type="number" id="intelligence" name="intelligence" min="3" max="20" value="10">
+                            <span class="modifier" id="intelligenceMod">+0</span>
+                        </div>
+                        <div class="attribute-group">
+                            <label for="wisdom">Sabedoria</label>
+                            <input type="number" id="wisdom" name="wisdom" min="3" max="20" value="10">
+                            <span class="modifier" id="wisdomMod">+0</span>
+                        </div>
+                        <div class="attribute-group">
+                            <label for="charisma">Carisma</label>
+                            <input type="number" id="charisma" name="charisma" min="3" max="20" value="10">
+                            <span class="modifier" id="charismaMod">+0</span>
+                        </div>
+                    </div>
+                    <div class="attribute-actions">
+                        <button type="button" id="rollAttributes">Rolar Atributos (4d6)</button>
+                        <button type="button" id="standardArray">Array Padrão</button>
+                        <button type="button" id="pointBuy">Compra de Pontos</button>
+                    </div>
+                </section>
+
+                <!-- Características Calculadas -->
+                <section class="form-section">
+                    <h3>Características Calculadas</h3>
+                    <div class="calculated-stats">
+                        <div class="stat-group">
+                            <label>Pontos de Vida</label>
+                            <span id="hitPoints">8</span>
+                        </div>
+                        <div class="stat-group">
+                            <label>Classe de Armadura</label>
+                            <span id="armorClass">10</span>
+                        </div>
+                        <div class="stat-group">
+                            <label>Bônus de Proficiência</label>
+                            <span id="proficiencyBonus">+2</span>
+                        </div>
+                        <div class="stat-group">
+                            <label>Iniciativa</label>
+                            <span id="initiative">+0</span>
+                        </div>
+                        <div class="stat-group">
+                            <label>Velocidade</label>
+                            <span id="speed">30 pés</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Personalidade -->
+                <section class="form-section">
+                    <h3>Personalidade e Motivações</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="personalityTraits">Traços de Personalidade</label>
+                            <textarea id="personalityTraits" name="personalityTraits" rows="3" placeholder="Descreva os traços únicos de personalidade do NPC..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="ideals">Ideais</label>
+                            <textarea id="ideals" name="ideals" rows="2" placeholder="O que motiva este NPC? Quais são seus valores?"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="bonds">Vínculos</label>
+                            <textarea id="bonds" name="bonds" rows="2" placeholder="Pessoas, lugares ou coisas importantes para o NPC..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="flaws">Defeitos</label>
+                            <textarea id="flaws" name="flaws" rows="2" placeholder="Fraquezas ou vícios que podem ser explorados..."></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Equipamentos -->
+                <section class="form-section">
+                    <h3>Equipamentos</h3>
+                    <div class="equipment-section">
+                        <div class="form-group">
+                            <label for="armor">Armadura</label>
+                            <select id="armor" name="armor">
+                                <option value="">Nenhuma</option>
+                                <option value="couro">Armadura de Couro (CA 11)</option>
+                                <option value="couro-batido">Couro Batido (CA 12)</option>
+                                <option value="camisao-malha">Camisão de Malha (CA 13)</option>
+                                <option value="gibao-peles">Gibão de Peles (CA 12)</option>
+                                <option value="brunea">Brunea (CA 14)</option>
+                                <option value="cota-malha">Cota de Malha (CA 16)</option>
+                                <option value="peitoral">Peitoral (CA 14)</option>
+                                <option value="meia-armadura">Meia Armadura (CA 15)</option>
+                                <option value="cota-escamas">Cota de Escamas (CA 14)</option>
+                                <option value="loriga-segmentada">Loriga Segmentada (CA 17)</option>
+                                <option value="armadura-completa">Armadura Completa (CA 18)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="shield">Escudo</label>
+                            <select id="shield" name="shield">
+                                <option value="">Nenhum</option>
+                                <option value="escudo">Escudo (+2 CA)</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="weapons">Armas</label>
+                            <textarea id="weapons" name="weapons" rows="3" placeholder="Liste as armas do NPC (ex: Espada Longa, Arco Longo, Adaga...)"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="equipment">Outros Equipamentos</label>
+                            <textarea id="equipment" name="equipment" rows="3" placeholder="Outros itens, ferramentas, poções, etc..."></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notas Adicionais -->
+                <section class="form-section">
+                    <h3>Notas Adicionais</h3>
+                    <div class="form-group full-width">
+                        <label for="notes">Notas do Mestre</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Informações adicionais sobre o NPC, sua função na campanha, segredos, etc..."></textarea>
+                    </div>
+                </section>
+
+                <!-- Botões de Ação -->
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="window.location.href='creations.html'">Cancelar</button>
+                    <button type="button" class="btn-secondary" id="previewNPC">Visualizar</button>
+                    <button type="submit" class="btn-primary">Salvar NPC</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="create-npc.js"></script>
+</body>
+</html>

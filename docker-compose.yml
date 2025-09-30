@@ -1,0 +1,139 @@
+version: '3.8'
+
+services:
+  # Banco de dados PostgreSQL
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: dungeon_keeper
+      POSTGRES_USER: dk_user
+      POSTGRES_PASSWORD: dk_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dk_user -d dungeon_keeper"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Cache Redis
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Load Balancer Nginx
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Status page
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - api1
+      - api2
+      - api3
+      - frontend
+    restart: unless-stopped
+
+  # API Backend - Instância 1
+  api1:
+    build: .
+    expose:
+      - "8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://dk_user:dk_password@db:5432/dungeon_keeper
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-super-secret-production-key-change-this-32-chars-minimum
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - REFRESH_TOKEN_EXPIRE_DAYS=7
+      - INSTANCE_ID=api1
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --workers 2
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # API Backend - Instância 2
+  api2:
+    build: .
+    expose:
+      - "8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://dk_user:dk_password@db:5432/dungeon_keeper
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-super-secret-production-key-change-this-32-chars-minimum
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - REFRESH_TOKEN_EXPIRE_DAYS=7
+      - INSTANCE_ID=api2
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --workers 2
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # API Backend - Instância 3
+  api3:
+    build: .
+    expose:
+      - "8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://dk_user:dk_password@db:5432/dungeon_keeper
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-super-secret-production-key-change-this-32-chars-minimum
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - REFRESH_TOKEN_EXPIRE_DAYS=7
+      - INSTANCE_ID=api3
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --workers 2
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Frontend React
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    expose:
+      - "3001"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost
+      - NODE_ENV=production
+    command: npm run build && npm run start
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
