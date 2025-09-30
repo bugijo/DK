@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import './theme.css';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
 import UXOptimizer from './components/UXOptimizer';
@@ -8,7 +9,7 @@ import QualityMonitor from './components/QualityMonitor';
 
 import { ThemeManager } from './components/ThemeManager';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { Dashboard } from './pages/Dashboard';
+import { EnhancedDashboard } from './components/EnhancedDashboard';
 import { TablesPage } from './pages/TablesPage';
 import { CharactersPage } from './pages/CharactersPage';
 import { CreateCharacterPage } from './pages/CreateCharacterPage';
@@ -72,7 +73,7 @@ function AppContent() {
 
         {/* Rotas Protegidas */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<EnhancedDashboard />} />
           <Route path="/tables" element={<TablesPage />} />
           <Route path="/characters" element={<CharactersPage />} />
           <Route path="/characters/new" element={<CreateCharacterPage />} />
