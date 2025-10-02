@@ -1,10 +1,10 @@
-import { EnhancedNavbar } from './EnhancedNavbar';
+import { Navbar } from './Navbar';
 import React from 'react';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-background text-text-base min-h-screen">
-      <EnhancedNavbar />
+      <Navbar />
       <main className="p-8">
         {children}
       </main>
