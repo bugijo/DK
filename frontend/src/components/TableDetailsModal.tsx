@@ -210,7 +210,7 @@ export function TableDetailsModal({ isOpen, onClose, table, isOwner, onAction }:
     if (isUserAlreadyPlayer) {
       return (
         <div className="bg-green-500/20 border border-green-500/50 text-green-200 p-4 rounded-lg text-center">
-          <img src="/icons/Sucesso.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Você já é jogador desta mesa
+          <img src="/icons/Concluído.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Você já é jogador desta mesa
         </div>
       );
     }
@@ -235,7 +235,7 @@ export function TableDetailsModal({ isOpen, onClose, table, isOwner, onAction }:
       case 'success':
         return (
           <div className="bg-green-500/20 border border-green-500/50 text-green-200 p-4 rounded-lg text-center">
-            <img src="/icons/Sucesso.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Solicitação enviada com sucesso!
+            <img src="/icons/Concluído.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Solicitação enviada com sucesso!
           </div>
         );
       default:
@@ -244,7 +244,7 @@ export function TableDetailsModal({ isOpen, onClose, table, isOwner, onAction }:
             onClick={() => setShowJoinForm(true)}
             className="w-full bg-primary hover:bg-primary/90 text-background font-bold py-3 px-8 rounded-lg transition-colors"
           >
-            <img src="/icons/Sistema de Dados.png" alt="Dados" className="w-4 h-4 inline mr-2" />Solicitar Vaga
+            <img src="/icons/Dados.png" alt="Dados" className="w-4 h-4 inline mr-2" />Solicitar Vaga
           </button>
         );
     }
@@ -279,13 +279,13 @@ export function TableDetailsModal({ isOpen, onClose, table, isOwner, onAction }:
                     onClick={() => handleManageRequest(req.id, 'approve')}
                     className="bg-green-600 hover:bg-green-500 text-white text-sm font-bold py-2 px-4 rounded transition-colors"
                   >
-                    <img src="/icons/Sucesso.png" alt="Aprovar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Aprovar
+                    <img src="/icons/Concluído.png" alt="Aprovar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Aprovar
                   </button>
                   <button
                     onClick={() => handleManageRequest(req.id, 'decline')}
                     className="bg-red-600 hover:bg-red-500 text-white text-sm font-bold py-2 px-4 rounded transition-colors"
                   >
-                    <img src="/icons/Cancelar.png" alt="Recusar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Recusar
+                    <img src="/icons/Deletar.png" alt="Recusar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Recusar
                   </button>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export function TableDetailsModal({ isOpen, onClose, table, isOwner, onAction }:
               <span><img src="/icons/Sistema de Dados.png" alt="Sistema" className="w-4 h-4 inline mr-1" />{table.system}</span>
               <span><img src="/icons/Coroa.png" alt="Mestre" className="w-4 h-4 inline mr-1" />Mestre: {table.master?.username || table.master_id}</span>
               {table.scheduled_date && (
-                <span><img src="/icons/Calendário.png" alt="Data" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />{new Date(table.scheduled_date).toLocaleDateString()}</span>
+                <span><img src="/icons/Dados.png" alt="Data" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />{new Date(table.scheduled_date).toLocaleDateString()}</span>
               )}
             </div>
           </div>

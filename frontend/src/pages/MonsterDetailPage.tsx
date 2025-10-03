@@ -189,7 +189,7 @@ export function MonsterDetailPage() {
               onClick={handleDelete} 
               className="bg-red-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-800 transition-colors"
             >
-              <img src="/icons/Lixeira.png" alt="Deletar" style={{width: '16px', height: '16px', marginRight: '6px', display: 'inline'}} /> Banir do Bestiário
+              <img src="/icons/Deletar.png" alt="Deletar" style={{width: '16px', height: '16px', marginRight: '6px', display: 'inline'}} /> Banir do Bestiário
             </button>
           </div>
         </div>
@@ -328,7 +328,7 @@ export function MonsterDetailPage() {
               }} 
               className="bg-gray-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-colors"
             >
-              <img src="/icons/Cancelar.png" alt="Cancelar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Cancelar
+              <img src="/icons/Deletar.png" alt="Cancelar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Cancelar
             </button>
           </div>
         </form>

@@ -76,7 +76,7 @@ export function LoginPage() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute inset-y-0 right-0 px-3 flex items-center text-text-muted hover:text-primary transition-colors"
               >
-                {showPassword ? <img src="/icons/Olho-Aberto.png" alt="Mostrar" style={{width: '20px', height: '20px'}} /> : <img src="/icons/Olho-Fechado.png" alt="Ocultar" style={{width: '20px', height: '20px'}} />}
+                {showPassword ? <img src="/icons/Visível.png" alt="Mostrar" style={{width: '20px', height: '20px'}} /> : <img src="/icons/Oculto.png" alt="Ocultar" style={{width: '20px', height: '20px'}} />}
               </button>
             </div>
           </div>

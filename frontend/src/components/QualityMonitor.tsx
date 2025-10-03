@@ -194,7 +194,7 @@ const QualityMonitor: React.FC = () => {
                 <li className="insight-good">✅ Seguindo todas as boas práticas!</li>
               )}
               {metrics.seo >= 95 && (
-                <li className="insight-good"><img src="/icons/Sucesso.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />SEO otimizado!</li>
+                <li className="insight-good"><img src="/icons/Concluído.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />SEO otimizado!</li>
               )}
               {metrics.overall >= 95 && (
                 <li className="insight-excellent"><img src="/icons/Coroa.png" alt="Troféu" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />Qualidade excepcional alcançada!</li>

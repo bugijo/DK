@@ -30,7 +30,7 @@ export function ModernHeader({ className = '' }: ModernHeaderProps) {
   };
 
   const navItems = [
-    { path: '/', label: 'Dashboard', icon: '/icons/Logo.png' },
+    { path: '/', label: 'Dashboard', icon: '/icons/Branding-Símbolo.png' },
     { path: '/tables', label: 'Mesas', icon: '/icons/Mesas de Aventura.png' },
     { path: '/characters', label: 'Personagens', icon: '/icons/Heróis & Guerreiros.png' },
     { path: '/tools', label: 'Ferramentas', icon: '/icons/Forja do Mestre.png' },

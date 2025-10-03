@@ -52,7 +52,7 @@ export const AudioSettings: React.FC<AudioSettingsProps> = ({ isOpen, onClose })
       <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-96 max-w-full mx-4">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-            🔊 Configurações de Áudio
+            <img src="/icons/Sistema de Dados.png" alt="Configurações" style={{width: '24px', height: '24px', marginRight: '8px', display: 'inline'}} /> Configurações de Áudio
           </h2>
           <button
             onClick={onClose}
@@ -203,7 +203,7 @@ export const AudioSettings: React.FC<AudioSettingsProps> = ({ isOpen, onClose })
                 disabled={!settings.enabled}
                 className="px-3 py-2 text-sm bg-purple-500 text-white rounded hover:bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <img src="/icons/Sistema de Dados.png" alt="Dados" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />Dados
+                <img src="/icons/Dados.png" alt="Dados" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />Dados
               </button>
             </div>
           </div>

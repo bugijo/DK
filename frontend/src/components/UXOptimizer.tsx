@@ -146,7 +146,7 @@ const UXOptimizer: React.FC<UXOptimizerProps> = ({ children }) => {
             >
               {isLoading ? '⏳ Otimizando...' : (
                 <>
-                  <img src="/icons/Velocidade.png" alt="Otimizar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />
+                  <img src="/icons/Dados.png" alt="Otimizar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '6px'}} />
                   Otimizar Agora
                 </>
               )}
@@ -155,7 +155,7 @@ const UXOptimizer: React.FC<UXOptimizerProps> = ({ children }) => {
 
           {/* Preferências de Acessibilidade */}
           <div className="accessibility-preferences">
-            <h4><img src="/icons/Acessibilidade.png" alt="Acessibilidade" style={{width: '20px', height: '20px', display: 'inline', marginRight: '8px'}} />Acessibilidade</h4>
+            <h4><img src="/icons/Dados.png" alt="Acessibilidade" style={{width: '20px', height: '20px', display: 'inline', marginRight: '8px'}} />Acessibilidade</h4>
             
             <label className="preference-item">
               <input

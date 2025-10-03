@@ -273,7 +273,7 @@ export function CreationToolsPage() {
             description="Rolagem avançada de dados com histórico, modificadores e resultados automáticos." 
             icon={
               <img 
-                src="/icons/Sistema de Dados.png" 
+                src="/icons/Dados.png" 
                 className="h-16 w-16 filter drop-shadow-lg" 
                 alt="Dados"
                 style={{
@@ -355,7 +355,7 @@ export function CreationToolsPage() {
             description="Organize sessões, lembretes e eventos importantes da campanha." 
             icon={
               <div className="text-6xl filter drop-shadow-lg" style={{ filter: 'brightness(1.3)' }}>
-                <img src="/icons/Calendário.png" alt="Data" style={{width: '16px', height: '16px'}} />
+                <img src="/icons/Sistema de Dados.png" alt="Data" style={{width: '16px', height: '16px'}} />
               </div>
             }
             isAvailable={true}

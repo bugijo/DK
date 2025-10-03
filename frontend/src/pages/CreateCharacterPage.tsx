@@ -361,7 +361,7 @@ export function CreateCharacterPage() {
                           className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded transition-all"
                           title="Rolar atributo"
                         >
-                          <img src="/icons/Sistema de Dados.png" alt="Dados" style={{width: '16px', height: '16px'}} />
+                          <img src="/icons/Sistema de Dados.png" alt="Sistema" className="w-4 h-4" />
                         </button>
                       </div>
                       

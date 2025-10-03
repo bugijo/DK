@@ -211,7 +211,7 @@ export const StoryDetailPage: React.FC = () => {
                   onClick={handleDelete}
                   className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
                 >
-                  <img src="/icons/Lixeira.png" alt="Deletar" style={{width: '16px', height: '16px', marginRight: '6px', display: 'inline'}} /> Deletar
+                  <img src="/icons/Deletar.png" alt="Deletar" style={{width: '16px', height: '16px', marginRight: '6px', display: 'inline'}} /> Deletar
                 </button>
               </>
             ) : (
@@ -220,13 +220,13 @@ export const StoryDetailPage: React.FC = () => {
                   onClick={handleUpdate}
                   className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
                 >
-                  <img src="/icons/Sucesso.png" alt="Salvar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Salvar
+                  <img src="/icons/Concluído.png" alt="Salvar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Salvar
                 </button>
                 <button
                   onClick={handleCancelEdit}
                   className="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg transition-colors"
                 >
-                  <img src="/icons/Cancelar.png" alt="Cancelar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Cancelar
+                  <img src="/icons/Deletar.png" alt="Cancelar" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Cancelar
                 </button>
               </>
             )}

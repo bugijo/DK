@@ -294,7 +294,7 @@ export function ProfilePage() {
               >
                 <div className="text-center">
                   <div className="text-2xl mb-2">
-                    <img src="/icons/Lua-Noite.png" alt="Lua" className="w-8 h-8 mx-auto" />
+                    <img src="/icons/Sol-Dia.png" alt="Lua" className="w-8 h-8 mx-auto" />
                   </div>
                   <div className="font-semibold">Tema Escuro</div>
                 </div>
@@ -421,10 +421,10 @@ export function ProfilePage() {
                     {importStatus === 'importing' ? 'Importando...' : 'Importar Dados'}
                   </button>
                   {importStatus === 'success' && (
-                    <p className="text-green-400 text-sm"><img src="/icons/Sucesso.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Importação concluída com sucesso!</p>
+                    <p className="text-green-400 text-sm"><img src="/icons/Concluído.png" alt="Sucesso" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Importação concluída com sucesso!</p>
                   )}
                   {importStatus === 'error' && (
-                    <p className="text-red-400 text-sm"><img src="/icons/Cancelar.png" alt="Erro" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Falha na importação.</p>
+                    <p className="text-red-400 text-sm"><img src="/icons/Deletar.png" alt="Erro" style={{width: '16px', height: '16px', display: 'inline', marginRight: '4px'}} />Falha na importação.</p>
                   )}
                 </div>
               </div>

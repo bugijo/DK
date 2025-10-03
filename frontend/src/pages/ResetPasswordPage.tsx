@@ -155,7 +155,7 @@ export function ResetPasswordPage() {
                 onClick={() => setShowNewPassword(!showNewPassword)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-text transition-colors"
               >
-                {showNewPassword ? <img src="/icons/Olho-Fechado.png" alt="Ocultar" style={{width: '20px', height: '20px'}} /> : <img src="/icons/Olho-Aberto.png" alt="Mostrar" style={{width: '20px', height: '20px'}} />}
+                {showNewPassword ? <img src="/icons/Oculto.png" alt="Ocultar" style={{width: '20px', height: '20px'}} /> : <img src="/icons/Visível.png" alt="Mostrar" style={{width: '20px', height: '20px'}} />}
               </button>
             </div>
           </div>
@@ -180,7 +180,7 @@ export function ResetPasswordPage() {
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-text transition-colors"
               >
-                {showConfirmPassword ? <img src="/icons/Olho-Fechado.png" alt="Ocultar" style={{width: '20px', height: '20px'}} /> : <img src="/icons/Olho-Aberto.png" alt="Mostrar" style={{width: '20px', height: '20px'}} />}
+                {showConfirmPassword ? <img src="/icons/Oculto.png" alt="Ocultar" style={{width: '20px', height: '20px'}} /> : <img src="/icons/Visível.png" alt="Mostrar" style={{width: '20px', height: '20px'}} />}
               </button>
             </div>
           </div>

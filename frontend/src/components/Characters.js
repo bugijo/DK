@@ -453,7 +453,7 @@ const Characters = () => {
                 className="btn-delete"
                 onClick={() => handleDelete(character.id)}
               >
-                <img src="/icons/Lixeira.png" alt="Deletar" style={{width: '16px', height: '16px', marginRight: '4px'}} /> Deletar
+                <img src="/icons/Deletar.png" alt="Deletar" style={{width: '16px', height: '16px', marginRight: '4px'}} /> Deletar
               </button>
             </div>
           </div>
