@@ -20,6 +20,7 @@ Interface web interativa para o sistema de jogo D&D online.
 - **Criação de Personagens** - Sistema completo de criação
 - **Inventário** - Gerenciamento de itens
 - **Criação de Conteúdo** - Ferramentas para mestres
+- **Entrada de Sessão** - Lobby guiado para sincronizar mesas e escolher visão de mestre ou jogadores
 
 ## Estrutura de Arquivos
 
@@ -30,6 +31,7 @@ frontend/
 ├── game-session.css      # Estilos da interface de jogo
 ├── index.html           # Página de login
 ├── home.html            # Dashboard principal
+├── session-entry.html   # Lobby da mesa com sincronização e checklist
 ├── create-character.html # Criação de personagens
 ├── inventory.html       # Sistema de inventário
 └── assets/              # Recursos visuais

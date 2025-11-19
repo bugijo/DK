@@ -1,5 +1,17 @@
 import pytest
-from src.systems.magic.spell import Spell, SpellSchool, SpellType, Element, SpellEffect, EffectType, SpellLevel, TargetType, CastType, SpellRequirement
+from src.systems.magic.spell import (
+    Spell,
+    SpellComponent,
+    SpellEffect,
+    EffectType,
+    SpellLevel,
+    SpellRequirement,
+    SpellSchool,
+    SpellType,
+    TargetType,
+    CastType,
+    Element,
+)
 from src.systems.magic.spell_system import SpellSystem
 from src.systems.character.character import Character
 
