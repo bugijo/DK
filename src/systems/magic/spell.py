@@ -1,41 +1,48 @@
+from __future__ import annotations
+
 from typing import List, Dict, Optional, Any
 from dataclasses import dataclass, field
 from enum import Enum, auto
 
+
 class SpellSchool(Enum):
-    ABJURATION = auto()    # Proteção e defesa
-    CONJURATION = auto()   # Invocação e teleporte
-    DIVINATION = auto()    # Conhecimento e detecção
-    ENCHANTMENT = auto()   # Controle mental e buff
-    EVOCATION = auto()     # Dano elemental e energia
-    ILLUSION = auto()      # Engano e controle
-    NECROMANCY = auto()    # Morte e alma
-    TRANSMUTATION = auto() # Transformação
+    ABJURATION = auto()  # Proteção e defesa
+    CONJURATION = auto()  # Invocação e teleporte
+    DIVINATION = auto()  # Conhecimento e detecção
+    ENCHANTMENT = auto()  # Controle mental e buff
+    EVOCATION = auto()  # Dano elemental e energia
+    ILLUSION = auto()  # Engano e controle
+    NECROMANCY = auto()  # Morte e alma
+    TRANSMUTATION = auto()  # Transformação
+
 
 class SpellType(Enum):
-    ATTACK = auto()      # Dano direto
-    DEFENSE = auto()     # Proteção
-    UTILITY = auto()     # Utilidade geral
-    HEALING = auto()     # Cura e restauração
-    CONTROL = auto()     # Controle de campo
-    SUMMONING = auto()   # Invocação de criaturas
-    BUFF = auto()        # Melhorias temporárias
-    DEBUFF = auto()      # Penalidades ao alvo
+    ATTACK = auto()  # Dano direto
+    DEFENSE = auto()  # Proteção
+    UTILITY = auto()  # Utilidade geral
+    HEALING = auto()  # Cura e restauração
+    CONTROL = auto()  # Controle de campo
+    SUMMONING = auto()  # Invocação de criaturas
+    BUFF = auto()  # Melhorias temporárias
+    DEBUFF = auto()  # Penalidades ao alvo
+
 
 class CastType(Enum):
-    INSTANT = auto()     # Efeito instantâneo
-    CHANNELED = auto()   # Precisa canalizar
-    CHARGED = auto()     # Pode ser carregada
-    RITUAL = auto()      # Ritual longo
-    PASSIVE = auto()     # Efeito passivo
+    INSTANT = auto()  # Efeito instantâneo
+    CHANNELED = auto()  # Precisa canalizar
+    CHARGED = auto()  # Pode ser carregada
+    RITUAL = auto()  # Ritual longo
+    PASSIVE = auto()  # Efeito passivo
+
 
 class TargetType(Enum):
-    SELF = auto()        # Apenas o conjurador
-    SINGLE = auto()      # Um alvo
-    AREA = auto()        # Área de efeito
-    LINE = auto()        # Linha reta
-    CONE = auto()        # Cone
-    GLOBAL = auto()      # Todos na área/mapa
+    SELF = auto()  # Apenas o conjurador
+    SINGLE = auto()  # Um alvo
+    AREA = auto()  # Área de efeito
+    LINE = auto()  # Linha reta
+    CONE = auto()  # Cone
+    GLOBAL = auto()  # Todos na área/mapa
+
 
 class Element(Enum):
     PHYSICAL = auto()
@@ -48,12 +55,14 @@ class Element(Enum):
     DARK = auto()
     ARCANE = auto()
 
+
 class SpellComponent(Enum):
-    VERBAL = auto()      # Componente verbal (V)
-    SOMATIC = auto()     # Componente somático (S)
-    MATERIAL = auto()    # Componente material (M)
-    FOCUS = auto()       # Foco arcano
-    DIVINE_FOCUS = auto() # Foco divino
+    VERBAL = auto()  # Componente verbal (V)
+    SOMATIC = auto()  # Componente somático (S)
+    MATERIAL = auto()  # Componente material (M)
+    FOCUS = auto()  # Foco arcano
+    DIVINE_FOCUS = auto()  # Foco divino
+
 
 class EffectType(Enum):
     DAMAGE = auto()
@@ -65,6 +74,7 @@ class EffectType(Enum):
     AREA = auto()
     SUMMON = auto()
     DETECTION = auto()
+
 
 class SpellLevel(Enum):
     CANTRIP = 0
@@ -87,9 +97,11 @@ class SpellLevel(Enum):
     LEVEL_8 = 8
     LEVEL_9 = 9
 
+
 @dataclass
 class SpellEffect:
     """Representa um efeito que uma magia pode causar."""
+
     name: str
     effect_type: EffectType = EffectType.DAMAGE
     target_type: TargetType = TargetType.SINGLE
@@ -111,181 +123,130 @@ class SpellEffect:
     status_effects: List[str] = field(default_factory=list)
     special_effects: Dict[str, Any] = field(default_factory=dict)
 
+
 @dataclass
 class SpellRequirement:
     """Requisitos para lançar uma magia."""
+
     level: int = 1
     mana_cost: int = 0
     health_cost: int = 0
     cast_time: float = 0.0  # Em segundos
-    cooldown: float = 0.0   # Em segundos
+    cooldown: float = 0.0  # Em segundos
     reagents: Dict[str, int] = field(default_factory=dict)
     stat_requirements: Dict[str, int] = field(default_factory=dict)
     skill_requirements: Dict[str, int] = field(default_factory=dict)
 
+
 @dataclass
 class Spell:
     """Classe base para todas as magias do jogo."""
+
     name: str
-    description: str
-    level: int
+    level: SpellLevel
     school: SpellSchool
-    spell_type: SpellType
-    cast_type: CastType
-    target_type: TargetType
-    element: Element
+    casting_time: str
+    range_feet: int
+    duration: str
+    components: List[SpellComponent] = field(default_factory=list)
+    description: str = ""
     effects: List[SpellEffect] = field(default_factory=list)
+    ritual: bool = False
+    concentration: bool = False
+    material_components: Optional[str] = None
+    spell_type: SpellType = SpellType.UTILITY
+    cast_type: CastType = CastType.INSTANT
+    target_type: TargetType = TargetType.SINGLE
+    element: Element = Element.ARCANE
     requirements: SpellRequirement = field(default_factory=SpellRequirement)
-    range: float = 1.0
-    area: float = 0.0
     is_learned: bool = False
     is_equipped: bool = False
     experience: int = 0
     max_charges: Optional[int] = None
     current_charges: Optional[int] = None
     last_cast_time: float = 0.0
-    
-    def can_cast(self, caster: Any) -> bool:
-        """Verifica se a magia pode ser lançada."""
-        # Verifica nível
-        if caster.level < self.requirements.level:
+
+    def _resolve_level(self, override_level: Optional[int]) -> int:
+        if override_level is not None:
+            return int(override_level)
+        if isinstance(self.level, SpellLevel):
+            return int(self.level.value)
+        return int(self.level)
+
+    def _mana_cost(self, override_level: Optional[int]) -> int:
+        level_value = self._resolve_level(override_level)
+        return max(level_value, 0)
+
+    def can_cast(self, caster: Any, spell_level: Optional[int] = None) -> bool:
+        mana_cost = self._mana_cost(spell_level)
+        if mana_cost == 0:
+            return True
+        return caster.stats.get("mp", 0) >= mana_cost
+
+    def cast(self, caster: Any, targets: List[Any], spell_level: Optional[int] = None) -> bool:
+        if not self.can_cast(caster, spell_level):
             return False
-        
-        # Verifica custos
-        if caster.mana < self.requirements.mana_cost:
-            return False
-        if caster.hp <= self.requirements.health_cost:  # Não permite matar o conjurador
-            return False
-        
-        # Verifica cooldown
-        current_time = caster.get_current_time()
-        if current_time - self.last_cast_time < self.requirements.cooldown:
-            return False
-        
-        # Verifica cargas
-        if self.max_charges and self.current_charges <= 0:
-            return False
-        
-        # Verifica requisitos de atributos
-        for stat, value in self.requirements.stat_requirements.items():
-            if caster.get_stat(stat) < value:
-                return False
-        
-        # Verifica requisitos de habilidades
-        for skill, value in self.requirements.skill_requirements.items():
-            if caster.get_skill(skill) < value:
-                return False
-        
-        # Verifica reagentes
-        for reagent, amount in self.requirements.reagents.items():
-            if not caster.has_reagent(reagent, amount):
-                return False
-        
-        return True
-    
-    def cast(self, caster: Any, targets: List[Any]) -> bool:
-        """Lança a magia."""
-        if not self.can_cast(caster):
-            return False
-        
-        # Aplica custos
-        caster.spend_mana(self.requirements.mana_cost)
-        caster.take_damage(self.requirements.health_cost)
-        
-        # Consome reagentes
-        for reagent, amount in self.requirements.reagents.items():
-            caster.consume_reagent(reagent, amount)
-        
-        # Atualiza cooldown
-        self.last_cast_time = caster.get_current_time()
-        
-        # Atualiza cargas
-        if self.max_charges:
-            self.current_charges -= 1
-        
-        # Aplica efeitos
-        for target in targets:
-            if self._is_valid_target(caster, target):
-                self._apply_effects(caster, target)
-        
-        # Adiciona experiência
+
+        self.last_cast_time = 0.0
+        self._apply_effects(caster, targets)
         self.experience += 1
-        
         return True
-    
-    def _is_valid_target(self, caster: Any, target: Any) -> bool:
-        """Verifica se o alvo é válido para a magia."""
-        # Verifica distância
-        if self.target_type != TargetType.SELF:
-            distance = caster.get_distance_to(target)
-            if distance > self.range:
-                return False
-        
-        # Verifica tipo de alvo
-        if self.target_type == TargetType.SELF and target != caster:
-            return False
-        
-        return True
-    
-    def _apply_effects(self, caster: Any, target: Any) -> None:
-        """Aplica os efeitos da magia ao alvo."""
-        for effect in self.effects:
-            # Aplica dano/cura base
-            if effect.power > 0:
-                if self.spell_type == SpellType.HEALING:
-                    target.heal(self._calculate_healing(caster, effect))
-                else:
-                    target.take_damage(
-                        self._calculate_damage(caster, effect),
-                        effect.element
-                    )
-            
-            # Aplica modificadores de atributos
-            for stat, value in effect.stat_modifiers.items():
-                target.add_stat_modifier(stat, value, effect.duration)
-            
-            # Aplica efeitos de status
-            for status in effect.status_effects:
-                target.add_status_effect(status, effect.duration)
-            
-            # Aplica efeitos especiais
-            for effect_name, effect_data in effect.special_effects.items():
-                target.apply_special_effect(effect_name, effect_data, effect.duration)
-    
-    def _calculate_damage(self, caster: Any, effect: SpellEffect) -> int:
-        """Calcula o dano base da magia."""
-        base_damage = effect.power
-        magic_power = caster.get_stat('magic_power')
-        elemental_bonus = caster.get_elemental_bonus(effect.element)
-        
-        return int(base_damage * (1 + magic_power/100) * (1 + elemental_bonus/100))
-    
-    def _calculate_healing(self, caster: Any, effect: SpellEffect) -> int:
-        """Calcula a cura base da magia."""
-        base_healing = effect.power
-        healing_power = caster.get_stat('healing_power')
-        
-        return int(base_healing * (1 + healing_power/100))
-    
+
+    def _apply_effects(self, caster: Any, targets: List[Any]) -> None:
+        """Aplica os efeitos da magia aos alvos."""
+        for target in targets:
+            for effect in self.effects:
+                if effect.effect_type == EffectType.HEALING:
+                    healing = effect.healing_modifier
+                    if effect.healing_dice:
+                        healing += self._average_roll(effect.healing_dice)
+                    if hasattr(target, "heal"):
+                        target.heal(healing)
+                elif effect.effect_type == EffectType.DAMAGE:
+                    damage = effect.power
+                    if effect.damage_dice:
+                        damage += self._average_roll(effect.damage_dice)
+                    if hasattr(target, "take_damage"):
+                        target.take_damage(damage)
+                elif effect.effect_type == EffectType.CONDITION and hasattr(target, "add_status_effect"):
+                    target.add_status_effect(effect.condition or effect.name, effect.duration)
+                elif effect.effect_type == EffectType.BUFF and hasattr(target, "add_status_effect"):
+                    target.add_status_effect(effect.name, effect.duration)
+                elif effect.effect_type == EffectType.DEBUFF and hasattr(target, "add_status_effect"):
+                    target.add_status_effect(effect.name, effect.duration)
+
+    def _average_roll(self, dice_notation: str) -> int:
+        """Calcula a média de um dado em notação NdM."""
+        try:
+            count, sides = dice_notation.lower().split("d")
+            return (int(count) * (int(sides) + 1)) // 2
+        except Exception:
+            return 0
+
     def get_total_casts(self) -> int:
         """Retorna o número total de vezes que a magia foi lançada."""
         return self.experience
-    
+
     def is_on_cooldown(self, current_time: float) -> bool:
         """Verifica se a magia está em cooldown."""
-        return current_time - self.last_cast_time < self.requirements.cooldown
-    
+        return (current_time - self.last_cast_time) < self.requirements.cooldown
+
     def get_remaining_cooldown(self, current_time: float) -> float:
         """Retorna o tempo restante de cooldown."""
         if not self.is_on_cooldown(current_time):
             return 0.0
         return self.requirements.cooldown - (current_time - self.last_cast_time)
-    
+
     def reset_cooldown(self) -> None:
         """Reseta o cooldown da magia."""
         self.last_cast_time = 0.0
-    
+
     def restore_charge(self) -> None:
         """Restaura uma carga da magia."""
-        if self.max_charges and self.current_charges < self.max_charges:
+        if self.max_charges is None:
+            return
+        if self.current_charges is None:
+            self.current_charges = self.max_charges
+            return
+        if self.current_charges < self.max_charges:
             self.current_charges += 1

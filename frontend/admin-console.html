@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Console do Administrador - Dungeon Keeper</title>
+  <link rel="stylesheet" href="admin-console.css">
+</head>
+<body class="locked">
+  <div class="auth-gate" id="auth-gate">
+    <div class="auth-card">
+      <h2>Entrar como Administrador</h2>
+      <p>Use a chave mestre para liberar o console completo. Apenas você pode autorizar ajustes globais.</p>
+      <div class="badge stack">Acesso exclusivo · Registro de auditoria ativo</div>
+      <div class="input-row">
+        <input type="password" id="admin-key" placeholder="Chave mestre (ex: KEEPER-ROOT-001)">
+        <button class="btn primary" id="enter-console">Liberar</button>
+      </div>
+      <div class="auth-feedback" id="auth-feedback"></div>
+      <p class="subtle">A chave padrão é <strong>KEEPER-ROOT-001</strong>. Guarde em local seguro.</p>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">DK</div>
+      <div>
+        <h1>Dungeon Keeper</h1>
+        <div class="badge">Console de Governança</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="home.html">Home</a>
+      <a href="tables.html">Mesas</a>
+      <a href="session-entry.html">Lobby</a>
+      <a href="game-session.html">Sessão</a>
+      <a href="admin-console.html" class="active">Admin</a>
+    </nav>
+  </header>
+
+  <div class="console-root">
+    <section class="hero">
+      <div>
+        <div class="badge">Painel único do Mestre da Plataforma</div>
+        <h2>Visão total da mesa digital</h2>
+        <p>Monitore mesas, jogadores, itens e sessões em tempo real. Aplique travamentos emergenciais, libere novos convites e acompanhe saúde da infraestrutura sem sair desta tela.</p>
+        <div class="callouts">
+          <span class="tag">Sincronização ao vivo</span>
+          <span class="tag">Auditoria ativada</span>
+          <span class="tag">Acesso restrito</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Indicadores prioritários</h3>
+        <div class="grid stats-grid" id="top-stats"></div>
+        <div class="actions" style="margin-top: 10px;">
+          <button class="btn primary" id="refresh-metrics">Atualizar métricas</button>
+          <button class="btn ghost" id="toggle-maintenance">Ativar modo manutenção</button>
+        </div>
+        <p class="subtle" id="maintenance-label">Modo manutenção desativado</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid" style="grid-template-columns: 1.1fr 0.9fr;">
+        <div class="panel">
+          <div class="inline" style="justify-content: space-between;">
+            <div>
+              <h3>Controle de sessões e mesas</h3>
+              <p class="subtle">Gerencie slots, veja filas de espera e sinalize quem precisa de ajuste.</p>
+            </div>
+            <button class="btn" id="export-report">Exportar relatório</button>
+          </div>
+          <table class="table" id="tables-grid"></table>
+        </div>
+        <div class="panel">
+          <h3>Saúde da plataforma</h3>
+          <div class="grid health-grid" id="health-cards"></div>
+          <div class="actions" style="margin-top: 12px;">
+            <button class="btn ghost" id="force-sync">Reforçar sincronização</button>
+            <button class="btn danger" id="lockdown">Travar novas mesas</button>
+          </div>
+          <p class="subtle" id="last-sync-label">Última sincronização há poucos segundos</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="panel">
+          <h3>Filas e alertas rápidos</h3>
+          <ul class="list" id="queue-list"></ul>
+        </div>
+        <div class="panel">
+          <h3>Log de auditoria</h3>
+          <div class="audit">
+            <ul class="list" id="audit-log"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid" style="grid-template-columns: 0.9fr 1.1fr;">
+        <div class="panel">
+          <h3>Snapshots de conteúdo</h3>
+          <ul class="list" id="content-snapshots"></ul>
+        </div>
+        <div class="panel">
+          <h3>Comandos rápidos</h3>
+          <p class="subtle">Envie notificações globais, publique anúncio para jogadores ou reinicie canais de chat.</p>
+          <div class="actions">
+            <button class="btn primary" id="broadcast">Broadcast para mesas</button>
+            <button class="btn" id="reload-chat">Reiniciar chat</button>
+            <button class="btn" id="reload-assets">Recarregar assets</button>
+          </div>
+          <div class="actions" style="margin-top: 8px;">
+            <button class="btn ghost" id="simulate-issue">Simular alerta</button>
+            <button class="btn danger" id="clear-queues">Limpar filas</button>
+          </div>
+          <p class="subtle" id="command-feedback">Nenhum comando executado ainda.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="admin-console.js"></script>
+</body>
+</html>

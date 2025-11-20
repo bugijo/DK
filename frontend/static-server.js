@@ -7,10 +7,8 @@ const PORT = 8080;
 const server = http.createServer((req, res) => {
     console.log(`Request: ${req.method} ${req.url}`);
     
-    let filePath = '.' + req.url;
-    if (filePath === './') {
-        filePath = './index.html';
-    }
+    const baseDir = __dirname;
+    let filePath = path.join(baseDir, req.url === '/' ? 'index.html' : req.url);
     
     const extname = String(path.extname(filePath)).toLowerCase();
     const mimeTypes = {

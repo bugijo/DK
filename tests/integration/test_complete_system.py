@@ -4,11 +4,25 @@ Teste de Integração Completa - Dungeon Keeper
 Verifica se todos os sistemas estão funcionando corretamente
 """
 
-import pytest
-import requests
-import json
+import os
 import time
 from typing import Dict, Any
+
+import pytest
+
+RUN_INTEGRATION = os.getenv("RUN_INTEGRATION_TESTS")
+
+try:
+    import requests
+except ImportError:  # pragma: no cover - dependency availability is environment specific
+    requests = None
+
+
+if not RUN_INTEGRATION or requests is None:
+    reason = "Integration tests desativados" if not RUN_INTEGRATION else "Pacote requests indisponível"
+    pytest.skip(reason, allow_module_level=True)
+
+import json
 
 class CompleteSystemTest:
     """Teste completo do sistema Dungeon Keeper."""
