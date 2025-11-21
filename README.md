@@ -3,6 +3,10 @@
 
 Um jogo de RPG com sistemas modulares e extensíveis para personagens, combate, inventário e magia.
 
+## Integração com Supabase
+
+Para conectar a API Node/TypeScript a um projeto Supabase, siga `docs/SUPABASE_SETUP.md`, que lista as variáveis necessárias (`SUPABASE_URL`, `SUPABASE_ANON_KEY` e opcionalmente `SUPABASE_SERVICE_KEY`) e o passo a passo para validar a conexão.
+
 ## Sistemas Implementados
 
 ### Sistema de Personagens
