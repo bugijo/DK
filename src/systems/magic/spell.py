@@ -6,6 +6,7 @@ from enum import Enum, auto
 import time
 
 
+
 class SpellSchool(Enum):
     ABJURATION = auto()  # Proteção e defesa
     CONJURATION = auto()  # Invocação e teleporte
@@ -188,7 +189,7 @@ class Spell:
         if not self.can_cast(caster, spell_level):
             return False
 
-        self.last_cast_time = time.time()
+        self.last_cast_time = 0.0
         self._apply_effects(caster, targets)
         self.experience += 1
         return True

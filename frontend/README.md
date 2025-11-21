@@ -46,13 +46,6 @@ frontend/
 4. Jogadores podem se mover no mapa e usar o chat
 5. Para governança completa, acesse `admin-console.html` e insira a chave mestre (padrão: `KEEPER-ROOT-001`)
 
-### Pré-visualização rápida (servidor estático)
-
-1. Rode `node frontend/static-server.js` na raiz do projeto.
-2. Abra `http://localhost:8080/session-entry.html` para ver o lobby guiado (mestre e jogadores).
-3. Abra `http://localhost:8080/admin-console.html`, digite `KEEPER-ROOT-001` e clique em **Entrar** para acessar o console administrativo.
-4. Utilize os atalhos de navegação do header para inspecionar as demais páginas (home, criação de personagem, loja e sessão).
-
 ## Tecnologias
 
 - HTML5 Canvas para renderização do mapa
