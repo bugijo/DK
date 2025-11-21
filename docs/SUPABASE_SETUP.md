@@ -7,14 +7,24 @@ Este projeto usa o Supabase (Postgres + PostgREST) como backend de dados para a 
 - `SUPABASE_ANON_KEY`: chave anônima (public) para operações da API.
 - `SUPABASE_SERVICE_KEY` (opcional, mas recomendada para tarefas administrativas, seeds e migrações automatizadas).
 - **Opcional:** nome do schema caso não seja `public` e URLs permitidas para CORS.
+- **Caso prefira conectar via driver SQL/SQLAlchemy:** host, porta, usuário, senha e nome do banco (iguais aos dados de conexão do Supabase Postgres). Esses campos também podem preencher automaticamente o `DATABASE_URL`.
 
-Com esses valores consigo conectar o projeto ao seu Supabase ou a outro Postgres exposto via Supabase/PostgREST compatível.
+Com esses valores consigo conectar o projeto ao seu Supabase ou a outro Postgres exposto via Supabase/PostgREST compatível. Se você enviar apenas host/porta/usuário/senha/nome, o backend Python monta a URL com escape seguro do password.
 
 ## Passo a passo para configurar localmente
 1. Crie um projeto gratuito no [Supabase](https://supabase.com/).
 2. Na aba **API**, copie `Project URL` e `anon public key` (e `service_role key` se quiser permitir seeds/admin).
 3. Duplique o arquivo `.env.example` para `.env` e preencha:
    ```env
+   # Para o backend Python (SQLAlchemy)
+   DATABASE_URL= # opcional; se vazio, o backend monta usando as partes abaixo
+   DB_HOST=...
+   DB_PORT=5432
+   DB_USER=...
+   DB_PASSWORD=...
+   DB_NAME=...
+
+   # Para o cliente Supabase (Node/TS)
    SUPABASE_URL=...
    SUPABASE_ANON_KEY=...
    SUPABASE_SERVICE_KEY=... # opcional

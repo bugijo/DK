@@ -5,7 +5,7 @@ Um jogo de RPG com sistemas modulares e extensíveis para personagens, combate, 
 
 ## Integração com Supabase
 
-Para conectar a API Node/TypeScript a um projeto Supabase, siga `docs/SUPABASE_SETUP.md`, que lista as variáveis necessárias (`SUPABASE_URL`, `SUPABASE_ANON_KEY` e opcionalmente `SUPABASE_SERVICE_KEY`) e o passo a passo para validar a conexão.
+Para conectar a API Node/TypeScript a um projeto Supabase, siga `docs/SUPABASE_SETUP.md`, que lista as variáveis necessárias (`SUPABASE_URL`, `SUPABASE_ANON_KEY` e opcionalmente `SUPABASE_SERVICE_KEY`) e o passo a passo para validar a conexão. O backend Python também aceita `DATABASE_URL` ou os campos `DB_HOST/DB_PORT/DB_USER/DB_PASSWORD/DB_NAME`, montando a URL de forma segura.
 
 ## Sistemas Implementados
 
