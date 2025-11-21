@@ -30,12 +30,28 @@ Com esses valores consigo conectar o projeto ao seu Supabase ou a outro Postgres
    SUPABASE_SERVICE_KEY=... # opcional
    CORS_ORIGIN=http://localhost:3000
    ```
-4. Rode a API Node:
+4. Suba a API Python conectada ao Postgres do Supabase:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+
+   # cria tabelas no Supabase usando Alembic via DATABASE_URL
+   alembic upgrade head
+
+   # inicia FastAPI apontando para o Supabase
+   uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+5. Rode a API Node (cliente Supabase/REST) se precisar dos endpoints TypeScript:
    ```bash
    npm install
    npm run dev
    ```
-5. Verifique a saúde do serviço: `GET http://localhost:3000/health` deve retornar status `OK`.
+6. Opcional: popular dados de exemplo no Supabase após as tabelas existirem (usa `DATABASE_URL` ou variáveis de partes):
+   ```bash
+   python create_test_data.py
+   ```
+7. Verifique a saúde do serviço: `GET http://localhost:8000/docs` (FastAPI) ou `GET http://localhost:3000/health` (Node) deve retornar status `OK`.
 
 ## Estrutura esperada no banco
 As rotas atuais usam tabelas como `users`, `clients`, `pets`, `suppliers`, `products`, `stock_movements`, `accounts_payable`, `accounts_receivable`, `appointments` e `medical_records`. Garanta que elas existam no schema `public` com colunas coerentes aos modelos (`src/models/*.ts`). Se preferir, podemos subir migrações ou scripts SQL para criar/ajustar essas tabelas usando a `service_role key`.
