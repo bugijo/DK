@@ -1,17 +1,18 @@
-# Dockerfile para testar FastAPI em ambiente limpo
 FROM python:3.11-slim
 
-# Define diretório de trabalho
 WORKDIR /app
 
-# Instala dependências
-RUN pip install --no-cache-dir fastapi uvicorn[standard]
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-# Copia arquivos
-COPY minimal.py .
+# Copia apenas requirements primeiro para cache eficiente
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe porta
+# Copia todo o código
+COPY . .
+
 EXPOSE 8000
 
-# Comando para iniciar servidor
-CMD ["uvicorn", "minimal:app", "--host", "0.0.0.0", "--port", "8000"]
+# Inicia a aplicação real
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
