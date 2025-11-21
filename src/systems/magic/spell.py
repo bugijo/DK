@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import List, Dict, Optional, Any
 from dataclasses import dataclass, field
 from enum import Enum, auto
+import time
 
 
 class SpellSchool(Enum):
@@ -187,7 +188,7 @@ class Spell:
         if not self.can_cast(caster, spell_level):
             return False
 
-        self.last_cast_time = 0.0
+        self.last_cast_time = time.time()
         self._apply_effects(caster, targets)
         self.experience += 1
         return True
