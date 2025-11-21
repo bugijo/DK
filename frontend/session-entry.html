@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada da Sessão - Dungeon Keeper</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="session-entry.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Dungeon Keeper · Eumaeus System</p>
+      <h1>Entrada da Mesa</h1>
+      <p class="subtitle">Sincronize todos os jogadores, confirme fichas e comece a sessão com visão dedicada para mestre e aventureiros.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="tables.html">Minhas Mesas</a>
+        <a class="btn ghost" href="create-character.html">Criar Personagem</a>
+      </div>
+      <div class="session-status" id="session-status">Sincronizando mesas em tempo real...</div>
+    </div>
+    <div class="hero-panel">
+      <div class="session-card">
+        <div class="card-header">
+          <span class="pill live">tempo real</span>
+          <span id="last-sync" class="sync-time">Sincronizado agora</span>
+        </div>
+        <h3>Mesas Ativas</h3>
+        <ul class="session-list" id="session-list"></ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="grid two-columns">
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Painel do Mestre</p>
+            <h2>Controle Total da Mesa</h2>
+          </div>
+          <span class="pill gold">Mestre</span>
+        </div>
+        <p class="panel-text">Sala dedicada com mapa tático, iniciativa, chat moderado e ferramenta de recursos (NPCs, itens, quests). Tudo pronto para compartilhar cena, música e imagens com um clique.</p>
+        <ul class="feature-list">
+          <li>Monitoramento dos personagens, PVs, inspiração e condições.</li>
+          <li>Broadcast de cena/ambiente para todos os jogadores.</li>
+          <li>Controle de iniciativa e rolagens públicas ou secretas.</li>
+          <li>Sincronização WebSocket automática com confirmação visual.</li>
+        </ul>
+        <div class="panel-actions">
+          <a class="btn primary" href="game-session.html">Entrar como Mestre</a>
+          <button class="btn link" id="simulate-sync">Forçar sincronização</button>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Visão dos Jogadores</p>
+            <h2>Mesa Imersiva</h2>
+          </div>
+          <span class="pill">Jogadores</span>
+        </div>
+        <p class="panel-text">Interface clara para rolagens rápidas, inventário, grimório e chat. O mapa tático é compartilhado em tempo real e respeita a névoa de guerra definida pelo mestre.</p>
+        <ul class="feature-list">
+          <li>Cartões de personagem com atributos, PVs e inventário.</li>
+          <li>Mapas, monstros, itens e notas da aventura sempre sincronizados.</li>
+          <li>Chat de sessão com logs e reações rápidas.</li>
+          <li>Fallback seguro para fichas incompletas, evitando erros de tela.</li>
+        </ul>
+        <div class="panel-actions">
+          <a class="btn secondary" href="game-session.html">Entrar como Jogador</a>
+          <a class="btn link" href="create-character.html">Criar/Importar Ficha</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel highlight">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Checklist de Entrada</p>
+          <h2>Fluxo guiado para iniciar a sessão</h2>
+        </div>
+      </div>
+      <div class="steps" id="entry-steps"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Dungeon Keeper · MVP pronto para mesas online com D&D 5e</p>
+  </footer>
+
+  <script src="session-entry.js"></script>
+</body>
+</html>

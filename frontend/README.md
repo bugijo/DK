@@ -20,6 +20,8 @@ Interface web interativa para o sistema de jogo D&D online.
 - **Criação de Personagens** - Sistema completo de criação
 - **Inventário** - Gerenciamento de itens
 - **Criação de Conteúdo** - Ferramentas para mestres
+- **Entrada de Sessão** - Lobby guiado para sincronizar mesas e escolher visão de mestre ou jogadores
+- **Console Administrativo** - Painel exclusivo com chave mestre para monitorar saúde da plataforma, sessões e filas
 
 ## Estrutura de Arquivos
 
@@ -30,6 +32,7 @@ frontend/
 ├── game-session.css      # Estilos da interface de jogo
 ├── index.html           # Página de login
 ├── home.html            # Dashboard principal
+├── session-entry.html   # Lobby da mesa com sincronização e checklist
 ├── create-character.html # Criação de personagens
 ├── inventory.html       # Sistema de inventário
 └── assets/              # Recursos visuais
@@ -41,6 +44,14 @@ frontend/
 2. Navegue para `game-session.html` para iniciar uma sessão
 3. Use os controles de mestre para gerenciar o jogo
 4. Jogadores podem se mover no mapa e usar o chat
+5. Para governança completa, acesse `admin-console.html` e insira a chave mestre (padrão: `KEEPER-ROOT-001`)
+
+### Pré-visualização rápida (servidor estático)
+
+1. Rode `node frontend/static-server.js` na raiz do projeto.
+2. Abra `http://localhost:8080/session-entry.html` para ver o lobby guiado (mestre e jogadores).
+3. Abra `http://localhost:8080/admin-console.html`, digite `KEEPER-ROOT-001` e clique em **Entrar** para acessar o console administrativo.
+4. Utilize os atalhos de navegação do header para inspecionar as demais páginas (home, criação de personagem, loja e sessão).
 
 ## Tecnologias
 
