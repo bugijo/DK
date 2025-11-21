@@ -1,19 +1,24 @@
+import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import { logger } from '../utils/logger';
 
-// Verificar variáveis de ambiente
-if (!process.env.SUPABASE_URL) {
-  throw new Error('SUPABASE_URL não está definida nas variáveis de ambiente');
-}
+// Garantir que as variáveis estejam carregadas mesmo quando o entrypoint não chamar dotenv
+dotenv.config();
 
-if (!process.env.SUPABASE_ANON_KEY) {
-  throw new Error('SUPABASE_ANON_KEY não está definida nas variáveis de ambiente');
+const requiredEnv = ['SUPABASE_URL', 'SUPABASE_ANON_KEY'];
+const missingEnv = requiredEnv.filter((key) => !process.env[key]);
+
+if (missingEnv.length) {
+  throw new Error(
+    `Variáveis ausentes para conectar ao Supabase: ${missingEnv.join(', ')}. ` +
+    'Defina-as no .env ou no ambiente (consulte docs/SUPABASE_SETUP.md).'
+  );
 }
 
 // Criar cliente Supabase
 export const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY,
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!,
   {
     auth: {
       persistSession: false, // Não persistir sessão no servidor
