@@ -6,7 +6,6 @@ from enum import Enum, auto
 import time
 
 
-
 class SpellSchool(Enum):
     ABJURATION = auto()  # Proteção e defesa
     CONJURATION = auto()  # Invocação e teleporte
@@ -189,7 +188,11 @@ class Spell:
         if not self.can_cast(caster, spell_level):
             return False
 
-        self.last_cast_time = 0.0
+        now = time.time()
+        if self.is_on_cooldown(now):
+            return False
+
+        self.last_cast_time = now
         self._apply_effects(caster, targets)
         self.experience += 1
         return True
@@ -210,11 +213,23 @@ class Spell:
                         damage += self._average_roll(effect.damage_dice)
                     if hasattr(target, "take_damage"):
                         target.take_damage(damage)
-                elif effect.effect_type == EffectType.CONDITION and hasattr(target, "add_status_effect"):
-                    target.add_status_effect(effect.condition or effect.name, effect.duration)
-                elif effect.effect_type == EffectType.BUFF and hasattr(target, "add_status_effect"):
+                elif (
+                    effect.effect_type == EffectType.CONDITION
+                    and hasattr(target, "add_status_effect")
+                ):
+                    target.add_status_effect(
+                        effect.condition or effect.name,
+                        effect.duration,
+                    )
+                elif (
+                    effect.effect_type == EffectType.BUFF
+                    and hasattr(target, "add_status_effect")
+                ):
                     target.add_status_effect(effect.name, effect.duration)
-                elif effect.effect_type == EffectType.DEBUFF and hasattr(target, "add_status_effect"):
+                elif (
+                    effect.effect_type == EffectType.DEBUFF
+                    and hasattr(target, "add_status_effect")
+                ):
                     target.add_status_effect(effect.name, effect.duration)
 
     def _average_roll(self, dice_notation: str) -> int:

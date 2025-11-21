@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import List, Dict, Optional, Any
 from dataclasses import dataclass, field
+import time
 
 from .spell import Spell, SpellSchool, SpellLevel, SpellType
 
@@ -62,7 +63,12 @@ class SpellSystem:
         spell_level = self._resolve_spell_level(spell, override)
         return max(spell_level, 0)
 
-    def can_cast_spell(self, caster: Any, spell_name: str, spell_level: Optional[int] = None) -> bool:
+    def can_cast_spell(
+        self,
+        caster: Any,
+        spell_name: str,
+        spell_level: Optional[int] = None,
+    ) -> bool:
         spell = self.get_spell(spell_name)
         if not spell:
             return False
@@ -73,11 +79,23 @@ class SpellSystem:
         return caster.stats.get("mp", 0) >= mana_cost
 
     def cast_spell(
-        self, caster: Any, spell_name: str, spell_level: Optional[int] = None, targets: Optional[List[Any]] = None
+        self,
+        caster: Any,
+        spell_name: str,
+        spell_level: Optional[int] = None,
+        targets: Optional[List[Any]] = None,
     ) -> Dict[str, Any]:
         spell = self.get_spell(spell_name)
         if not spell:
             return {"success": False, "message": "Spell not found"}
+
+        now = time.time()
+        if spell.is_on_cooldown(now):
+            return {
+                "success": False,
+                "message": "Spell on cooldown",
+                "remaining_cooldown": spell.get_remaining_cooldown(now),
+            }
 
         mana_cost = self._mana_cost(spell, spell_level)
         available_mana = caster.stats.get("mp", 0)
@@ -90,7 +108,12 @@ class SpellSystem:
 
         if targets is None:
             targets = []
-        spell.cast(caster, targets, spell_level=spell_level)
+        did_cast = spell.cast(caster, targets, spell_level=spell_level)
+        if not did_cast:
+            # Falha inesperada na conjuração (ex.: cooldown alterado entre verificações)
+            # Reverte custo de mana se já deduzido
+            caster.stats["mp"] = available_mana
+            return {"success": False, "message": "Spell cast failed"}
         return {"success": True, "message": "Spell cast", "mana_cost": mana_cost}
 
     # Recuperação e utilidades
